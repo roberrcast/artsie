@@ -1,19 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
+import * as S from "./styles";
 
 function Header() {
     return (
-        <header>
-            <h1>The Open Gallery</h1>
+        <S.Header>
+            <S.HeaderContainer>
+                <S.Title>The Open Gallery</S.Title>
 
-            <nav>
-                <ul>
-                    <li>Exhibitions</li>
-                    <li>Artists</li>
-                    <li>Genres</li>
-                    <li>Collection</li>
-                </ul>
-            </nav>
-        </header>
+                <S.Nav>
+                    <S.List>
+                        <li>Exhibitions</li>
+                        <li>Artists</li>
+                        <li>Genres</li>
+                        <li>Collection</li>
+                    </S.List>
+                </S.Nav>
+
+                <S.ButtonWrapper>
+                    <S.SearchButton>
+                        <S.SearchButtonIcon />
+                    </S.SearchButton>
+                </S.ButtonWrapper>
+            </S.HeaderContainer>
+        </S.Header>
     );
 }
 
