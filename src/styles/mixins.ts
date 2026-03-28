@@ -1,14 +1,22 @@
 import { css } from "styled-components";
 
+// Tipado interno
+interface ParsedValue {
+    val: number;
+    unit: string;
+}
+
 //Funciones no exportadas para uso interno
-const parseUnit = (value) => {
+
+// Función para separar números de unidades
+const parseUnit = (value: string | number): ParsedValue => {
     const match = String(value).match(/(-?[\d.]+)([a-z%]*)/);
-    if (!match) return { val: parseFloat(value), unit: "" };
+    if (!match) return { val: parseFloat(String(value)), unit: "" };
     return { val: parseFloat(match[1]), unit: match[2] };
 };
 
 //Función interna para convertir a pixeles
-const convertToPx = (value, rootFontSize = 16) => {
+const convertToPx = (value: string | number, rootFontSize = 16) => {
     const { val, unit } = parseUnit(value);
     if (unit === "rem") {
         return val * rootFontSize;
@@ -25,7 +33,12 @@ const convertToPx = (value, rootFontSize = 16) => {
 // @param {string} max - el valor máximo (p.ej., 22rem).
 // @returns {string} una función clamp() CSS.
 
-export const fluid = (minSize, maxSize, minBreakpoint, maxBreakpoint) => {
+export const fluid = (
+    minSize: string | number,
+    maxSize: string | number,
+    minBreakpoint: string | number,
+    maxBreakpoint: string | number,
+) => {
     //Convertimos todos los inputs a pixeles para calcular correctamente
     const minSizePx = convertToPx(minSize);
     const maxSizePx = convertToPx(maxSize);
@@ -43,3 +56,8 @@ export const fluid = (minSize, maxSize, minBreakpoint, maxBreakpoint) => {
     //Usamos los valores originales de min/max en el clamp() final para precisión
     return `clamp(${minSize}, ${preferredValue}, ${maxSize})`;
 };
+
+export const flexAlignCenter = css`
+    display: flex;
+    align-items: center;
+`;
