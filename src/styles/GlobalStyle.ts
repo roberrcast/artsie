@@ -37,8 +37,13 @@ max-width: 100%;
 display: block;
 }
 
-a, button {
+a {
 text-decoration: none;
+}
+
+button {
+background: transparent;
+border: none;
 }
 
 ::-webkit-scrollbar {

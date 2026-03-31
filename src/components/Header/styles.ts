@@ -1,8 +1,11 @@
 import styled from "styled-components";
-import { flexAlignCenter } from "../../styles/mixins";
+import {
+    buttonAlignment,
+    flexAlignCenter,
+    iconStyle,
+    titleStyle,
+} from "../../styles/mixins";
 import { Search } from "lucide-react";
-
-const headerFontSize = "1.5rem";
 
 export const Header = styled.header`
     ${flexAlignCenter};
@@ -24,8 +27,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-size: ${headerFontSize};
-    font-weight: 700;
+    ${titleStyle};
 `;
 
 export const Nav = styled.nav``;
@@ -35,7 +37,7 @@ export const List = styled.ul`
     padding: 0;
     margin: 0;
     ${flexAlignCenter};
-    font-size: ${headerFontSize};
+    font-size: 1.5rem;
     color: ${(props) => props.theme.colors.textMuted};
     font-weight: 500;
     gap: 2rem;
@@ -45,19 +47,9 @@ export const List = styled.ul`
 export const ButtonWrapper = styled.div``;
 
 export const SearchButton = styled.button`
-    background: transparent;
-    border: none;
+    ${buttonAlignment};
 `;
 
 export const SearchButtonIcon = styled(Search)`
-    width: 30px;
-    heigth: 30px;
-    color: ${(props) => props.theme.colors.primary};
-    transition: color 0.3s ease;
-
-    @media (hover: hover) {
-        &:hover {
-            color: ${(props) => props.theme.colors.textMuted};
-        }
-    }
+    ${iconStyle("25px", "primary", "textMuted")};
 `;

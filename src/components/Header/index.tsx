@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import * as S from "./styles";
+import SearchBar from "../SearchBar";
 
-function Header() {
+const Header: React.FC = () => {
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
     return (
         <S.Header>
             <S.HeaderContainer>
@@ -17,13 +21,20 @@ function Header() {
                 </S.Nav>
 
                 <S.ButtonWrapper>
-                    <S.SearchButton>
+                    <S.SearchButton
+                        aria-label="Open search"
+                        onClick={() => setIsSearchOpen(true)}
+                    >
                         <S.SearchButtonIcon />
                     </S.SearchButton>
                 </S.ButtonWrapper>
             </S.HeaderContainer>
+
+            {isSearchOpen && (
+                <SearchBar onClose={() => setIsSearchOpen(false)} />
+            )}
         </S.Header>
     );
-}
+};
 
 export default Header;

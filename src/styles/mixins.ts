@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import type { ThemeType } from "./theme";
 
 // Tipado interno
 interface ParsedValue {
@@ -60,4 +61,36 @@ export const fluid = (
 export const flexAlignCenter = css`
     display: flex;
     align-items: center;
+`;
+
+export const buttonAlignment = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const iconStyle = (
+    value: string,
+    color: keyof ThemeType["colors"],
+    hoverColor?: keyof ThemeType["colors"],
+) => css`
+    width: ${value};
+    height: ${value};
+    color: ${(props) => props.theme.colors[color]}; //Primary
+    transition: color 0.3s ease;
+
+    ${hoverColor &&
+    css`
+        @media (hover: hover) {
+            &:hover {
+                color: ${(props) => props.theme.colors[hoverColor]};
+                cursor: pointer;
+            }
+        }
+    `}
+`;
+
+export const titleStyle = css`
+    font-size: 1.5rem;
+    font-weight: 700;
 `;
