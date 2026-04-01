@@ -55,8 +55,32 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                 <S.StyledSearchButton />
                             </S.SearchButton>
                         </S.Form>
-                        // Continue adding categories here under the search
-                        input
+
+                        <S.Submenu>
+                            <S.SubmenuContainer>
+                                <S.SubmenuTitle>Géneros</S.SubmenuTitle>
+                                <S.SubmenuList>
+                                    <li>Bauhaus Architecture</li>
+                                    <li>Post-impressionism</li>
+                                    <li>Zaria Forman</li>
+                                    <li>The Met Collection</li>
+                                </S.SubmenuList>
+                            </S.SubmenuContainer>
+
+                            <S.SubmenuContainer>
+                                <S.SubmenuTitle>Artistas</S.SubmenuTitle>
+                                <S.SubmenuList>
+                                    <li>Rembrandt</li>
+                                    <li>Paul Rubens</li>
+                                    <li>Van Gogh</li>
+                                    <li>Jean-Michelle Basquiat</li>
+                                </S.SubmenuList>
+                            </S.SubmenuContainer>
+
+                            <S.SubmenuCollection>
+                                <S.SubmenuTitle>Colecciones</S.SubmenuTitle>
+                            </S.SubmenuCollection>
+                        </S.Submenu>
                     </S.SearchSection>
                 </S.SearchWrapper>
             </S.SearchContainer>

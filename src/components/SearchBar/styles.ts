@@ -87,7 +87,9 @@ export const CloseButtonIcon = styled(X)`
     stroke-width: 2.2px;
 `;
 
-export const SearchWrapper = styled.div``;
+export const SearchWrapper = styled.div`
+    margin-top: 5rem;
+`;
 
 export const SearchSection = styled.div.attrs({ role: "search" })``;
 
@@ -97,7 +99,7 @@ export const Form = styled.form`
     border: 2px solid ${(props) => props.theme.colors.searchInputBorder};
     width: 830px;
     justify-content: space-between;
-    padding: 0 0.5rem;
+    padding: 0.5rem;
 `;
 
 export const Input = styled.input`
@@ -126,3 +128,33 @@ export const StyledSearchButton = styled(Search)`
     ${iconStyle("30px", "secondary", "textMuted")};
     transition: color 0.3s ease;
 `;
+
+export const Submenu = styled.section`
+    display: flex;
+    justify-content: flex-start;
+    gap: 5rem;
+    margin-top: 2rem;
+`;
+
+export const SubmenuContainer = styled.div``;
+
+export const SubmenuTitle = styled.h3`
+    font-family: ${(props) => props.theme.fonts.body};
+    font-size: 0.7rem;
+    color: ${(props) => props.theme.colors.placeHolderText};
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+`;
+
+export const SubmenuList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    li {
+        font-family: ${(props) => props.theme.fonts.display};
+    }
+`;
+
+export const SubmenuCollection = styled.ul``;

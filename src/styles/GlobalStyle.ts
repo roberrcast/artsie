@@ -46,6 +46,10 @@ background: transparent;
 border: none;
 }
 
+ul {
+list-style: none;
+}
+
 ::-webkit-scrollbar {
 width: 6px;
 }
