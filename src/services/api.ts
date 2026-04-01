@@ -24,4 +24,14 @@ export const getArtworkById = (id: number) => {
     return api.get(`/artworks/${id}`);
 };
 
+// Hacer fetch de lista para artistas (populares/featured)
+export const getArtists = (limit = 4) => {
+    return api.get(`/agents?limit=${limit}&fields=id,title`);
+};
+
+// Fetch para los géneros/estilos (estilos artísticos)
+export const getArtStyles = (limit = 4) => {
+    return api.get(`/art-styles?limit=${limit}&fields=id, title`);
+};
+
 export default api;
