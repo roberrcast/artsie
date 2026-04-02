@@ -39,6 +39,7 @@ display: block;
 
 a {
 text-decoration: none;
+color: ${(props) => props.theme.colors.primary};
 }
 
 button {

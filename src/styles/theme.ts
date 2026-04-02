@@ -8,7 +8,7 @@ export const theme = {
         surface2: "#f2f4f4",
         borderColor: "#f0f0f0",
         background: "#fefefe",
-        backgroundRGBA: "rgba(254, 254, 254, .7)",
+        backgroundRGBA: "rgba(254, 254, 254, .9)",
         border: "rgba(26, 26, 26, 0.1)",
         error: "#9f3f3d",
         textMuted: "#666666",

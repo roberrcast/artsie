@@ -58,6 +58,16 @@ export const fluid = (
     return `clamp(${minSize}, ${preferredValue}, ${maxSize})`;
 };
 
+export const maxWidthContent = css`
+    max-width: 1500px;
+    margin: 0 auto;
+    width: 100%;
+
+    @-moz-document url-prefix() {
+        max-width: 1400px;
+    }
+`;
+
 export const flexAlignCenter = css`
     display: flex;
     align-items: center;

@@ -8,11 +8,4 @@ export const PageWrapper = styled.div`
 
 export const MainContent = styled.main`
     flex: 1;
-    max-width: 1500px;
-    margin: 0 auto;
-    width: 100%;
-
-    @-moz-document url-prefix() {
-        max-width: 1400px;
-    }
 `;

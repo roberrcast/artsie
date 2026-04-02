@@ -1,3 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../store";
+import { fetchSubmenuData } from "../../store/artworksSlice";
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 
@@ -15,6 +19,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
             onClose();
         }, 400);
     };
+
+    const dispatch = useDispatch<AppDispatch>();
+    const { artists, styles, loading } = useSelector(
+        (state: RootState) => state.artworks,
+    );
+
+    useEffect(() => {
+        dispatch(fetchSubmenuData());
+    }, [dispatch]);
 
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
@@ -60,20 +73,32 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                             <S.SubmenuContainer>
                                 <S.SubmenuTitle>Géneros</S.SubmenuTitle>
                                 <S.SubmenuList>
-                                    <li>Bauhaus Architecture</li>
-                                    <li>Post-impressionism</li>
-                                    <li>Zaria Forman</li>
-                                    <li>The Met Collection</li>
+                                    {styles?.map((style) => (
+                                        <li key={style.id}>
+                                            <Link
+                                                to={`/search?style=${style.id}`}
+                                                onClick={onClose}
+                                            >
+                                                {style.title}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </S.SubmenuList>
                             </S.SubmenuContainer>
 
                             <S.SubmenuContainer>
                                 <S.SubmenuTitle>Artistas</S.SubmenuTitle>
                                 <S.SubmenuList>
-                                    <li>Rembrandt</li>
-                                    <li>Paul Rubens</li>
-                                    <li>Van Gogh</li>
-                                    <li>Jean-Michelle Basquiat</li>
+                                    {artists?.map((artist) => (
+                                        <li key={artist.id}>
+                                            <Link
+                                                to={`/search?artist=${artist.id}`}
+                                                onClick={onClose}
+                                            >
+                                                {artist.title}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </S.SubmenuList>
                             </S.SubmenuContainer>
 

@@ -74,6 +74,7 @@ export const CloseButton = styled.button`
     color: ${(props) => props.theme.colors.textMuted};
     font-size: 0.8rem;
     font-weight: 600;
+    gap: 0.3rem;
 
     @media (hover: hover) {
         &:hover {
@@ -105,6 +106,7 @@ export const Form = styled.form`
 export const Input = styled.input`
     border: none;
     outline: none;
+    background: transparent;
     font-family: ${(props) => props.theme.fonts.display};
     font-size: 2rem;
     width: 100%;
@@ -140,7 +142,7 @@ export const SubmenuContainer = styled.div``;
 
 export const SubmenuTitle = styled.h3`
     font-family: ${(props) => props.theme.fonts.body};
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: ${(props) => props.theme.colors.placeHolderText};
     text-transform: uppercase;
     font-weight: 600;
