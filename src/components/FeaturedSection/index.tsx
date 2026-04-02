@@ -18,29 +18,33 @@ const FeaturedSection: React.FC = () => {
 
         return (
             <S.FeaturedContainer>
-                <S.Image
-                    src={imageUrl}
-                    referrerPolicy="no-referrer"
-                    crossOrigin="anonymous"
-                    alt={
-                        featuredArtwork.thumbnail?.alt_text ||
-                        `Imagen de ${featuredArtwork.title}`
-                    }
-                />
+                <S.FeaturedWrapper>
+                    <S.Image
+                        src={imageUrl}
+                        referrerPolicy="no-referrer"
+                        crossOrigin="anonymous"
+                        alt={
+                            featuredArtwork.thumbnail?.alt_text ||
+                            `Imagen de ${featuredArtwork.title}`
+                        }
+                    />
 
-                <S.FeaturedHeader>
-                    <S.Kicker>obra del día</S.Kicker>
+                    <S.FeaturedHeader>
+                        <S.Kicker>obra del día</S.Kicker>
 
-                    <S.FeaturedTitle>{featuredArtwork.title}</S.FeaturedTitle>
+                        <S.FeaturedTitle>
+                            {featuredArtwork.title}
+                        </S.FeaturedTitle>
 
-                    <S.Description>
-                        {featuredArtwork.description
-                            ? stripHtml(featuredArtwork.description)
-                            : "Sin descripción disponible."}
-                    </S.Description>
+                        <S.Description>
+                            {featuredArtwork.description
+                                ? stripHtml(featuredArtwork.description)
+                                : "Haz clic en el botón para más detalles de la imagen."}
+                        </S.Description>
 
-                    <S.FeaturedButton>ver obra maestra</S.FeaturedButton>
-                </S.FeaturedHeader>
+                        <S.FeaturedButton>ver obra maestra</S.FeaturedButton>
+                    </S.FeaturedHeader>
+                </S.FeaturedWrapper>
             </S.FeaturedContainer>
         );
     }, [featuredArtwork, loading]);

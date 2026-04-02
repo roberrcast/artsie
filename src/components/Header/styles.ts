@@ -37,10 +37,10 @@ export const List = styled.ul`
     padding: 0;
     margin: 0;
     ${flexAlignCenter};
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: ${(props) => props.theme.colors.textMuted};
     font-weight: 500;
-    gap: 2rem;
+    gap: 3rem;
     text-transform: uppercase;
 `;
 

@@ -1,6 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import { X } from "lucide-react";
-import { flexAlignCenter, iconStyle, titleStyle } from "../../styles/mixins";
+import {
+    flexAlignCenter,
+    iconStyle,
+    maxWidthContent,
+    titleStyle,
+} from "../../styles/mixins";
 import { Search } from "lucide-react";
 
 const slideDown = keyframes`
@@ -56,9 +61,9 @@ export const SearchContainerWrapper = styled.div`
 export const TitleButtonContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    max-width: 1500px;
+    ${maxWidthContent};
     margin: 0 auto;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
 `;
 
 export const Title = styled.h1`

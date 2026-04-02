@@ -1,8 +1,19 @@
 import styled from "styled-components";
+import { maxWidthContent } from "../../styles/mixins";
 
-export const FeaturedContainer = styled.div``;
+export const FeaturedContainer = styled.div`
+    background-color: ${(props) => props.theme.colors.surface};
+`;
 
-export const Image = styled.img``;
+export const FeaturedWrapper = styled.div`
+    ${maxWidthContent};
+    padding-top: 3rem;
+`;
+
+export const Image = styled.img`
+    width: 600px;
+    position: relative;
+`;
 
 export const FeaturedHeader = styled.header``;
 
