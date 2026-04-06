@@ -37,8 +37,18 @@ max-width: 100%;
 display: block;
 }
 
-a, button {
+a {
 text-decoration: none;
+color: ${(props) => props.theme.colors.primary};
+}
+
+button {
+background: transparent;
+border: none;
+}
+
+ul {
+list-style: none;
 }
 
 ::-webkit-scrollbar {
