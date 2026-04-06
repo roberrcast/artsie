@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, ThemeProvider } from "styled-components";
 import type { ThemeType } from "./theme";
 
 // Tipado interno
@@ -58,6 +58,10 @@ export const fluid = (
     return `clamp(${minSize}, ${preferredValue}, ${maxSize})`;
 };
 
+export const backgroundSurface = css`
+    background-color: ${(props) => props.theme.colors.surface};
+`;
+
 export const maxWidthContent = css`
     max-width: 1500px;
     margin: 0 auto;
@@ -103,4 +107,25 @@ export const iconStyle = (
 export const titleStyle = css`
     font-size: 1.5rem;
     font-weight: 700;
+`;
+
+export const lineClamp = (lines: number) => css`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: ${lines};
+`;
+
+export const buttonHover = (
+    backgroundColor: keyof ThemeType["colors"],
+    color: keyof ThemeType["colors"],
+) => css`
+    @media (hover: hover) {
+        &:hover {
+            background-color: ${(props) => props.theme.colors[backgroundColor]};
+            color: ${(props) => props.theme.colors[color]};
+            cursor: pointer;
+        }
+    }
 `;

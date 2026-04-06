@@ -9,7 +9,9 @@ const Header: React.FC = () => {
     return (
         <S.Header>
             <S.HeaderContainer>
-                <S.Title>The Open Gallery</S.Title>
+                <S.Title>
+                    <Link to={"/"}>The Open Gallery</Link>
+                </S.Title>
 
                 <S.Nav>
                     <S.List>

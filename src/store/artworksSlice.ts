@@ -9,6 +9,7 @@ import {
     getArtists,
     getArtStyles,
     getFeaturedBatch,
+    getArtworkById,
 } from "../services/api";
 import { getDayOfYear } from "../utils/dateUtils";
 
@@ -25,6 +26,9 @@ interface Artwork {
         height: number;
         lqip?: string;
     };
+    medium_display?: string;
+    dimensions?: string;
+    credit_line?: string;
 }
 
 interface ArtworksState {
@@ -36,6 +40,7 @@ interface ArtworksState {
     total: number;
     featuredArtwork: Artwork | null;
     iiifUrl: string | null;
+    selectedArtwork: Artwork | null;
 }
 
 const initialState: ArtworksState = {
@@ -47,6 +52,7 @@ const initialState: ArtworksState = {
     total: 0,
     featuredArtwork: null,
     iiifUrl: null,
+    selectedArtwork: null,
 };
 
 // El thunk para hacer fetch del data
@@ -86,9 +92,27 @@ export const fetchFeaturedArtwork = createAsyncThunk(
         );
 
         const dayOfYear = getDayOfYear();
+
+        console.log(
+            `[Artwork of the day] Day of year: ${dayOfYear}, Selection Index: ${dayOfYear % artworks.length}`,
+        );
+
         const artworkOfTheDay = artworks[dayOfYear % artworks.length];
 
+        console.log(
+            `[Artwork of the day] Selected: ${artworkOfTheDay.title} by ${artworkOfTheDay.artist_display}`,
+        );
+
         return { artWork: artworkOfTheDay, iiifUrl };
+    },
+);
+
+// fetch para los detalles de una obra
+export const fetchArtworkDetails = createAsyncThunk(
+    "artworks/fetchArtworkDetails",
+    async (id: string | number) => {
+        const response = await getArtworkById(id);
+        return response.data.data;
     },
 );
 
@@ -102,19 +126,16 @@ const artworkSlice = createSlice({
     extraReducers: (builder) => {
         builder
             // fetch de las artworks
-            // Cuando se empieza la solicitud
 
             .addCase(fetchArtworks.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
-            // Cuando la solicitud tiene éxito
             .addCase(fetchArtworks.fulfilled, (state, action) => {
                 state.loading = false;
                 state.items = action.payload.data;
                 state.total = action.payload.pagination.total;
             })
-            // Cuando la solicitud falle
             .addCase(fetchArtworks.rejected, (state, action) => {
                 state.loading = false;
                 state.error =
@@ -122,7 +143,7 @@ const artworkSlice = createSlice({
                     "Hubo un error al tratar de conseguir obras de arte";
             })
 
-            // Fetch del submenu en el search bar del header
+            // Casos del submenu en el search bar del header
 
             .addCase(fetchSubmenuData.pending, (state) => {
                 state.loading = true;
@@ -142,7 +163,7 @@ const artworkSlice = createSlice({
                     "Hubo un error al intentar la información";
             })
 
-            // Fetch del artwork of the day en Featured
+            // Casos del artwork of the day en Featured
 
             .addCase(fetchFeaturedArtwork.pending, (state) => {
                 state.loading = true;
@@ -159,6 +180,22 @@ const artworkSlice = createSlice({
                 state.loading = false;
                 state.error =
                     action.error.message || "Hubo un error en la solicitud";
+            })
+
+            // Casos para los detalles de una obra
+            .addCase(fetchArtworkDetails.pending, (state) => {
+                state.loading = true;
+                state.selectedArtwork = null; // para limpiar la obra anterior con la nueva
+            })
+            .addCase(fetchArtworkDetails.fulfilled, (state, action) => {
+                state.loading = false;
+                state.selectedArtwork = action.payload;
+            })
+            .addCase(fetchArtworkDetails.rejected, (state, action) => {
+                state.loading = false;
+                state.error =
+                    action.error.message ||
+                    "Hubo un error al tratar de conseguir los detalles";
             });
     },
 });
