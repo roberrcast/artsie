@@ -54,6 +54,7 @@ export const NavList = styled.ul`
         text-transform: uppercase;
         color: ${(props) => props.theme.colors.footerColorTxt};
         font-weight: 500;
+        letter-spacing: 0.1rem;
     }
 `;
 
@@ -195,7 +196,9 @@ export const BottomBarWrapper = styled.div`
     padding: 2rem 0;
 
     p {
+        font-size: 0.9rem;
         text-transform: uppercase;
         color: ${(props) => props.theme.colors.footerColorTxt3};
+        letter-spacing: 0.1rem;
     }
 `;
