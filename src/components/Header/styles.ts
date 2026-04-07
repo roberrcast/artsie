@@ -42,6 +42,7 @@ export const List = styled.ul`
     font-weight: 500;
     gap: 3rem;
     text-transform: uppercase;
+    letter-spacing: 0.1rem;
 `;
 
 export const ButtonWrapper = styled.div``;

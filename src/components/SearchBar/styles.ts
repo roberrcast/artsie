@@ -1,12 +1,11 @@
 import styled, { keyframes } from "styled-components";
-import { X } from "lucide-react";
+import { X, Search } from "lucide-react";
 import {
     flexAlignCenter,
     iconStyle,
     maxWidthContent,
     titleStyle,
 } from "../../styles/mixins";
-import { Search } from "lucide-react";
 
 const slideDown = keyframes`
 from { transform: translateY(-100%); opacity: 0; }

@@ -129,3 +129,10 @@ export const buttonHover = (
         }
     }
 `;
+
+export const border = (
+    direction: string,
+    color: keyof ThemeType["colors"],
+) => css`
+    border-${direction}: 1px solid ${(props) => props.theme.colors[color]};
+`;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { maxWidthContent } from "../../styles/mixins";
+import { border, maxWidthContent } from "../../styles/mixins";
 
 export const DetailsContainer = styled.section`
     background-color: ${(props) => props.theme.colors.surface};
@@ -42,7 +42,7 @@ export const ArtistInfo = styled.section`
     flex-direction: column;
     gap: 1.5rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid ${(props) => props.theme.colors.textMuted};
+    ${border("bottom", "textMuted")};
 `;
 
 export const DateDisplay = styled.p`

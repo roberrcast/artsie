@@ -15,10 +15,10 @@ const Header: React.FC = () => {
 
                 <S.Nav>
                     <S.List>
-                        <li>Exhibitions</li>
-                        <li>Artists</li>
-                        <li>Genres</li>
-                        <li>Collection</li>
+                        <li>Exhibiciones</li>
+                        <li>Artistas</li>
+                        <li>Géneros</li>
+                        <li>Colecciones</li>
                     </S.List>
                 </S.Nav>
 
