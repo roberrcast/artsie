@@ -88,7 +88,7 @@ export const fetchFeaturedArtwork = createAsyncThunk(
         const response = await getFeaturedBatch();
         const iiifUrl = response.data.config.iiif_url;
         const artworks = response.data.data.filter(
-            (artwork: any) => artwork.image_id != null,
+            (artwork: any) => artwork.image_id != null && artwork.description,
         );
 
         const dayOfYear = getDayOfYear();
