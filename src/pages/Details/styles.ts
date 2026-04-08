@@ -3,7 +3,7 @@ import { border, maxWidthContent } from "../../styles/mixins";
 
 export const DetailsContainer = styled.section`
     background-color: ${(props) => props.theme.colors.surface};
-    padding: 3rem 0 7rem;
+    padding: 8rem 0 7rem;
 `;
 
 export const DetailsWrapper = styled.article`

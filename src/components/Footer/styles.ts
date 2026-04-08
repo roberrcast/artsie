@@ -23,14 +23,14 @@ export const TitleColumn = styled.div`
 `;
 
 export const FooterTitle = styled.h2`
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 600;
 `;
 
 export const FooterKicker = styled.h3`
     font-family: ${(props) => props.theme.fonts.body};
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 800;
     letter-spacing: 0.1rem;
 `;

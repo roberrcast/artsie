@@ -105,8 +105,8 @@ export const iconStyle = (
 `;
 
 export const titleStyle = css`
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 600;
 `;
 
 export const lineClamp = (lines: number) => css`
@@ -135,4 +135,28 @@ export const border = (
     color: keyof ThemeType["colors"],
 ) => css`
     border-${direction}: 1px solid ${(props) => props.theme.colors[color]};
+`;
+
+export const blur = (value: number | string) => css`
+    backdrop-filter: blur(${value}px);
+    -webkit-backdrop-filter: blur(${value}px);
+`;
+
+/* Button Hover for Attribution Banner component */
+
+export const bannerButtonHover = (
+    bgInit: keyof ThemeType["colors"],
+    borderInit: keyof ThemeType["colors"],
+    textInit: keyof ThemeType["colors"],
+    bgHover: keyof ThemeType["colors"],
+) => css`
+    background-color: ${({ theme }) => theme.colors[bgInit]};
+    border: 1px solid ${({ theme }) => theme.colors[borderInit]};
+    color: ${({ theme }) => theme.colors[textInit]};
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: ${({ theme }) => theme.colors[bgHover]};
+        }
+    }
 `;

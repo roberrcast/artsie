@@ -28,8 +28,8 @@ export const Overlay = styled.div<StyledProps>`
     width: 100%;
     height: 100%;
     background-color: ${(props) => props.theme.colors.backgroundRGBA};
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     z-index: 1000;
     display: flex;
     justify-content: center;

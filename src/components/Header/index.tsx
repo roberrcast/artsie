@@ -1,13 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import * as S from "./styles";
-import SearchBar from "../SearchBar";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchOpen } from "../../store/artworksSlice";
+import type { RootState } from "../../store";
 
 const Header: React.FC = () => {
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const dispatch = useDispatch();
+    const [isHidden, setIsHidden] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            // Calcular cuanto de la página se ha bajado
+            const scrollTop = window.scrollY;
+            const docHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+
+            setIsHidden(scrollPercent > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    });
+
+    const handleOpenSearch = () => {
+        dispatch(setSearchOpen(true));
+    };
 
     return (
-        <S.Header>
+        <S.Header isHidden={isHidden}>
             <S.HeaderContainer>
                 <S.Title>
                     <Link to={"/"}>The Open Gallery</Link>
@@ -25,16 +47,12 @@ const Header: React.FC = () => {
                 <S.ButtonWrapper>
                     <S.SearchButton
                         aria-label="Open search"
-                        onClick={() => setIsSearchOpen(true)}
+                        onClick={handleOpenSearch}
                     >
                         <S.SearchButtonIcon />
                     </S.SearchButton>
                 </S.ButtonWrapper>
             </S.HeaderContainer>
-
-            {isSearchOpen && (
-                <SearchBar onClose={() => setIsSearchOpen(false)} />
-            )}
         </S.Header>
     );
 };

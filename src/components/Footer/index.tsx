@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                     <S.FooterKicker>Explora</S.FooterKicker>
 
                     <S.NavList>
-                        <li>Exibiciones</li>
+                        <li>Exhibiciones</li>
                         <li>Géneros</li>
                         <li>Colecciones</li>
                         <li>Artistas</li>
