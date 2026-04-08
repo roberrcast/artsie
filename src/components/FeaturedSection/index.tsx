@@ -22,8 +22,6 @@ const FeaturedSection: React.FC = () => {
 
         if (loading || !featuredArtwork || !iiifUrl) return null;
 
-        /* const imageUrl = `/iiif/2/${featuredArtwork.image_id}/full/843,/0/default.jpg`; */
-
         const imageUrl = buildImageUrl(
             featuredArtwork.image_id,
             featuredArtwork.thumbnail?.width,

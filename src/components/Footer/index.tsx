@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
                     <S.FooterDescription>
                         Cientos de años de creatividad humana al alcance de tu
                         mano. Una ventana digital a la amplia colección de arte
-                        del Instituto de Arte de Chicago.
+                        del Art Institute of Chicago.
                     </S.FooterDescription>
                 </S.TitleColumn>
 

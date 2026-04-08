@@ -52,4 +52,10 @@ export const getExhibitions = (limit = 10) => {
     );
 };
 
+// Fetch para encontrar la primera imagen CCO (licencia pública) de alguna exhibición específica
+export const getPublicArtworkForExhibition = (exhibitionId: number) => {
+    return api.get(`/artworks/search?query[bool][must][][term][exhibition_ids]=${exhibitionId}&query[bool][must][][term][is_public_domain]=true&limit=1&fields=id,image_id,
+      title`);
+};
+
 export default api;
