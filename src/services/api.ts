@@ -45,4 +45,11 @@ export const getFeaturedBatch = () => {
     );
 };
 
+// Fetch para las exhibiciones actuales
+export const getExhibitions = (limit = 10) => {
+    return api.get(
+        `/exhibitions?filter[status]=confirmed&limit=${limit}&fields=id,title,short_description,artwork_ids`,
+    );
+};
+
 export default api;
