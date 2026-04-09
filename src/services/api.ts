@@ -48,14 +48,8 @@ export const getFeaturedBatch = () => {
 // Fetch para las exhibiciones actuales
 export const getExhibitions = (limit = 10) => {
     return api.get(
-        `/exhibitions?filter[status]=confirmed&limit=${limit}&fields=id,title,short_description,artwork_ids`,
+        `/exhibitions?filter[status]=confirmed&limit=${limit}&fields=id,title,short_description,artwork_ids,api_model,image_url`,
     );
-};
-
-// Fetch para encontrar la primera imagen CCO (licencia pública) de alguna exhibición específica
-export const getPublicArtworkForExhibition = (exhibitionId: number) => {
-    return api.get(`/artworks/search?query[bool][must][][term][exhibition_ids]=${exhibitionId}&query[bool][must][][term][is_public_domain]=true&limit=1&fields=id,image_id,
-      title`);
 };
 
 export default api;

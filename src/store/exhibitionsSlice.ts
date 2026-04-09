@@ -1,28 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getExhibitions, getPublicArtworkForExhibition } from "../services/api";
+import { getExhibitions } from "../services/api";
 
 export const fetchExhibitionsWithImages = createAsyncThunk(
     "exhibitions/fetchExhibitionsWithImages",
     async () => {
         const response = await getExhibitions();
-        const exhibitions = response.data.data.slice(0, 6);
-
-        const enrichedExhibitions = await Promise.all(
-            exhibitions.map(async (exh: any) => {
-                try {
-                    const artRes = await getPublicArtworkForExhibition(exh.id);
-                    const artwork = artRes.data.data[0];
-                    return {
-                        ...exh,
-                        publicImageId: artwork ? artwork.image_id : null,
-                    };
-                } catch (error) {
-                    return { ...exh, publicImageId: null };
-                }
-            }),
-        );
-
-        return enrichedExhibitions;
+        return response.data.data.slice(0, 6);
     },
 );
 
