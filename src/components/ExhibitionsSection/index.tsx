@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ArrowRight } from "lucide-react";
 import { fetchExhibitionsWithImages } from "../../store/exhibitionsSlice";
@@ -7,6 +8,8 @@ import { stripHtml } from "../../utils/textUtils";
 import * as S from "./styles";
 
 const ExhibitionsSection: React.FC = () => {
+    const navigate = useNavigate();
+
     const dispatch = useDispatch<AppDispatch>();
 
     // fetch de las exhibiciones del store
@@ -39,7 +42,13 @@ const ExhibitionsSection: React.FC = () => {
             <S.SectionWrapper>
                 <S.Kicker>exhibiciones</S.Kicker>
 
-                <S.Title>Exhibiciones Actuales</S.Title>
+                <S.TitleNavContainer>
+                    <S.Title>Exhibiciones Actuales</S.Title>
+
+                    <S.Explore onClick={() => navigate("/exhibitions")}>
+                        explorar todo
+                    </S.Explore>
+                </S.TitleNavContainer>
 
                 <S.Grid>
                     {featuredExhibitions.map((exh) => (
@@ -73,9 +82,9 @@ const ExhibitionsSection: React.FC = () => {
                                 </S.Description>
 
                                 <S.DetailsLink>
-                                    Detalles{" "}
+                                    Detalles
                                     <span>
-                                        <ArrowRight size={16} />
+                                        <ArrowRight size={20} />
                                     </span>
                                 </S.DetailsLink>
                             </S.Content>

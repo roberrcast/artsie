@@ -160,3 +160,14 @@ export const bannerButtonHover = (
         }
     }
 `;
+
+export const underlineHover = css`
+    @media (hover: hover) {
+        &:hover {
+            cursor: pointer;
+        }
+        &:hover::after {
+            transform: scaleX(0);
+        }
+    }
+`;
