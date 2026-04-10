@@ -30,6 +30,7 @@ export const theme = {
         placeHolderText2: "#999999",
         searchInputBorder: "#919aba",
         exhibitionCardText: "#5a6061",
+        exhibitionsHeaderText: "#2d3435",
     },
 
     fonts: {

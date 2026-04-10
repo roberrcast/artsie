@@ -107,6 +107,7 @@ export const Type = styled.p`
 export const ExhibitionTitle = styled.h3`
     font-size: 1.5rem;
     font-weight: 500;
+    ${lineClamp(2)};
 `;
 
 export const Description = styled.p`

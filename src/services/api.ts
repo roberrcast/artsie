@@ -48,7 +48,7 @@ export const getFeaturedBatch = () => {
 // Fetch para las exhibiciones actuales
 export const getExhibitions = (limit = 10) => {
     return api.get(
-        `/exhibitions?filter[status]=confirmed&limit=${limit}&fields=id,title,short_description,artwork_ids,api_model,image_url`,
+        `https://api.artic.edu/api/v1/exhibitions/search?params={"query":{"term":{"is_featured":true}},"size":${limit}}&fields=id,title,short_description,image_url,is_featured,aic_start_at,aic_end_at,api_model,gallery_title`,
     );
 };
 

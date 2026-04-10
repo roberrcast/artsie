@@ -69,7 +69,7 @@ const ExhibitionsSection: React.FC = () => {
                             </S.ImageContainer>
 
                             <S.Content>
-                                <S.Type>{exh.api_model}</S.Type>
+                                <S.Type>{`${exh.gallery_title || exh.api_model}`}</S.Type>
 
                                 <S.ExhibitionTitle>
                                     {exh.title}
