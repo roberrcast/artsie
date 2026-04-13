@@ -5,10 +5,12 @@ import Details from "./pages/Details";
 import ExhibitionsPage from "./pages/Exhibitions";
 import ExhibitionDetails from "./pages/ExhibitionDetails";
 import Layout from "./components/Layout";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
     return (
         <Router>
+            <ScrollToTop />
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />
