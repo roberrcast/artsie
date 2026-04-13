@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../store";
 import { fetchFeaturedArtwork } from "../../store/artworksSlice";
 import FeaturedSection from "../../components/FeaturedSection";
+import ExhibitionsSection from "../../components/ExhibitionsSection";
 
 const Home: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -14,6 +15,7 @@ const Home: React.FC = () => {
     return (
         <div>
             <FeaturedSection />
+            <ExhibitionsSection />
         </div>
     );
 };

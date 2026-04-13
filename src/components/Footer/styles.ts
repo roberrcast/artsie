@@ -1,0 +1,204 @@
+import styled from "styled-components";
+import { Search, Palette, History, MapPin } from "lucide-react";
+import { border, iconStyle, maxWidthContent } from "../../styles/mixins";
+
+export const Footer = styled.footer`
+    background-color: ${(props) => props.theme.colors.footerBg};
+`;
+
+export const FooterWrapper = styled.div`
+    ${maxWidthContent};
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    padding: 5rem 0;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+`;
+
+export const TitleColumn = styled.div`
+    flex: 1;
+    max-width: 350px;
+`;
+
+export const FooterTitle = styled.h2`
+    font-size: 1.3rem;
+    font-weight: 600;
+`;
+
+export const FooterKicker = styled.h3`
+    font-family: ${(props) => props.theme.fonts.body};
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+`;
+
+export const FooterDescription = styled.p`
+    line-height: 1.7;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    color: ${(props) => props.theme.colors.primary};
+`;
+
+export const NavColumn = styled.div`
+    flex: 0.5;
+`;
+
+export const NavList = styled.ul`
+    line-height: 2.5;
+    margin-top: 1.5rem;
+
+    li {
+        text-transform: uppercase;
+        color: ${(props) => props.theme.colors.footerColorTxt};
+        font-weight: 500;
+        letter-spacing: 0.1rem;
+    }
+`;
+
+export const DevColumn = styled.div`
+    flex: 0.5;
+`;
+
+export const DevList = styled.ul`
+    display: flex;
+    gap: 1rem;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+`;
+
+export const SocialLink = styled.a`
+    display: flex;
+    align-items: center;
+    color: ${(props) => props.theme.colors.primary};
+    transition: all 0.2s ease-in-out;
+
+    svg {
+        width: 35px;
+        height: 35px;
+    }
+
+    &:hover {
+        color: ${(props) => props.theme.colors.secondary};
+        transform: translateY(-4px);
+    }
+`;
+
+export const SearchColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+`;
+
+export const SearchCard = styled.div`
+    background-color: ${(props) => props.theme.colors.surfaceHighest};
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+`;
+
+export const SearchSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+`;
+
+export const SearchLabel = styled.p`
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: ${(props) => props.theme.colors.secondary};
+`;
+
+export const SearchInputWrapper = styled.div`
+    position: relative;
+    width: 100%;
+`;
+
+export const SearchInput = styled.input`
+    width: 100%;
+    padding: 1rem 1rem 1rem 3.5rem;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    font-family: ${(props) => props.theme.fonts.body};
+    background-color: ${(props) => props.theme.colors.background};
+    text-overflow: ellipsis;
+    transition:
+        box-shadow 0.2s ease-in-out,
+        border 0.2s ease-in-out;
+
+    &:focus {
+        outline: none;
+        border: 1px solid ${(props) => props.theme.colors.tertiary2};
+        box-shadow: 0 0 0 1px ${(props) => props.theme.colors.tertiary2};
+    }
+
+    &::placeholder {
+    font-family: font-famiy: ${(props) => props.theme.fonts.body};
+    color: ${(props) => props.theme.colors.placeHolderText2};
+    }
+`;
+
+export const SearchIcon = styled(Search)`
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: ${(props) => props.theme.colors.outlineColor};
+`;
+
+export const TagsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+`;
+
+export const Tag = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: ${(props) => props.theme.colors.background};
+    padding: 0.55rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid ${(props) => props.theme.colors.surfaceHighest};
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: ${(props) => props.theme.colors.footerColorTxt2};
+    white-space: nowrap;
+`;
+
+export const PaletteIcon = styled(Palette)`
+    ${iconStyle("16px", "secondary", "tertiary")};
+`;
+
+export const HistoryIcon = styled(History)`
+    ${iconStyle("16px", "secondary", "tertiary")};
+`;
+
+export const PinIcon = styled(MapPin)`
+    ${iconStyle("16px", "secondary", "tertiary")};
+`;
+
+export const BottomBar = styled.div`
+    ${border("top", "border2")};
+`;
+
+export const BottomBarWrapper = styled.div`
+    ${maxWidthContent}
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+
+    p {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        color: ${(props) => props.theme.colors.footerColorTxt3};
+        letter-spacing: 0.1rem;
+    }
+`;

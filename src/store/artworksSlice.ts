@@ -41,6 +41,7 @@ interface ArtworksState {
     featuredArtwork: Artwork | null;
     iiifUrl: string | null;
     selectedArtwork: Artwork | null;
+    isSearchOpen: boolean;
 }
 
 const initialState: ArtworksState = {
@@ -53,6 +54,7 @@ const initialState: ArtworksState = {
     featuredArtwork: null,
     iiifUrl: null,
     selectedArtwork: null,
+    isSearchOpen: false,
 };
 
 // El thunk para hacer fetch del data
@@ -88,7 +90,7 @@ export const fetchFeaturedArtwork = createAsyncThunk(
         const response = await getFeaturedBatch();
         const iiifUrl = response.data.config.iiif_url;
         const artworks = response.data.data.filter(
-            (artwork: any) => artwork.image_id != null,
+            (artwork: any) => artwork.image_id != null && artwork.description,
         );
 
         const dayOfYear = getDayOfYear();
@@ -120,7 +122,13 @@ const artworkSlice = createSlice({
     name: "artworks",
     initialState,
     reducers: {
-        //placeholder
+        setSearchOpen: (state, action: PayloadAction<boolean>) => {
+            state.isSearchOpen = action.payload;
+        },
+
+        toggleSearch: (state) => {
+            state.isSearchOpen = !state.isSearchOpen;
+        },
     },
 
     extraReducers: (builder) => {
@@ -201,3 +209,4 @@ const artworkSlice = createSlice({
 });
 
 export default artworkSlice.reducer;
+export const { setSearchOpen, toggleSearch } = artworkSlice.actions;

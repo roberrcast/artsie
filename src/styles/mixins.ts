@@ -105,8 +105,8 @@ export const iconStyle = (
 `;
 
 export const titleStyle = css`
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
+    font-weight: 600;
 `;
 
 export const lineClamp = (lines: number) => css`
@@ -126,6 +126,99 @@ export const buttonHover = (
             background-color: ${(props) => props.theme.colors[backgroundColor]};
             color: ${(props) => props.theme.colors[color]};
             cursor: pointer;
+        }
+    }
+`;
+
+export const border = (
+    direction: string,
+    color: keyof ThemeType["colors"],
+) => css`
+    border-${direction}: 1px solid ${(props) => props.theme.colors[color]};
+`;
+
+export const blur = (value: number | string) => css`
+    backdrop-filter: blur(${value}px);
+    -webkit-backdrop-filter: blur(${value}px);
+`;
+
+/* Button Hover for Attribution Banner component */
+
+export const bannerButtonHover = (
+    bgInit: keyof ThemeType["colors"],
+    borderInit: keyof ThemeType["colors"],
+    textInit: keyof ThemeType["colors"],
+    bgHover: keyof ThemeType["colors"],
+) => css`
+    background-color: ${({ theme }) => theme.colors[bgInit]};
+    border: 1px solid ${({ theme }) => theme.colors[borderInit]};
+    color: ${({ theme }) => theme.colors[textInit]};
+
+    @media (hover: hover) {
+        &:hover {
+            background-color: ${({ theme }) => theme.colors[bgHover]};
+        }
+    }
+`;
+
+export const underlineHover = css`
+    @media (hover: hover) {
+        &:hover {
+            cursor: pointer;
+        }
+        &:hover::after {
+            transform: scaleX(0);
+        }
+    }
+`;
+
+// Hover animation para los botones de la atribución y demás
+interface HoverAnimationProps {
+    shiftText?: string;
+    iconRight?: string;
+    iconTranslateY?: string;
+    iconTranslateX?: string;
+}
+
+export const slideIconHover = ({
+    shiftText = "-10px",
+    iconRight = "1rem",
+    iconTranslateY = "5px",
+    iconTranslateX = "0",
+}: HoverAnimationProps = {}) => css`
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+
+    span:first-of-type {
+        transition: transform 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    span:last-of-type {
+        position: absolute;
+        right: ${iconRight};
+        display: inline-flex;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(${iconTranslateY});
+        transition:
+            transform 0.3s ease-in-out,
+            opacity 0.3s ease;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            span:first-of-type {
+                transform: translateX(${shiftText});
+            }
+
+            span:last-of-type {
+                transform: translateY(${iconTranslateX});
+                opacity: 1;
+            }
         }
     }
 `;

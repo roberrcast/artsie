@@ -45,4 +45,26 @@ export const getFeaturedBatch = () => {
     );
 };
 
+// Fetch para las exhibiciones actuales
+export const getExhibitions = (limit = 20) => {
+    const query = { query: { term: { is_featured: true } }, size: limit };
+    const encodedParams = encodeURIComponent(JSON.stringify(query));
+    return api.get(
+        `/exhibitions/search?params=${encodedParams}&fields=id,title,short_description,image_url,gallery_title,api_model,is_featured,aic_start_at,aic_end_at`,
+    );
+};
+
+// Fetch de los deatalles de una exhibición
+export const getExhibitionById = (id: string | number) => {
+    return api.get(
+        `/exhibitions/${id}?fields=id,title,image_url,short_description,web_url,aic_start_at,aic_end_at,gallery_title,api_model,description,artwork_ids`,
+    );
+};
+
+export const getArtworksByIds = (ids: number[]) => {
+    const idsString = ids.join(",");
+    const fields = "id,title,artist_display,image_id";
+    return api.get(`/artworks?ids=${idsString}&fields=${fields}`);
+};
+
 export default api;

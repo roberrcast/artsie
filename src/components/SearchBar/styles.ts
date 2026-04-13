@@ -1,12 +1,11 @@
 import styled, { keyframes } from "styled-components";
-import { X } from "lucide-react";
+import { X, Search } from "lucide-react";
 import {
     flexAlignCenter,
     iconStyle,
     maxWidthContent,
     titleStyle,
 } from "../../styles/mixins";
-import { Search } from "lucide-react";
 
 const slideDown = keyframes`
 from { transform: translateY(-100%); opacity: 0; }
@@ -29,8 +28,8 @@ export const Overlay = styled.div<StyledProps>`
     width: 100%;
     height: 100%;
     background-color: ${(props) => props.theme.colors.backgroundRGBA};
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     z-index: 1000;
     display: flex;
     justify-content: center;
