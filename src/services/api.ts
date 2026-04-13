@@ -27,7 +27,7 @@ export const getArtworkById = (id: number) => {
     return api.get(`/artworks/${id}?fields=${fields}`);
 };
 
-// Hacer fetch de lista para artistas (populares/featured)
+// Hacer search de artistas
 export const getArtists = (limit = 4) => {
     return api.get(`/agents?limit=${limit}&fields=id,title`);
 };
@@ -65,6 +65,20 @@ export const getArtworksByIds = (ids: number[]) => {
     const idsString = ids.join(",");
     const fields = "id,title,artist_display,image_id";
     return api.get(`/artworks?ids=${idsString}&fields=${fields}`);
+};
+
+// Fetch para la lista de artistas en artists
+export const searchArtists = (query: string) => {
+    const fields = "id,title,birth_date,death_date,description";
+    return api.get(`/artists/search?q=${query}&fields=${fields}`);
+};
+
+// Fetch para los detalles de un artista
+export const getArtistById = (id: number | string) => {
+    // We add more fields like 'description' and 'birth_date'
+    const fields =
+        "id,title,birth_date,death_date,description,is_artist,agent_type_title";
+    return api.get(`/artists/${id}?fields=${fields}`);
 };
 
 export default api;
