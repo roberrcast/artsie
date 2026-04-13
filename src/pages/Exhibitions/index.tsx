@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchExhibitionsWithImages } from "../../store/exhibitionsSlice";
 import type { RootState, AppDispatch } from "../../store";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../utils/dateUtils";
 
 const ExhibitionsPage: React.FC = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const { items, loading } = useSelector(
         (state: RootState) => state.exhibitions,
@@ -22,7 +25,7 @@ const ExhibitionsPage: React.FC = () => {
 
                     <S.Subtitle>
                         Descubre un recorrido selecto a través del tiempo y la
-                        técnica. Nuestras exposiciones temporales celebran la
+                        técnica. Estas exposiciones temporales celebran la
                         convergencia entre la maestría histórica y la visión
                         contemporánea, acercando las obras de arte más
                         importantes del mundo a nuestra comunidad local.
@@ -34,7 +37,12 @@ const ExhibitionsPage: React.FC = () => {
                 ) : (
                     <S.ExhibitionsGrid>
                         {items.map((exh) => (
-                            <S.ExhibitionCard key={exh.id}>
+                            <S.ExhibitionCard
+                                key={exh.id}
+                                onClick={() =>
+                                    navigate(`/exhibition/${exh.id}`)
+                                }
+                            >
                                 <S.ImageContainer>
                                     <img src={exh.image_url} alt={exh.title} />
                                 </S.ImageContainer>
@@ -46,7 +54,10 @@ const ExhibitionsPage: React.FC = () => {
 
                                     <S.CardTitle>{exh.title}</S.CardTitle>
 
-                                    <S.Date>{exh.aic_end_at}</S.Date>
+                                    <S.Date>
+                                        {formatDate(exh.aic_start_at)} —{" "}
+                                        {formatDate(exh.aic_end_at)}
+                                    </S.Date>
                                 </S.Content>
                             </S.ExhibitionCard>
                         ))}

@@ -171,3 +171,54 @@ export const underlineHover = css`
         }
     }
 `;
+
+// Hover animation para los botones de la atribución y demás
+interface HoverAnimationProps {
+    shiftText?: string;
+    iconRight?: string;
+    iconTranslateY?: string;
+    iconTranslateX?: string;
+}
+
+export const slideIconHover = ({
+    shiftText = "-10px",
+    iconRight = "1rem",
+    iconTranslateY = "5px",
+    iconTranslateX = "0",
+}: HoverAnimationProps = {}) => css`
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+
+    span:first-of-type {
+        transition: transform 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    span:last-of-type {
+        position: absolute;
+        right: ${iconRight};
+        display: inline-flex;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(${iconTranslateY});
+        transition:
+            transform 0.3s ease-in-out,
+            opacity 0.3s ease;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            span:first-of-type {
+                transform: translateX(${shiftText});
+            }
+
+            span:last-of-type {
+                transform: translateY(${iconTranslateX});
+                opacity: 1;
+            }
+        }
+    }
+`;

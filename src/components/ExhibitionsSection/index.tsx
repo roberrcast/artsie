@@ -81,7 +81,11 @@ const ExhibitionsSection: React.FC = () => {
                                         : "Explora esta exhibición."}
                                 </S.Description>
 
-                                <S.DetailsLink>
+                                <S.DetailsLink
+                                    onClick={() =>
+                                        navigate(`/exhibition/${exh.id}`)
+                                    }
+                                >
                                     Detalles
                                     <span>
                                         <ArrowRight size={20} />

@@ -133,6 +133,8 @@ export const DetailsLink = styled.a`
 
     @media (hover: hover) {
         &:hover {
+            cursor: pointer;
+
             span {
                 transform: translateX(1rem);
             }

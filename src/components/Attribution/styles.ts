@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { bannerButtonHover, maxWidthContent } from "../../styles/mixins";
+import {
+    bannerButtonHover,
+    maxWidthContent,
+    slideIconHover,
+} from "../../styles/mixins";
 
 export const Banner = styled.section`
     background-color: ${(props) => props.theme.colors.surfaceTint};
@@ -46,47 +50,11 @@ export const ButtonContainer = styled.div`
 `;
 
 export const BaseButton = styled.a`
-    position: relative;
     text-transform: uppercase;
     font-weight: 900;
     padding: 1rem 2rem;
-
-    display: inline-flex;
-    justify-content: center;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
     letter-spacing: 0.1rem;
-
-    span:first-of-type {
-        transition: transform 0.3s ease-in-out;
-        z-index: 1;
-    }
-
-    span:last-of-type {
-        position: absolute;
-        right: 1rem;
-        display: inline-flex;
-        align-items: center;
-        opacity: 0;
-        transform: translateY(5px);
-        transition:
-            transform 0.3s ease-in-out,
-            opacity 0.3s ease;
-    }
-
-    @media (hover: hover) {
-        &:hover {
-            span:first-of-type {
-                transform: translateX(-10px);
-            }
-
-            span:last-of-type {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-    }
+    ${slideIconHover()};
 `;
 
 // -- bannerButtonHover --

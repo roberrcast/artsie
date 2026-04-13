@@ -21,6 +21,7 @@ export const theme = {
         backgroundRGBA: "rgba(255 255 255 / 0.8)",
         backgroundLink1: "rgb(235 ,238 ,239, 1)",
         backgroundLink2: "rgba(255, 255, 255, 0.1)",
+        borderDate: "rgba(255, 255, 255, 0.2)",
         frame: "#f6f6f6",
         border: "rgba(26, 26, 26, 0.1)",
         border2: "#e4e4e7",

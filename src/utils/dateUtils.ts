@@ -11,3 +11,15 @@ export const getDayOfYear = () => {
 
     return Math.floor(diff / oneDay);
 };
+
+export const formatDate = (isoString: string | null): string => {
+    if (!isoString) return "Fecha por confirmar";
+
+    const date = new Date(isoString);
+
+    return new Intl.DateTimeFormat("es-ES", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    }).format(date);
+};

@@ -55,11 +55,21 @@ export const List = styled.ul`
     margin: 0;
     ${flexAlignCenter};
     font-size: 1rem;
-    color: ${(props) => props.theme.colors.textMuted};
     font-weight: 500;
     gap: 3rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
+    color: ${(props) => props.theme.colors.textMuted};
+
+    a {
+        color: ${(props) => props.theme.colors.textMuted};
+
+        &.active {
+            color: ${(props) => props.theme.colors.primary};
+            border-bottom: 2px solid ${(props) => props.theme.colors.primary};
+            cursor: unset;
+        }
+    }
 `;
 
 export const ButtonWrapper = styled.div``;
