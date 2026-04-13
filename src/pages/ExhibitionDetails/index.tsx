@@ -129,10 +129,10 @@ const ExhibitionDetails: React.FC = () => {
                         <S.EmptyTitle>Profundiza tu experiencia</S.EmptyTitle>
 
                         <S.EmptyText>
-                            Esta exhibición cuenta con contenido dinámico
-                            actualizado diariamente en el sitio oficial del Art
-                            Institute of Chicago, incluyendo planos interactivos
-                            y guías de audio detalladas.
+                            Esta exhibición se centra en la experiencia física
+                            en galería. Actualmente, la selección digital de sus
+                            obras no está disponible a través de nuestra
+                            integración con el API del museo.
                         </S.EmptyText>
 
                         <S.EmptyButton

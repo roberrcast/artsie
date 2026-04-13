@@ -280,6 +280,7 @@ export const EmptyText = styled.p`
 `;
 
 export const EmptyButton = styled.a`
+    margin-top: 0.5rem;
     background-color: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.background};
     font-size: 0.8rem;
