@@ -45,7 +45,7 @@ const ExhibitionsSection: React.FC = () => {
                 <S.TitleNavContainer>
                     <S.Title>Exhibiciones Actuales</S.Title>
 
-                    <S.Explore onClick={() => navigate("/exhibitions")}>
+                    <S.Explore onClick={() => navigate("/exhibitions/")}>
                         explorar todo
                     </S.Explore>
                 </S.TitleNavContainer>

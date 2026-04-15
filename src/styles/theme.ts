@@ -32,6 +32,10 @@ export const theme = {
         searchInputBorder: "#919aba",
         exhibitionCardText: "#5a6061",
         exhibitionsHeaderText: "#2d3435",
+        artistsSearchBarBg: "#EBEEEF",
+        artistSearchBarRing: "#535252",
+        artistBorder: "#ADB3B4",
+        artistSubFont: "#757C7D",
     },
 
     fonts: {
