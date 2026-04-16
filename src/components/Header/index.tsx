@@ -40,7 +40,9 @@ const Header: React.FC = () => {
                         <li>
                             <NavLink to={"/exhibitions/"}>Exhibiciones</NavLink>
                         </li>
-                        <li>Artistas</li>
+                        <li>
+                            <NavLink to={"/artists/"}>Artistas</NavLink>
+                        </li>
                         <li>Géneros</li>
                         <li>Colecciones</li>
                     </S.List>

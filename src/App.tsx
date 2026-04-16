@@ -6,6 +6,8 @@ import ExhibitionsPage from "./pages/Exhibitions";
 import ExhibitionDetails from "./pages/ExhibitionDetails";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
+import Artists from "./pages/Artists";
+import ArtistDetails from "./pages/ArtistDetails";
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
                         path="exhibition/:id"
                         element={<ExhibitionDetails />}
                     />
+                    <Route path="/artists/" element={<Artists />} />
+                    <Route path="/artist/:id" element={<ArtistDetails />} />
                 </Routes>
             </Layout>
         </Router>

@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, ExternalLink, Search } from "lucide-react";
 import * as S from "./styles";
 const Footer: React.FC = () => {
     return (
         <S.Footer>
             <S.FooterWrapper>
                 <S.TitleColumn>
-                    <S.FooterTitle>The Open Gallery</S.FooterTitle>
+                    <S.FooterTitle>
+                        <Link to={"/"}>The Open Gallery</Link>
+                    </S.FooterTitle>
 
                     <S.FooterDescription>
                         Cientos de años de creatividad humana al alcance de tu
@@ -23,9 +24,11 @@ const Footer: React.FC = () => {
                         <li>
                             <Link to={"/exhibitions/"}>Exhibiciones</Link>
                         </li>
+                        <li>
+                            <Link to={"/artists/"}>Artistas</Link>
+                        </li>
                         <li>Géneros</li>
                         <li>Colecciones</li>
-                        <li>Artistas</li>
                     </S.NavList>
                 </S.NavColumn>
 

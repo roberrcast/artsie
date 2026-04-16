@@ -222,3 +222,28 @@ export const slideIconHover = ({
         }
     }
 `;
+
+export const artworkHover = (scale: number = 1.1) => css`
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+    }
+
+    @media (hover: hover) {
+        &:hover img {
+            transform: scale(${scale});
+        }
+    }
+
+    &:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+        transition: transform 0.1s ease;
+    }
+`;
