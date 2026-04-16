@@ -1,5 +1,26 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 import { maxWidthContent } from "../../styles/mixins";
+
+const spin = keyframes`
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+`;
+
+export const LoadingIndicator = styled.div`
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 20px;
+    heigth: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top: 2px solid ${(props) => props.theme.colors.primary};
+    border-radius: 50%;
+
+    animation: ${spin} 0.8s linear infinite;
+`;
 
 export const PageContainer = styled.article`
     background-color: ${(props) => props.theme.colors.background};
@@ -70,11 +91,14 @@ export const SearchBarWrapper = styled.div`
     }
 `;
 
-export const ArtistGrid = styled.section`
+export const ArtistGrid = styled.section<{ $isLoading?: boolean }>`
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 3rem;
     row-gap: 4rem;
+    transition: opacity 0.3s ease;
+    opacity: ${(props) => (props.$isLoading ? 0.5 : 1)};
+    pointer-events: ${(props) => (props.$isLoading ? "none" : "auto")};
 
     @media (min-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
@@ -175,5 +199,22 @@ export const PaginationWrapper = styled.div`
             background: ${(props) => props.theme.colors.surface};
             transform: translateY(-2px);
         }
+    }
+`;
+
+export const NoResults = styled.div`
+    grid-column: 1 /-1;
+    text-align: center;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    p {
+        font-size: 1.5rem;
+        color: ${(props) => props.theme.colors.textMuted};
+        max-width: 400px;
+        line-height: 1.4;
     }
 `;

@@ -99,7 +99,7 @@ export const getArtworksByArtist = (artistId: number | string, limit = 3) => {
     };
 
     const encodedParams = encodeURIComponent(JSON.stringify(query));
-    const fields = "id,title,image_id,artist_display,date_display";
+    const fields = "id,title,image_id,artist_display,date_display,description";
 
     return api.get(`/artworks/search?params=${encodedParams}&fields=${fields}`);
 };

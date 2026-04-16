@@ -36,6 +36,8 @@ export const theme = {
         artistSearchBarRing: "#535252",
         artistBorder: "#ADB3B4",
         artistSubFont: "#757C7D",
+        artistTagBg: "#fddab2",
+        artistTagFont: "#634C2D",
     },
 
     fonts: {

@@ -24,9 +24,11 @@ const Footer: React.FC = () => {
                         <li>
                             <Link to={"/exhibitions/"}>Exhibiciones</Link>
                         </li>
+                        <li>
+                            <Link to={"/artists/"}>Artistas</Link>
+                        </li>
                         <li>Géneros</li>
                         <li>Colecciones</li>
-                        <li>Artistas</li>
                     </S.NavList>
                 </S.NavColumn>
 

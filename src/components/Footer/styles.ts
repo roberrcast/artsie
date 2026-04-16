@@ -52,9 +52,12 @@ export const NavList = styled.ul`
 
     li {
         text-transform: uppercase;
-        color: ${(props) => props.theme.colors.footerColorTxt};
         font-weight: 500;
         letter-spacing: 0.1rem;
+
+        a {
+            color: ${(props) => props.theme.colors.footerColorTxt};
+        }
     }
 `;
 
