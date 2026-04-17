@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import * as S from "./styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSearchOpen } from "../../store/artworksSlice";
-import type { RootState } from "../../store";
 
 const Header: React.FC = () => {
     const dispatch = useDispatch();
@@ -43,8 +42,8 @@ const Header: React.FC = () => {
                         <li>
                             <NavLink to={"/artists/"}>Artistas</NavLink>
                         </li>
+                        <li>Colección</li>
                         <li>Géneros</li>
-                        <li>Colecciones</li>
                     </S.List>
                 </S.Nav>
 
