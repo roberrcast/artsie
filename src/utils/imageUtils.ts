@@ -1,5 +1,5 @@
 /* Función para solicitar dinámicamente el tamaño máximo de una obra, de otra manera habría un error
- * al solicitar un tamaño que no existe */
+ * al solicitar un tamaño que no existe  386 */
 
 export const getOptimalImageSize = (thumbnailWidth?: number): number => {
     if (!thumbnailWidth || thumbnailWidth < 200) {

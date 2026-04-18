@@ -129,10 +129,11 @@ const ExhibitionDetails: React.FC = () => {
                         <S.EmptyTitle>Profundiza tu experiencia</S.EmptyTitle>
 
                         <S.EmptyText>
-                            Esta exhibición se centra en la experiencia física
-                            en galería. Actualmente, la selección digital de sus
-                            obras no está disponible a través de nuestra
-                            integración con el API del museo.
+                            Actualmente, la galería digital para esta exhibición
+                            presenta restricciones a través del API del museo.
+                            Para explorar la colección completa y sus detalles,
+                            te invitamos a visitar el sitio oficial del Art
+                            Institute of Chicago.
                         </S.EmptyText>
 
                         <S.EmptyButton

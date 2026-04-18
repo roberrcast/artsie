@@ -7,6 +7,7 @@ import * as S from "./styles";
 import { splitArtistDisplay } from "../../utils/textUtils";
 import { buildImageUrl } from "../../utils/imageUtils";
 import DOMPurify from "dompurify";
+import placeHolderImage from "../../assets/no_image.png";
 
 const Details: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -14,6 +15,8 @@ const Details: React.FC = () => {
     const { selectedArtwork, loading } = useSelector(
         (state: RootState) => state.artworks,
     );
+
+    const noImage = placeHolderImage;
 
     useEffect(() => {
         if (id) dispatch(fetchArtworkDetails(id));
@@ -37,7 +40,7 @@ const Details: React.FC = () => {
                 <S.DetailsWrapper>
                     <S.ImageContainer>
                         <S.Image
-                            src={imageUrl}
+                            src={imageUrl || noImage}
                             alt={selectedArtwork.thumbnail?.alt_text}
                         />
                     </S.ImageContainer>

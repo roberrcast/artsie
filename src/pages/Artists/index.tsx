@@ -1,4 +1,4 @@
-import React, { useEffect, useEffectEvent, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchArtists, fetchArtistSearch } from "../../store/artistsSlice";
@@ -24,6 +24,13 @@ const Artists: React.FC = () => {
 
         return () => clearTimeout(timer);
     }, [query, dispatch]);
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, [currentPage]);
 
     // Decidir qué lista mostrar en la búsqueda
     const isSearching = query.length > 2;
