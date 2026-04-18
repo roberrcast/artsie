@@ -106,4 +106,12 @@ export const getArtworksByArtist = (artistId: number | string, limit = 3) => {
     return api.get(`/artworks/search?params=${encodedParams}&fields=${fields}`);
 };
 
+// Fetch para los diferentes géneros
+export const getArtworksByGenre = (genre: string, page = 1, limit = 12) => {
+    const fields = "id,title,artist_display,image_id,date_display";
+    return api.get(
+        `/artworks/search?q=${genre}&page=${page}&limit=${limit}&fields=${fields}`,
+    );
+};
+
 export default api;
