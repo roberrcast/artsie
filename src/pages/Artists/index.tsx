@@ -25,6 +25,13 @@ const Artists: React.FC = () => {
         return () => clearTimeout(timer);
     }, [query, dispatch]);
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, [currentPage]);
+
     // Decidir qué lista mostrar en la búsqueda
     const isSearching = query.length > 2;
     const artistsToShow = isSearching ? searchResults : items;

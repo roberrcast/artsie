@@ -38,6 +38,8 @@ interface ArtworksState {
     loading: boolean;
     error: string | null;
     total: number;
+    currentPage: number;
+    totalPages: number;
     featuredArtwork: Artwork | null;
     iiifUrl: string | null;
     selectedArtwork: Artwork | null;
@@ -51,6 +53,8 @@ const initialState: ArtworksState = {
     loading: false,
     error: null,
     total: 0,
+    currentPage: 1,
+    totalPages: 1,
     featuredArtwork: null,
     iiifUrl: null,
     selectedArtwork: null,
@@ -143,6 +147,12 @@ const artworkSlice = createSlice({
                 state.loading = false;
                 state.items = action.payload.data;
                 state.total = action.payload.pagination.total;
+
+                state.currentPage = action.payload.pagination.current_page;
+                state.totalPages = Math.min(
+                    action.payload.pagination.total_pages,
+                    50,
+                );
             })
             .addCase(fetchArtworks.rejected, (state, action) => {
                 state.loading = false;
