@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getArtworksByGenre } from "../services/api";
+import { getArtworksByTerm } from "../services/api";
 
 interface GenreState {
     items: any[];
@@ -18,7 +18,7 @@ const initialState: GenreState = {
 export const fetchGenreArtworks = createAsyncThunk(
     "genres/fetchGenreArtworks",
     async ({ genre, page }: { genre: string; page?: number }) => {
-        const response = await getArtworksByGenre(genre, page);
+        const response = await getArtworksByTerm(genre, page);
         return response.data.data;
     },
 );

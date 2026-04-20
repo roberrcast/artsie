@@ -44,7 +44,7 @@ export const Title = styled.h2`
 `;
 
 export const Subtitle = styled.p`
-    font-size: 1.15rem;
+    font-size: 1.17rem;
     line-height: 1.6;
     color: ${(props) => props.theme.colors.exhibitionCardText};
 `;

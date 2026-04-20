@@ -6,55 +6,52 @@ export interface Genre {
     coverId: string;
 }
 
-export const genreData = [
+export const genreData: Genre[] = [
     {
-        id: "impressionism",
+        id: "Impressionism",
         label: "Impresionismo",
         query: "impressionism",
         description: "Capturando los efectos fugaces de luz y color.",
-        coverId: "25c31d56-66c3-0305-797c-ad3f07f2083b", // Monet's Water Lilies
+        coverId: "3c27b499-af56-f0d5-93b5-a7f2f1ad5813", // Monet's Water Lilies
     },
 
     {
-        id: "surrealism",
+        id: "Surrealism",
         label: "Surrealismo",
-        query: "surrealism",
+        query: "Surrealism",
         description: "Descubriendo el poder de la mente inconsciente",
-        coverId: "a937a34c-6f81-5e2a-14d2-d85c822e0388", // Magritte
+        coverId: "91e4c46b-9ef3-ca78-148c-86845e457d88", // Magritte
     },
 
     {
-        id: "ancient-egyptian",
-        label: "Antiguo Egipto",
-        query: "ancient egyptian",
-        description: "Símbolos eternos y tradiciones artísticas monumentales.",
-        coverId: "4463a8e9-d779-197e-1282-e3251e605d8f", // Wall Painting
+        id: "ancient",
+        label: "Antigüedad",
+        query: "ancient",
+        description: "Civilizaciones perdidas y legados eternos.",
+        coverId: "9365a024-75ce-75e9-756f-1c2c96eadec9", // Wall Painting
     },
 
     {
-        id: "pop-art",
-        label: "Arte Pop",
-        query: "pop art",
-        description:
-            "Un tributo a la estética de la cultura de masas y el consumismo.",
-        coverId: "3d64115e-8557-074f-955a-e47854f386f6", // Warhol
+        id: "animals",
+        label: "Animales",
+        query: "animals",
+        description: "La fauna capturada a través  de los siglos.",
+        coverId: "f1e03813-f9c7-f4f8-fbe8-a5eeae84fda4", // Advance Guard
     },
 
     {
-        id: "japanese-prints",
+        id: "Japanese (culture or style)",
         label: "Grabados Japoneses",
-        query: "japanese prints",
-        description:
-            "Dominio del trazo, el color plano y las evocadoras escenas grabadas en madera.",
-        coverId: "2d30800b-6893-b64f-40e9-91340b001a4e", // Hokusai Great Wave
+        query: "Japanese (culture or style)",
+        description: "Elegancia, precisión y la belleza de lo efímero.",
+        coverId: "2fa24f36-cc26-41b6-4b49-12bba2a6c1c8", // Kanagawa Great Wave
     },
 
     {
-        id: "contemporary",
-        label: "Arte Contemporáneo",
-        query: "contemporary art",
-        description:
-            "Cuestionando las definiciones de arte en la era global moderna.",
-        coverId: "30f40d6c-6745-f04b-741c-3081e7f3844f", // Modern Installation
+        id: "architecture",
+        label: "Arquitectura",
+        query: "architecture",
+        description: "La estructura y el espacio como expresión artística.",
+        coverId: "62fd0e14-d7fe-0d01-ab00-1eed84b4f294", // Fountains
     },
 ];
