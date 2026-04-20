@@ -92,7 +92,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                     {artists?.map((artist) => (
                                         <li key={artist.id}>
                                             <Link
-                                                to={`/search?artist=${artist.id}`}
+                                                to={`/artist/${artist.id}`}
                                                 onClick={onClose}
                                             >
                                                 {artist.title}

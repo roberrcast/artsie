@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Artists from "./pages/Artists";
 import ArtistDetails from "./pages/ArtistDetails";
 import ArtworksPage from "./pages/Artworks";
+import Genres from "./pages/Genres";
 
 function App() {
     return (
@@ -27,6 +28,8 @@ function App() {
                     <Route path="/artists/" element={<Artists />} />
                     <Route path="/artist/:id" element={<ArtistDetails />} />
                     <Route path="/artworks/" element={<ArtworksPage />} />
+                    <Route path="/genres" element={<Genres />} />
+                    {/* <Route path="/genres/:id" element={<GenreDetails />} /> */}
                 </Routes>
             </Layout>
         </Router>

@@ -16,21 +16,31 @@ const ArtworksPage: React.FC = () => {
 
     const navigate = useNavigate();
 
+    // -- useEffect para la paginación --
     useEffect(() => {
         dispatch(fetchArtworks(1));
     }, [dispatch]);
 
+    // -- useEffect para el scroll --
+    /* setTimeout para Firefox (no funcionaba correctamente
+     * después de pasar 75% de la pantalla) */
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
+        const scrollTimeout = setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        }, 0);
+
+        return () => clearTimeout(scrollTimeout);
     }, [currentPage]);
 
+    // -- loading screens --
     if (!loading && items.length === 0) return <p>Curando la galería...</p>;
 
     if (!loading && items.length === 0) return <p>Curando la galería...</p>;
 
+    // Imagen alternativa, elementos sin image_id
     const altImage = placeHolder;
 
     return (
@@ -41,8 +51,8 @@ const ArtworksPage: React.FC = () => {
                     <S.Title>Obras Maestras Atemporales</S.Title>
                     <S.Description>
                         Explora la intersección entre la tradición y la
-                        vanguardia a través de los archivos digitales del
-                        Instituto de Arte de Chicago.
+                        vanguardia a través de los archivos digitales del Art
+                        Institute of Chicago.
                     </S.Description>
                 </S.HeaderSection>
 
@@ -78,7 +88,7 @@ const ArtworksPage: React.FC = () => {
                         disabled={currentPage === 1}
                         onClick={() => dispatch(fetchArtworks(currentPage - 1))}
                     >
-                        <ArrowLeft /> Previo
+                        <ArrowLeft /> Anterior
                     </S.PaginationButton>
 
                     <S.PageIndicator>

@@ -11,11 +11,18 @@ export const PageWrapper = styled.div`
 `;
 
 export const HeaderSection = styled.header`
-    max-width: 1200px;
+    max-width: 1100px;
     padding: 4rem 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    // Medida para firefox
+    @-moz-document url-prefix() {
+        & {
+            max-width: 1000px;
+        }
+    }
 `;
 
 export const Kicker = styled.p`
@@ -27,7 +34,7 @@ export const Kicker = styled.p`
 `;
 
 export const Title = styled.h2`
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 700;
     color: ${(props) => props.theme.colors.exhibitionsHeaderText};
 `;
@@ -35,8 +42,8 @@ export const Title = styled.h2`
 export const Description = styled.p`
     max-width: 36rem;
     color: ${(props) => props.theme.colors.footerColorTxt2};
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.17rem;
+    font-weight: 400;
 `;
 
 export const MasonryContainer = styled.section`
@@ -81,14 +88,14 @@ export const InfoCard = styled.div`
 
 export const ArtTitle = styled.h3`
     ${lineClamp(1)};
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
 `;
 
 export const ArtArtist = styled.p`
     ${lineClamp(1)};
-    font-size: 0.875rem;
-    font-weight: 400;
+    font-weight: 500;
+    color: ${(props) => props.theme.colors.exhibitionCardText};
 `;
 
 export const PaginationWrapper = styled.nav`

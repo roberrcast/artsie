@@ -27,6 +27,7 @@ export const Header = styled.header<{ isHidden: boolean }>`
         props.isHidden ? "translateY(-100%)" : "translateY(0)"};
     opacity: ${(props) => (props.isHidden ? 0 : 1)};
     pointer-events: ${(props) => (props.isHidden ? "none" : "auto")};
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 `;
 
 export const HeaderContainer = styled.div`

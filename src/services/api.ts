@@ -12,8 +12,18 @@ const api = axios.create({
 // Definimos las llamadas a la API
 //  Lista de artworks (paginados)
 export const getArtworks = (page = 1, limit = 10) => {
-    const fields = "id,title,artist_display,image_id,date_display";
-    return api.get(`/artworks?page=${page}&limit=${limit}&fields=${fields}`);
+    const query = {
+        query: {
+            term: { is_public_domain: true },
+        },
+        size: limit,
+        from: (page - 1) * limit,
+    };
+
+    const encodedParams = encodeURIComponent(JSON.stringify(query));
+    const fields = "id,title,artist_display,image_id";
+
+    return api.get(`/artworks/search?params=${encodedParams}&fields=${fields}`);
 };
 
 //  Buscar obras de arte (texto-completo)
@@ -102,6 +112,26 @@ export const getArtworksByArtist = (artistId: number | string, limit = 3) => {
 
     const encodedParams = encodeURIComponent(JSON.stringify(query));
     const fields = "id,title,image_id,artist_display,date_display,description";
+
+    return api.get(`/artworks/search?params=${encodedParams}&fields=${fields}`);
+};
+
+// Fetch para los diferentes estilos
+export const getArtworksByTerm = (term: string, limit = 20) => {
+    const query = {
+        query: {
+            bool: {
+                must: [
+                    { match: { term_titles: term } },
+                    { term: { is_public_domain: true } },
+                ],
+            },
+        },
+        size: limit,
+    };
+
+    const encodedParams = encodeURIComponent(JSON.stringify(query));
+    const fields = "id,title,artist_display,image_id";
 
     return api.get(`/artworks/search?params=${encodedParams}&fields=${fields}`);
 };
