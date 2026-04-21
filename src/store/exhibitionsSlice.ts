@@ -22,11 +22,13 @@ export const fetchExhibitionDetails = createAsyncThunk(
         const exhibition = response.data.data;
         let relatedArtworks = [];
 
-        const artworkIds = exhibition.artwork_ids?.slice(0, 4) || [];
+        const artworkIds = exhibition.artwork_ids?.slice(0, 20) || [];
 
         if (artworkIds.length > 0) {
             const artRes = await getArtworksByIds(artworkIds);
-            relatedArtworks = artRes.data.data;
+            relatedArtworks = artRes.data.data
+                .filter((art: any) => art.is_public_domain && art.image_id)
+                .slice(0, 4);
         }
 
         return { exhibition, relatedArtworks };

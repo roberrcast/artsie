@@ -75,7 +75,7 @@ export const getExhibitionById = (id: string | number) => {
 
 export const getArtworksByIds = (ids: number[]) => {
     const idsString = ids.join(",");
-    const fields = "id,title,artist_display,image_id";
+    const fields = "id,title,artist_display,image_id,is_public_domain";
     return api.get(`/artworks?ids=${idsString}&fields=${fields}`);
 };
 
