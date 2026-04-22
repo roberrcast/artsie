@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArtworks } from "../../store/artworksSlice";
-import { buildImageUrl } from "../../utils/imageUtils";
 import type { RootState, AppDispatch } from "../../store";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import placeHolder from "../../assets/place_holder.png";
+import MasonryGrid from "../../components/MasonryGrid";
 
 const ArtworksPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -40,9 +39,6 @@ const ArtworksPage: React.FC = () => {
 
     if (!loading && items.length === 0) return <p>Curando la galería...</p>;
 
-    // Imagen alternativa, elementos sin image_id
-    const altImage = placeHolder;
-
     return (
         <S.PageContainer>
             <S.PageWrapper>
@@ -56,32 +52,11 @@ const ArtworksPage: React.FC = () => {
                     </S.Description>
                 </S.HeaderSection>
 
-                <S.MasonryContainer>
-                    {items.map((artwork) => (
-                        <S.ArtCard
-                            key={artwork.id}
-                            onClick={() => navigate(`/artwork/${artwork.id}`)}
-                        >
-                            <S.ImageWrapper>
-                                <img
-                                    src={
-                                        buildImageUrl(artwork.image_id) ||
-                                        altImage
-                                    }
-                                    alt={artwork.title}
-                                    loading="lazy"
-                                />
-                            </S.ImageWrapper>
-
-                            <S.InfoCard>
-                                <S.ArtTitle>{artwork.title}</S.ArtTitle>
-                                <S.ArtArtist>
-                                    {artwork.artist_display}
-                                </S.ArtArtist>
-                            </S.InfoCard>
-                        </S.ArtCard>
-                    ))}
-                </S.MasonryContainer>
+                <MasonryGrid
+                    items={items}
+                    loading={loading}
+                    onCardClick={(id) => navigate(`/artwork/${id}`)}
+                />
 
                 <S.PaginationWrapper>
                     <S.PaginationButton
