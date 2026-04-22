@@ -21,3 +21,5 @@ const Home: React.FC = () => {
 };
 
 export default memo(Home);
+
+// Id de imagen para para posible banner de bienvenida 43761

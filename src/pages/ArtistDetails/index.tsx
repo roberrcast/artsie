@@ -6,6 +6,8 @@ import type { RootState, AppDispatch } from "../../store";
 import { buildImageUrl } from "../../utils/imageUtils";
 import DOMPurify from "dompurify";
 import * as S from "./styles";
+import banner from "../../assets/placeholder_banner.png";
+import { ExternalLink } from "lucide-react";
 
 const ArtistDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -23,14 +25,18 @@ const ArtistDetails: React.FC = () => {
     if (loading) return <p>Explorando el archivo</p>;
     if (!selectedArtist) return null;
 
+    const heroBanner = banner;
     const heroImage =
-        artistWorks.length > 0 ? buildImageUrl(artistWorks[0].image_id) : "";
+        artistWorks.length > 0
+            ? buildImageUrl(artistWorks[0].image_id)
+            : heroBanner;
 
     return (
         <S.MainContent>
             <S.HeroSection $bgImage={heroImage}>
                 <S.HeroContainer>
                     <S.ArtistTag>artista</S.ArtistTag>
+
                     <S.Name>{selectedArtist.title}</S.Name>
 
                     <S.Dates>
@@ -51,14 +57,14 @@ const ArtistDetails: React.FC = () => {
                     dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(
                             selectedArtist.description ||
-                                "No hay descripción disponible",
+                                "No hay descripción disponible para este artista.",
                         ),
                     }}
                 ></S.BioText>
             </S.BioSection>
 
             {/* Galería */}
-            {artistWorks.length > 0 && (
+            {artistWorks && artistWorks.length > 0 ? (
                 <S.GallerySection>
                     <S.GalleryHeader>
                         <div>
@@ -132,6 +138,40 @@ const ArtistDetails: React.FC = () => {
                         </S.SideStack>
                     </S.GalleryGrid>
                 </S.GallerySection>
+            ) : (
+                <S.RestrictedSection>
+                    <S.RestrictedWrapper>
+                        <S.LockIcon>
+                            <svg viewBox="0 -960 960 960" fill="currentColor">
+                                <path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920t141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80zm296.5-223.5Q560-327 560-360t-23.5-56.5T480-440t-56.5 23.5T400-360t23.5 56.5T480-280t56.5-23.5M360-640h240v-80q0-50-35-85t-85-35-85 35-35 85z" />
+                            </svg>{" "}
+                        </S.LockIcon>
+
+                        <S.RestrictedTitle>
+                            No hay obras disponibles para este artista
+                        </S.RestrictedTitle>
+
+                        <S.RestrictedText>
+                            Debido a las restricciones actuales en materia de
+                            derechos de autor y a los acuerdos de licencia, en
+                            estos momentos no hay disponibles reproducciones
+                            digitales en alta resolución de las obras maestras
+                            de {selectedArtist.title} en nuestra colección de
+                            acceso libre.{" "}
+                        </S.RestrictedText>
+
+                        <S.ExternalLinkButton
+                            href={`https://www.artic.edu/artists/${selectedArtist.id}`}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <span>visite el aic para más detalles</span>{" "}
+                            <span>
+                                <ExternalLink />
+                            </span>
+                        </S.ExternalLinkButton>
+                    </S.RestrictedWrapper>
+                </S.RestrictedSection>
             )}
         </S.MainContent>
     );

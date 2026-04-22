@@ -247,3 +247,29 @@ export const artworkHover = (scale: number = 1.1) => css`
         transition: transform 0.1s ease;
     }
 `;
+
+export const pillButton = (
+    backgroundColor: keyof ThemeType["colors"] = "primary",
+    textColor: keyof ThemeType["colors"] = "background",
+) => css`
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+
+    /* Visuals */
+    background-color: ${(props) => props.theme.colors[backgroundColor]};
+    color: ${(props) => props.theme.colors[textColor]};
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+
+    /* Typography */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+
+    ${slideIconHover({ iconTranslateX: "-2px" })};
+`;

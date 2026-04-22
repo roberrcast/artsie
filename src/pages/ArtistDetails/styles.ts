@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { artworkHover, lineClamp, maxWidthContent } from "../../styles/mixins";
+import {
+    artworkHover,
+    lineClamp,
+    maxWidthContent,
+    pillButton,
+} from "../../styles/mixins";
 
 export const MainContent = styled.article`
     padding: 5rem 0;
@@ -199,4 +204,49 @@ export const SmallCard = styled.div`
     ${artworkHover(1.05)};
 `;
 
-export const AttributionBanner = styled.div``;
+export const RestrictedSection = styled.section`
+    border-top: 1px solid ${(props) => props.theme.colors.borderColor};
+    padding-top: 3rem;
+`;
+
+export const RestrictedWrapper = styled.div`
+    ${maxWidthContent};
+    border-radius: 2rem;
+    border: 1px solid ${(props) => props.theme.colors.borderColor};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 6rem;
+`;
+
+export const LockIcon = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    svg {
+        height: 50px;
+        width: 50px;
+        color: ${(props) => props.theme.colors.tertiary2};
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.05));
+    }
+`;
+
+export const RestrictedTitle = styled.h3`
+    font-size: 2.25rem;
+    text-align: center;
+`;
+
+export const RestrictedText = styled.p`
+    max-width: 42rem;
+    line-height: 1.75rem;
+    text-align: center;
+    color: ${(props) => props.theme.colors.exhibitionCardText};
+    font-weight: 500;
+`;
+
+export const ExternalLinkButton = styled.a`
+    ${pillButton()};
+`;

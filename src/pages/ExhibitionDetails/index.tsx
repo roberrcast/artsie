@@ -139,6 +139,7 @@ const ExhibitionDetails: React.FC = () => {
                         <S.EmptyButton
                             href={selectedExhibition.web_url}
                             target="_blank"
+                            rel="noreferrer"
                         >
                             <span>ver exhibición en el aic</span>{" "}
                             <span>
