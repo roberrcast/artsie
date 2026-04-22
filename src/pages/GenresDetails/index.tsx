@@ -3,10 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGenreArtworks } from "../../store/genresSlice";
 import { genreData } from "../Genres/data";
-import { buildImageUrl } from "../../utils/imageUtils";
 import type { RootState, AppDispatch } from "../../store";
 import * as S from "./styles";
 import { ArrowLeft } from "lucide-react";
+import MasonryGrid from "../../components/MasonryGrid";
 
 const GenreDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Tomar 'Surrealism' del URL
@@ -29,13 +29,14 @@ const GenreDetails: React.FC = () => {
 
     if (!genreInfo) return <p>No se encontraron estilos</p>;
     if (loading) return <p>Abriendo el archivo de {genreInfo.label}</p>;
+    if (error) return <p>Hubo un error al cargar los estilos</p>;
 
     return (
         <S.PageContainer>
             <S.PageWrapper>
                 {/* Header Section*/}
                 <S.HeaderSection>
-                    <S.BackButton onClick={() => navigate("/genres")}>
+                    <S.BackButton onClick={() => navigate("/genres/")}>
                         <span>
                             <ArrowLeft />
                         </span>{" "}
@@ -48,29 +49,11 @@ const GenreDetails: React.FC = () => {
                     </S.Description>
                 </S.HeaderSection>
 
-                <S.MasonryContainer>
-                    {items.map((artwork) => (
-                        <S.ArtCard
-                            key={artwork.id}
-                            onClick={() => navigate(`/artwork/${artwork.id}`)}
-                        >
-                            <S.ImageWrapper>
-                                <img
-                                    src={buildImageUrl(artwork.image_id)}
-                                    alt={artwork.title}
-                                />
-                            </S.ImageWrapper>
-
-                            <S.InfoCard>
-                                <S.ArtTitle>{artwork.title}</S.ArtTitle>
-
-                                <S.ArtArtist>
-                                    {artwork.artist_display}
-                                </S.ArtArtist>
-                            </S.InfoCard>
-                        </S.ArtCard>
-                    ))}
-                </S.MasonryContainer>
+                <MasonryGrid
+                    items={items}
+                    loading={loading}
+                    onCardClick={(id) => navigate(`/artwork/${id}`)}
+                />
             </S.PageWrapper>
         </S.PageContainer>
     );

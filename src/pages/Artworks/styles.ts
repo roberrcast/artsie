@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { artworkHover, lineClamp, maxWidthContent } from "../../styles/mixins";
+import { maxWidthContent } from "../../styles/mixins";
 
 export const PageContainer = styled.article`
     background-color: ${(props) => props.theme.colors.surface};
@@ -44,58 +44,6 @@ export const Description = styled.p`
     color: ${(props) => props.theme.colors.footerColorTxt2};
     font-size: 1.17rem;
     font-weight: 400;
-`;
-
-export const MasonryContainer = styled.section`
-    column-count: 1;
-    column-gap: 2rem;
-    row-gap: 2rem;
-
-    @media (min-width: 768px) {
-        column-count: 2;
-    }
-    @media (min-width: 1024px) {
-        column-count: 3;
-    }
-`;
-
-export const ArtCard = styled.div`
-    cursor: pointer;
-    ${artworkHover(1.05)};
-    margin-bottom: 2rem;
-    break-inside: avoid;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-`;
-
-export const ImageWrapper = styled.section`
-    overflow: hidden;
-    border-radius: 2rem;
-
-    img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-`;
-
-export const InfoCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-`;
-
-export const ArtTitle = styled.h3`
-    ${lineClamp(1)};
-    font-size: 1.3rem;
-    font-weight: 700;
-`;
-
-export const ArtArtist = styled.p`
-    ${lineClamp(1)};
-    font-weight: 500;
-    color: ${(props) => props.theme.colors.exhibitionCardText};
 `;
 
 export const PaginationWrapper = styled.nav`
