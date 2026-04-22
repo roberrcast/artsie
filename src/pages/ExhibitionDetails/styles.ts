@@ -3,7 +3,7 @@ import {
     blur,
     lineClamp,
     maxWidthContent,
-    slideIconHover,
+    pillButton,
 } from "../../styles/mixins";
 
 export const MainContent = styled.article`
@@ -280,15 +280,5 @@ export const EmptyText = styled.p`
 `;
 
 export const EmptyButton = styled.a`
-    margin-top: 0.5rem;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.background};
-    font-size: 0.8rem;
-    font-weight: 700;
-    align-items: center;
-    text-transform: uppercase;
-    padding: 1.25rem 2.5rem;
-    border-radius: 9999px;
-    letter-spacing: 0.1rem;
-    ${slideIconHover({ iconTranslateX: "-2px" })};
+    ${pillButton()};
 `;

@@ -103,8 +103,11 @@ export const getArtistsList = (page = 1, limit = 12) => {
 export const getArtworksByArtist = (artistId: number | string, limit = 3) => {
     const query = {
         query: {
-            term: {
-                artist_id: artistId,
+            bool: {
+                must: [
+                    { term: { artist_id: artistId } },
+                    { term: { is_public_domain: true } },
+                ],
             },
         },
         size: limit,
