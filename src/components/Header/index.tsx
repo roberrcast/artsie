@@ -46,7 +46,14 @@ const Header: React.FC = () => {
                             <NavLink to={"/artworks/"}>Colección</NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/genres/"}>Estilos</NavLink>
+                            <NavLink
+                                to={"/genres/"}
+                                className={({ isActive }) =>
+                                    isActive ? "active" : ""
+                                }
+                            >
+                                Estilos
+                            </NavLink>
                         </li>
                     </S.List>
                 </S.Nav>

@@ -186,7 +186,6 @@ export const Tag = styled.div`
         &:hover {
             border-color: ${(props) => props.theme.colors.tertiary2};
             color: ${(props) => props.theme.colors.tertiary2};
-            /* transform: translateY(-2px); */
             transform: scale(1.1);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             svg {

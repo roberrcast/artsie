@@ -61,6 +61,7 @@ export const List = styled.ul`
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.colors.textMuted};
+    transition: all 0.3s ease-in-out;
 
     a {
         color: ${(props) => props.theme.colors.textMuted};
@@ -68,7 +69,8 @@ export const List = styled.ul`
         &.active {
             color: ${(props) => props.theme.colors.primary};
             border-bottom: 2px solid ${(props) => props.theme.colors.tertiary2};
-            cursor: unset;
+            pointer-events: none;
+            cursor: default;
         }
     }
 `;
