@@ -1,17 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../store";
 import { fetchSubmenuData } from "../../store/artworksSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { genreData } from "../../pages/Genres/data";
+import { buildImageUrl } from "../../utils/imageUtils";
 import * as S from "./styles";
 
 interface SearchBarProps {
     onClose: () => void;
 }
 
+const SUGGESTED_SEARCHES = [
+    { label: "Textiles", query: "textile" },
+    { label: "Grabados y Dibujos", query: "Prints and Drawings" },
+    { label: "Artes de Asia", query: "Arts of Asia" },
+    {
+        label: "Pintura y Escultura Europea",
+        query: "Painting and Sculpture of Europe",
+    },
+];
+
 const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
+    const GLOBAL_LIMIT = 20;
+
     const [query, setQuery] = useState("");
     const [isClosing, setIsClosing] = useState(false);
+    const navigate = useNavigate();
 
     const handleStartClose = () => {
         setIsClosing(true);
@@ -20,10 +35,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
         }, 400);
     };
 
+    const curatedCollections = genreData.filter(
+        (g) => g.id === "Impressionism" || g.id === "watercolor",
+    );
+
     const dispatch = useDispatch<AppDispatch>();
     const { artists, styles, loading } = useSelector(
         (state: RootState) => state.artworks,
     );
+
+    const handleSearchSubmit = (e: React.SubmitEvent) => {
+        e.preventDefault();
+        if (query.trim()) {
+            navigate(`/search?q=${encodeURIComponent(query)}`);
+            handleStartClose();
+        }
+    };
 
     useEffect(() => {
         dispatch(fetchSubmenuData());
@@ -56,11 +83,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
 
                 <S.SearchWrapper>
                     <S.SearchSection onClick={(e) => e.stopPropagation()}>
-                        <S.Form action="/search" role="search">
+                        <S.Form onSubmit={handleSearchSubmit} role="search">
                             <S.Input
                                 type="search"
                                 autoFocus
-                                placeholder="Búsque artistas, obras de arte o género"
+                                placeholder="Búsque artistas u obras de arte"
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                             />
@@ -71,15 +98,17 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
 
                         <S.Submenu>
                             <S.SubmenuContainer>
-                                <S.SubmenuTitle>Géneros</S.SubmenuTitle>
+                                <S.SubmenuTitle>
+                                    Búsquedas Sugeridas
+                                </S.SubmenuTitle>
                                 <S.SubmenuList>
-                                    {styles?.map((style) => (
-                                        <li key={style.id}>
+                                    {SUGGESTED_SEARCHES.map((search) => (
+                                        <li key={search.query}>
                                             <Link
-                                                to={`/search?style=${style.id}`}
-                                                onClick={onClose}
+                                                to={`/search?q=${encodeURIComponent(search.query)}`}
+                                                onClick={handleStartClose}
                                             >
-                                                {style.title}
+                                                {search.label}
                                             </Link>
                                         </li>
                                     ))}
@@ -104,6 +133,36 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
 
                             <S.SubmenuCollection>
                                 <S.SubmenuTitle>Colecciones</S.SubmenuTitle>
+                                {curatedCollections.map((col) => (
+                                    <S.CollectionItem
+                                        key={col.id}
+                                        onClick={() => {
+                                            navigate(`/genres/${col.id}`);
+                                            handleStartClose();
+                                        }}
+                                    >
+                                        <S.CollectionImageWrapper>
+                                            <img
+                                                src={buildImageUrl(
+                                                    col.altCoverId ||
+                                                        col.coverId,
+                                                )}
+                                                alt={col.label}
+                                            />
+                                        </S.CollectionImageWrapper>
+
+                                        <S.CollectionInfo>
+                                            <S.CollectionTitle>
+                                                {col.label}
+                                            </S.CollectionTitle>
+
+                                            <S.CollectionCount>
+                                                {col.workCount || GLOBAL_LIMIT}{" "}
+                                                Obras
+                                            </S.CollectionCount>
+                                        </S.CollectionInfo>
+                                    </S.CollectionItem>
+                                ))}
                             </S.SubmenuCollection>
                         </S.Submenu>
                     </S.SearchSection>

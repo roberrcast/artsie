@@ -11,7 +11,7 @@ const api = axios.create({
 
 // Definimos las llamadas a la API
 //  Lista de artworks (paginados)
-export const getArtworks = (page = 1, limit = 10) => {
+export const getArtworks = (page = 1, limit = 12) => {
     const query = {
         query: {
             term: { is_public_domain: true },
@@ -27,9 +27,12 @@ export const getArtworks = (page = 1, limit = 10) => {
 };
 
 //  Buscar obras de arte (texto-completo)
-export const searchArtworks = (query: string) => {
+export const searchArtworks = (queryStr: string, limit = 22) => {
     const fields = "id,title,artist_display,image_id,date_display";
-    return api.get(`/artworks/search?q=${query}&fields=${fields}`);
+
+    return api.get(
+        `/artworks/search?q=${queryStr}&query[term][is_public_domain]=true&limit=${limit}&fields=${fields}`,
+    );
 };
 
 //  Detalles de una obra de arte (id específica)
@@ -40,7 +43,15 @@ export const getArtworkById = (id: number) => {
 };
 
 // Hacer search de artistas
-export const getArtists = (limit = 4) => {
+export const getArtists = (
+    options: { limit?: number; ids?: number[] } = { limit: 4 },
+) => {
+    const { limit, ids } = options;
+
+    if (ids && ids.length > 0) {
+        return api.get(`/agents?ids=${ids.join(",")}&fields=id,title`);
+    }
+
     return api.get(`/agents?limit=${limit}&fields=id,title`);
 };
 

@@ -3,6 +3,7 @@ import artworksReducer from "./artworksSlice";
 import exhibitionsReducer from "./exhibitionsSlice";
 import artistsReducer from "./artistsSlice";
 import genresReducer from "./genresSlice";
+import searchReducer from "./searchSlice";
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         exhibitions: exhibitionsReducer,
         artists: artistsReducer,
         genres: genresReducer,
+        search: searchReducer,
     },
 });
 
