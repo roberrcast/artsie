@@ -1,7 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Search, Palette, History, MapPin } from "lucide-react";
 import * as S from "./styles";
+
 const Footer: React.FC = () => {
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+
+    const handleFooterSearch = (e: React.SubmitEvent) => {
+        e.preventDefault();
+        if (query.trim()) {
+            navigate(`/search/?q=${encodeURIComponent(query)}`);
+            setQuery(""); // Limpiar le input después de buscar
+        }
+    };
+
     return (
         <S.Footer>
             <S.FooterWrapper>
@@ -74,28 +87,40 @@ const Footer: React.FC = () => {
                         <S.SearchSection>
                             <S.SearchLabel>busca en el catálogo</S.SearchLabel>
 
-                            <S.SearchInputWrapper>
-                                <S.SearchIcon size={20} />
+                            <S.SearchInputWrapper onSubmit={handleFooterSearch}>
+                                <Search size={20} />
 
                                 <S.SearchInput
-                                    type="text"
+                                    type="search"
                                     placeholder="Explora los archivos del AIC, por artista, género, colecciones, etc."
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
                                 />
                             </S.SearchInputWrapper>
 
                             <S.TagsContainer>
-                                <S.Tag>
-                                    <S.PaletteIcon />
-                                    <span>Oil on Canvas</span>
+                                <S.Tag
+                                    onClick={() =>
+                                        navigate("/search?q=Oil on Canvas")
+                                    }
+                                >
+                                    <Palette />
+                                    <span>Óleo Sobre Lienzo</span>
                                 </S.Tag>
 
-                                <S.Tag>
-                                    <S.HistoryIcon />
-                                    <span>18th Century</span>
+                                <S.Tag
+                                    onClick={() =>
+                                        navigate("/search?q=18th Century")
+                                    }
+                                >
+                                    <History />
+                                    <span>Siglo 18</span>
                                 </S.Tag>
 
-                                <S.Tag>
-                                    <S.PinIcon />
+                                <S.Tag
+                                    onClick={() => navigate("/search?q=Paris")}
+                                >
+                                    <MapPin />
                                     <span>Paris, FR</span>
                                 </S.Tag>
                             </S.TagsContainer>
