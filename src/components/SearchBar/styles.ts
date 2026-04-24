@@ -105,6 +105,7 @@ export const Form = styled.form`
     width: 830px;
     justify-content: space-between;
     padding: 0.5rem;
+    width: 100%;
 `;
 
 export const Input = styled.input`
@@ -147,7 +148,7 @@ export const SubmenuContainer = styled.div``;
 export const SubmenuTitle = styled.h3`
     font-family: ${(props) => props.theme.fonts.body};
     font-size: 0.75rem;
-    color: ${(props) => props.theme.colors.placeHolderText};
+    color: ${(props) => props.theme.colors.searchBarFont};
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -160,7 +161,68 @@ export const SubmenuList = styled.ul`
 
     li {
         font-family: ${(props) => props.theme.fonts.display};
+        transition: 0.3s ease-in-out;
+
+        @media (hover: hover) {
+            a:hover {
+                color: ${(props) => props.theme.colors.tertiary};
+            }
+        }
     }
 `;
 
-export const SubmenuCollection = styled.ul``;
+export const SubmenuCollection = styled.div``;
+
+export const CollectionItem = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+
+    @media (hover: hover) {
+        &:hover h4 {
+            color: ${(props) => props.theme.colors.tertiary};
+        }
+    }
+`;
+
+export const CollectionImageWrapper = styled.div`
+    width: 64px;
+    heigth: 64px;
+    background-color: ${(props) => props.theme.colors.surface2};
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+        transition: all 0.4s ease;
+    }
+
+    @media (hover: hover) {
+        ${CollectionItem}:hover & img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+    }
+`;
+
+export const CollectionInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const CollectionTitle = styled.h4`
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: color 0.3 ease;
+`;
+
+export const CollectionCount = styled.p`
+    font-size: 0.75rem;
+    color: ${(props) => props.theme.colors.textMuted};
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+`;

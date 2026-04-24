@@ -157,7 +157,7 @@ const ArtistDetails: React.FC = () => {
                             estos momentos no hay disponibles reproducciones
                             digitales en alta resolución de las obras maestras
                             de {selectedArtist.title} en nuestra colección de
-                            acceso libre.{" "}
+                            acceso libre.
                         </S.RestrictedText>
 
                         <S.ExternalLinkButton

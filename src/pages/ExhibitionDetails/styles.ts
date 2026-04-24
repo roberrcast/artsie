@@ -7,7 +7,7 @@ import {
 } from "../../styles/mixins";
 
 export const MainContent = styled.article`
-    padding: 5rem 0 0 0;
+    padding: 4.84rem 0 0 0;
     width: 100%;
 `;
 

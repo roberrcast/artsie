@@ -4,7 +4,9 @@ export interface Genre {
     query: string;
     description: string;
     coverId: string;
+    altCoverId?: string;
     extended_description: string;
+    workCount?: number;
 }
 
 export const genreData: Genre[] = [
@@ -14,8 +16,10 @@ export const genreData: Genre[] = [
         query: "impressionism",
         description: "Capturando los efectos fugaces de luz y color",
         coverId: "3c27b499-af56-f0d5-93b5-a7f2f1ad5813", // Monet's Water Lilies
+        altCoverId: "47c5bcb8-62ef-e5d7-55e7-f5121f409a30", // Van Gogh Self-Portrait
         extended_description:
             "El impresionismo fue un movimiento artístico del siglo XIX caracterizado por pinceladas visibles, una composición abierta, el énfasis en la representación fiel de la luz en sus cualidades cambiantes (a menudo acentuando los efectos del paso del tiempo), temas cotidianos, ángulos visuales inusuales y la inclusión del movimiento como elemento crucial de la percepción y la experiencia humanas. El impresionismo tuvo su origen en un grupo de artistas afincados en París cuyas exposiciones independientes les dieron a conocer durante las décadas de 1870 y 1880.",
+        workCount: 20,
     },
 
     {
@@ -68,7 +72,9 @@ export const genreData: Genre[] = [
         description:
             "Transparencia y fluidez en la técnica pictórica más antigua del mundo",
         coverId: "0fb01e26-1dcd-bba2-a146-d0adf183a2b1", // Fountains
+        altCoverId: "b5c9ca9b-6717-beb5-d1c5-fc22d101e505", // Berthe Morisot
         extended_description:
             "Considerada una de las expresiones pictóricas más antiguas de la humanidad, la acuarela ha definido la identidad visual de civilizaciones enteras. En Asia Oriental, esta técnica —conocida tradicionalmente como pintura con pincel o en rollo— ha sido el medio predominante, alcanzando una sofisticación inigualable a través del uso de tintas monocromáticas y pigmentos naturales. Desde las tradiciones milenarias de China, Corea y Japón hasta el vibrante legado artístico de la India y Etiopía, la acuarela trasciende fronteras, consolidándose como una disciplina que equilibra la transparencia, la fluidez y una profunda conexión con el soporte de papel o seda.",
+        workCount: 20,
     },
 ];

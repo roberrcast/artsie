@@ -5,7 +5,6 @@ import {
 } from "@reduxjs/toolkit";
 import {
     getArtworks,
-    searchArtworks,
     getArtists,
     getArtStyles,
     getFeaturedBatch,
@@ -75,8 +74,10 @@ export const fetchSubmenuData = createAsyncThunk(
     "artworks/fetchSubmenuData",
     async () => {
         // Hacemos fetch de ambos para más eficiencia
+        // IDS oficiales: Monet, Seurat, Matisse, Manet
+        const masterIds = [35809, 40810, 35670, 35577];
         const [artistsRes, stylesRes] = await Promise.all([
-            getArtists(4),
+            getArtists({ ids: masterIds }),
             getArtStyles(4),
         ]);
 

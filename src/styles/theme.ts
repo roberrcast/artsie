@@ -12,6 +12,7 @@ export const theme = {
         surfaceHighest: "#dde4e5",
         surfaceTint: "#5f5e5e",
         outlineColor: "#adb3b4",
+        searchBarFont: "#A3A3A3",
         footerColorTxt: "#71717a",
         footerColorTxt2: "#5f5f5f",
         footerColorTxt3: "#a1a1aa",
