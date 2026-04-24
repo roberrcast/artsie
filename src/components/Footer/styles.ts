@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Search, Palette, History, MapPin } from "lucide-react";
+
 import { border, iconStyle, maxWidthContent } from "../../styles/mixins";
 
 export const Footer = styled.footer`
@@ -119,9 +119,17 @@ export const SearchLabel = styled.p`
     color: ${(props) => props.theme.colors.secondary};
 `;
 
-export const SearchInputWrapper = styled.div`
+export const SearchInputWrapper = styled.form`
     position: relative;
     width: 100%;
+
+    svg {
+        position: absolute;
+        left: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: ${(props) => props.theme.colors.outlineColor};
+    }
 `;
 
 export const SearchInput = styled.input`
@@ -136,6 +144,7 @@ export const SearchInput = styled.input`
         box-shadow 0.2s ease-in-out,
         border 0.2s ease-in-out;
 
+
     &:focus {
         outline: none;
         border: 1px solid ${(props) => props.theme.colors.tertiary2};
@@ -146,14 +155,6 @@ export const SearchInput = styled.input`
     font-family: font-famiy: ${(props) => props.theme.fonts.body};
     color: ${(props) => props.theme.colors.placeHolderText2};
     }
-`;
-
-export const SearchIcon = styled(Search)`
-    position: absolute;
-    left: 1.2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: ${(props) => props.theme.colors.outlineColor};
 `;
 
 export const TagsContainer = styled.div`
@@ -174,18 +175,25 @@ export const Tag = styled.div`
     font-weight: 500;
     color: ${(props) => props.theme.colors.footerColorTxt2};
     white-space: nowrap;
-`;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-export const PaletteIcon = styled(Palette)`
-    ${iconStyle("16px", "secondary", "tertiary")};
-`;
+    svg {
+        ${iconStyle("16px", "secondary")};
+    }
 
-export const HistoryIcon = styled(History)`
-    ${iconStyle("16px", "secondary", "tertiary")};
-`;
-
-export const PinIcon = styled(MapPin)`
-    ${iconStyle("16px", "secondary", "tertiary")};
+    @media (hover: hover) {
+        &:hover {
+            border-color: ${(props) => props.theme.colors.tertiary2};
+            color: ${(props) => props.theme.colors.tertiary2};
+            /* transform: translateY(-2px); */
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            svg {
+                color: ${(props) => props.theme.colors.tertiary2};
+            }
+        }
+    }
 `;
 
 export const BottomBar = styled.div`

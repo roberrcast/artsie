@@ -16,7 +16,7 @@ const Header: React.FC = () => {
                 document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = (scrollTop / docHeight) * 100;
 
-            setIsHidden(scrollPercent > 50);
+            setIsHidden(scrollPercent > 60);
         };
 
         window.addEventListener("scroll", handleScroll);
