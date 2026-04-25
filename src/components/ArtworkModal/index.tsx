@@ -24,6 +24,8 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "unset";
+            setIsZoomed(false);
+            setOrigin({ x: 50, y: 50 });
         }
         return () => {
             document.body.style.overflow = "unset";
@@ -44,10 +46,26 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [isOpen, onClose]);
 
-    if (!isOpen || !artwork) return null;
+    const [origin, setOrigin] = useState({ x: 50, y: 50 });
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!isZoomed) return;
+
+        // Obtener dimensiones del objeto
+        const { left, top, width, height } =
+            e.currentTarget.getBoundingClientRect();
+
+        // Calcular el porcentaje del  mouse
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+
+        setOrigin({ x, y });
+    };
+
+    if (!artwork) return null;
 
     return (
-        <S.ModalOverlay onClick={onClose}>
+        <S.ModalOverlay $isOpen={isOpen} onClick={onClose}>
             <S.ModalHeader onClick={(e) => e.stopPropagation()}>
                 <S.ModalLogo>The Open Gallery</S.ModalLogo>
 
@@ -58,15 +76,28 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                 </S.ModalActions>
             </S.ModalHeader>
 
-            <S.MainDisplaySection onClick={(e) => e.stopPropagation()}>
-                <S.ImageFrame
-                    $isZoomed={isZoomed}
-                    // onClick={(e) => {
-                    //     e.stopPropagation();
-                    //     setIsZoomed(!isZoomed);
-                    // }}
-                >
-                    <img src={imageUrl} alt={artwork.title} />
+            <S.MainDisplaySection
+                $isOpen={isOpen}
+                onClick={(e) => e.stopPropagation()}
+            >
+                <S.ImageButtonContainer>
+                    <S.ImageFrame
+                        $isZoomed={isZoomed}
+                        $isOpen={isOpen}
+                        onMouseMove={handleMouseMove}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setIsZoomed(!isZoomed);
+                        }}
+                    >
+                        <img
+                            src={imageUrl}
+                            alt={artwork.title}
+                            style={{
+                                transformOrigin: `${origin.x}% ${origin.y}%`,
+                            }}
+                        />
+                    </S.ImageFrame>
 
                     <S.ZoomButton>
                         <button
@@ -84,16 +115,16 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                             )}
                         </button>
                     </S.ZoomButton>
-                </S.ImageFrame>
+                </S.ImageButtonContainer>
             </S.MainDisplaySection>
 
             {/* Side bar */}
             <S.ContextPanel onClick={(e) => e.stopPropagation()}>
-                <S.ContextLabel>procedencia</S.ContextLabel>
+                <S.ContextLabel>en detalle</S.ContextLabel>
 
                 <S.ContextText>
                     {artwork.short_description ||
-                        "Información detallada de no disponible."}
+                        "Información detallada no disponible."}
                 </S.ContextText>
 
                 <S.DecorativeLine />
@@ -114,8 +145,8 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                 </S.FooterInfoLeft>
 
                 <S.FooterInfoRight>
-                    <S.ContextLabel>UBICACIÓN</S.ContextLabel>
-                    <span>Art Institute of Chicago</span>
+                    <S.ContextLabel>lugar de origen</S.ContextLabel>
+                    <span>{artwork.place_of_origin}</span>
                 </S.FooterInfoRight>
                 <S.FooterGradient />
             </S.ModalFooter>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { blur, flexAlignCenter, lineClamp } from "../../styles/mixins";
 
-export const ModalOverlay = styled.div`
+export const ModalOverlay = styled.div<{ $isOpen: boolean }>`
     position: fixed;
     inset: 0;
     z-index: 2000;
@@ -11,6 +11,12 @@ export const ModalOverlay = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+
+    opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+    visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
 `;
 
 export const ModalHeader = styled.header`
@@ -21,7 +27,7 @@ export const ModalHeader = styled.header`
     padding: 1.5rem 2rem;
     ${flexAlignCenter};
     justify-content: space-between;
-    z-index: 50;
+    z-index: 70;
 `;
 
 export const ModalLogo = styled.span`
@@ -37,23 +43,8 @@ export const ModalActions = styled.div`
     align-items: center;
 `;
 
-export const IconButton = styled.button`
-    background-color: ${(props) => props.theme.colors.rgba3};
-    color: ${(props) => props.theme.colors.background};
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    @media (hover: hover) {
-        &:hover {
-            backround: ${(props) => props.theme.colors.rgba4};
-        }
-    }
-`;
-
 export const CloseButton = styled.button`
+    position: relative;
     background: ${(props) => props.theme.colors.rgba3};
     color: ${(props) => props.theme.colors.background};
     padding: 0.5rem 1.5rem;
@@ -66,41 +57,65 @@ export const CloseButton = styled.button`
     gap: 0.5rem;
     cursor: pointer;
     ${blur(12)};
+    transition: all 0.3s ease-in-out;
+
+    @media (hover: hover) {
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
 `;
 
-export const MainDisplaySection = styled.section`
+export const MainDisplaySection = styled.section<{ $isOpen: boolean }>`
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 6rem;
+    position: relative;
+    z-index: 60;
+
+    transform: ${({ $isOpen }) => ($isOpen ? "scale(1)" : "scale(0.9)")};
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 `;
 
-export const ImageFrame = styled.div<{ $isZoomed: boolean }>`
+export const ImageButtonContainer = styled.div`
     position: relative;
-    max-width: ${(props) => (props.$isZoomed ? "100vw" : "80vw")};
-    max-height: ${(props) => (props.$isZoomed ? "100vw" : "70vh")};
-    transition: all 0.5s cubiz-bezier(0.33, 1, 0.68, 1);
+    max-width: 80vw;
+    max-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ImageFrame = styled.div<{ $isZoomed: boolean; $isOpen: boolean }>`
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     box-shadow: 0 50px 100px ${(props) => props.theme.colors.rgba10};
-    /* cursor: ${(props) => (props.$isZoomed ? "zoom-out" : "zoom-in")}; */
+    cursor: ${(props) => (props.$isZoomed ? "zoom-out" : "zoom-in")};
+    pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
 
     img {
         max-width: 100%;
-        max-height: ${(props) => (props.$isZoomed ? "150vw" : "70vh")};
-        transform: ${(props) => (props.$isZoomed ? "scale(1.5)" : "scale(1)")};
+        max-height: 70vh;
+        transform: ${(props) => (props.$isZoomed ? "scale(2)" : "scale(1)")};
         object-fit: contain;
         display: block;
-        transition: transform 0.5s ease;
+        transition:
+            transform 0.5s ease,
+            tranform-origin 0.1s ease-out;
     }
 `;
 
 export const ZoomButton = styled.div`
     position: absolute;
-    bottom: 1.5rem;
-    right: 1.5rem;
-
+    bottom: 0.75rem;
+    right: 0.85rem;
     display: none;
+
     @media (min-width: 768px) {
         display: flex;
     }
@@ -238,4 +253,5 @@ export const FooterGradient = styled.div`
         transparent 100%
     );
     opacity: 0.8;
+    pointer-events: none;
 `;
