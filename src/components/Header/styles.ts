@@ -16,7 +16,7 @@ export const Header = styled.header<{ isHidden: boolean }>`
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: ${(props) => props.theme.colors.backgroundRGBA};
+    background-color: ${(props) => props.theme.colors.rgba};
     width: 100%;
     ${blur("24")};
 
@@ -61,6 +61,7 @@ export const List = styled.ul`
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.colors.textMuted};
+    transition: all 0.3s ease-in-out;
 
     a {
         color: ${(props) => props.theme.colors.textMuted};
@@ -68,7 +69,8 @@ export const List = styled.ul`
         &.active {
             color: ${(props) => props.theme.colors.primary};
             border-bottom: 2px solid ${(props) => props.theme.colors.tertiary2};
-            cursor: unset;
+            pointer-events: none;
+            cursor: default;
         }
     }
 `;
