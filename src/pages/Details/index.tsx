@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArtworkDetails } from "../../store/artworksSlice";
@@ -8,6 +8,7 @@ import { splitArtistDisplay } from "../../utils/textUtils";
 import { buildImageUrl } from "../../utils/imageUtils";
 import DOMPurify from "dompurify";
 import placeHolderImage from "../../assets/no_image.png";
+import ArtworkModal from "../../components/ArtworkModal";
 
 const Details: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -15,6 +16,9 @@ const Details: React.FC = () => {
     const { selectedArtwork, loading } = useSelector(
         (state: RootState) => state.artworks,
     );
+
+    // State del modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const noImage = placeHolderImage;
 
@@ -24,8 +28,6 @@ const Details: React.FC = () => {
 
     if (loading) return <p>Descubriendo detalles...</p>;
     if (!selectedArtwork) return null;
-
-    /* const imageUrl = `/iiif/2/${selectedArtwork.image_id}/full/843,/0/default.jpg`; */
 
     const imageUrl = buildImageUrl(
         selectedArtwork.image_id,
@@ -38,7 +40,7 @@ const Details: React.FC = () => {
         <>
             <S.DetailsContainer>
                 <S.DetailsWrapper>
-                    <S.ImageContainer>
+                    <S.ImageContainer onClick={() => setIsModalOpen(true)}>
                         <S.Image
                             src={imageUrl || noImage}
                             alt={selectedArtwork.thumbnail?.alt_text}
@@ -83,6 +85,13 @@ const Details: React.FC = () => {
                     </S.MetaContainer>
                 </S.DetailsWrapper>
             </S.DetailsContainer>
+
+            <ArtworkModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                artwork={selectedArtwork}
+                imageUrl={imageUrl}
+            />
 
             {selectedArtwork?.description && (
                 <S.Description>

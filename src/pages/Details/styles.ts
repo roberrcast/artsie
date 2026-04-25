@@ -24,6 +24,7 @@ export const ImageContainer = styled.figure`
     margin: 0;
     padding: 1rem;
     border-radius: 10px;
+    cursor: pointer;
 `;
 
 export const Image = styled.img`

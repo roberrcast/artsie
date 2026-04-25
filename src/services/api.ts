@@ -38,7 +38,7 @@ export const searchArtworks = (queryStr: string, limit = 22) => {
 //  Detalles de una obra de arte (id específica)
 export const getArtworkById = (id: number) => {
     const fields =
-        "id,title,artist_display,date_display,medium_display,dimensions,credit_line,description,image_id,thumbnail,provenance_text,style_title";
+        "id,title,artist_display,date_display,medium_display,dimensions,credit_line,description,image_id,thumbnail,short_description,style_title";
     return api.get(`/artworks/${id}?fields=${fields}`);
 };
 

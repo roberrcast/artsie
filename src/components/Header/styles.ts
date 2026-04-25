@@ -16,7 +16,7 @@ export const Header = styled.header<{ isHidden: boolean }>`
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: ${(props) => props.theme.colors.backgroundRGBA};
+    background-color: ${(props) => props.theme.colors.rgba};
     width: 100%;
     ${blur("24")};
 

@@ -27,7 +27,7 @@ export const Overlay = styled.div<StyledProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${(props) => props.theme.colors.backgroundRGBA};
+    background-color: ${(props) => props.theme.colors.rgba};
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 1000;

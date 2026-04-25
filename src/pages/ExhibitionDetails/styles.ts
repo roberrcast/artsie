@@ -60,10 +60,10 @@ export const DataBadge = styled.div`
     display: inline-block;
     padding: 0.75rem 2rem;
     margin-top: 1rem;
-    background: ${(props) => props.theme.colors.backgroundLink2};
+    background: ${(props) => props.theme.colors.rgba3};
     ${blur("12")};
 
-    border: 1px solid ${(props) => props.theme.colors.borderDate};
+    border: 1px solid ${(props) => props.theme.colors.rgba4};
     border-radius: 9999px;
 
     p {
