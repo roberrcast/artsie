@@ -131,7 +131,10 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
             </S.ContextPanel>
 
             {/* Bottom bar*/}
-            <S.ModalFooter onClick={(e) => e.stopPropagation()}>
+            <S.ModalFooter
+                $isZoomed={isZoomed}
+                onClick={(e) => e.stopPropagation()}
+            >
                 <S.FooterInfoLeft>
                     <S.ModalTitle>{artwork.title}</S.ModalTitle>
 
