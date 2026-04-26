@@ -112,8 +112,8 @@ export const ImageFrame = styled.div<{ $isZoomed: boolean; $isOpen: boolean }>`
 
 export const ZoomButton = styled.div`
     position: absolute;
-    bottom: 0.75rem;
-    right: 0.85rem;
+    bottom: 5rem;
+    right: -4rem;
     display: none;
 
     @media (min-width: 768px) {
@@ -180,7 +180,7 @@ export const DecorativeLine = styled.div`
     margin-top: 2rem;
 `;
 
-export const ModalFooter = styled.footer`
+export const ModalFooter = styled.footer<{ $isZoomed: boolean }>`
     position: fixed;
     bottom: 0;
     left: 0;
@@ -189,7 +189,7 @@ export const ModalFooter = styled.footer`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    z-index: 50;
+    z-index: ${(props) => (props.$isZoomed ? "50" : "70")};
     pointer-events: none;
 
     & > div {
