@@ -4,6 +4,7 @@ import type { AppDispatch } from "../../store";
 import { fetchFeaturedArtwork } from "../../store/artworksSlice";
 import FeaturedSection from "../../components/FeaturedSection";
 import ExhibitionsSection from "../../components/ExhibitionsSection";
+import HeroBanner from "../../components/WelcomeBanner";
 
 const Home: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -14,6 +15,7 @@ const Home: React.FC = () => {
 
     return (
         <div>
+            <HeroBanner />
             <FeaturedSection />
             <ExhibitionsSection />
         </div>

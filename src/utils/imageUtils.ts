@@ -3,7 +3,7 @@
 
 export const getOptimalImageSize = (thumbnailWidth?: number): number => {
     if (!thumbnailWidth || thumbnailWidth < 200) {
-        return 600;
+        return 550;
     }
     return Math.min(843, thumbnailWidth);
 };

@@ -72,7 +72,7 @@ export const genreData: Genre[] = [
         description:
             "Transparencia y fluidez en la técnica pictórica más antigua del mundo",
         coverId: "0fb01e26-1dcd-bba2-a146-d0adf183a2b1", // Fountains
-        altCoverId: "b5c9ca9b-6717-beb5-d1c5-fc22d101e505", // Berthe Morisot
+        altCoverId: "fffee8a1-cbdb-bd77-4742-f66a03ebe45a", // Man With Straw Hat
         extended_description:
             "Considerada una de las expresiones pictóricas más antiguas de la humanidad, la acuarela ha definido la identidad visual de civilizaciones enteras. En Asia Oriental, esta técnica —conocida tradicionalmente como pintura con pincel o en rollo— ha sido el medio predominante, alcanzando una sofisticación inigualable a través del uso de tintas monocromáticas y pigmentos naturales. Desde las tradiciones milenarias de China, Corea y Japón hasta el vibrante legado artístico de la India y Etiopía, la acuarela trasciende fronteras, consolidándose como una disciplina que equilibra la transparencia, la fluidez y una profunda conexión con el soporte de papel o seda.",
         workCount: 20,

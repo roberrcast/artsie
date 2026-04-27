@@ -12,7 +12,7 @@ export const FeaturedContainer = styled.section`
 
 export const FeaturedWrapper = styled.article`
     ${maxWidthContent};
-    padding-top: 8rem;
+    padding-top: 6.5rem;
     padding-bottom: 10rem;
     position: relative;
 `;
