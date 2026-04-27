@@ -19,7 +19,7 @@ export const theme = {
         footerBg: "#f4f4f5",
         borderColor: "#e5e5e5",
         background: "#fefefe",
-        rgba: "rgba(255 255 255 / 0.8)",
+        rgba: "rgba(255, 255, 255, 0.8)",
         rgba2: "rgb(235 ,238 ,239, 1)",
         rgba3: "rgba(255, 255, 255, 0.1)",
         rgba4: "rgba(255, 255, 255, 0.2)",
@@ -29,8 +29,9 @@ export const theme = {
         rgba8: "rgba(255, 255, 255, 0.6)",
         rgba9: "rgba(255, 255, 255, 0.3)",
         rgba10: "rgba(0, 0, 0, 0.5)",
-        frame: "#f6f6f6",
+        rgba11: "rgba(231, 229, 228, 0.9)",
         border: "rgba(26, 26, 26, 0.1)",
+        frame: "#f6f6f6",
         border2: "#e4e4e7",
         error: "#9f3f3d",
         textMuted: "#666666",
@@ -46,6 +47,7 @@ export const theme = {
         artistTagBg: "#fddab2",
         artistTagFont: "#634C2D",
         modalBg: "#171718",
+        noteText: "#d6d3d1",
     },
 
     fonts: {
