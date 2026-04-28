@@ -30,9 +30,9 @@ function App() {
         }
     }, [isLoading]);
 
-    // if (isLoading) {
-    //     return <LoadingScreen />;
-    // }
+    if (isLoading) {
+        return <LoadingScreen />;
+    }
 
     return (
         <Router>
