@@ -1,4 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoadingScreen from "./components/LoadingScreen";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Details from "./pages/Details";
@@ -13,6 +15,25 @@ import Genres from "./pages/Genres";
 import GenreDetails from "./pages/GenresDetails";
 
 function App() {
+    const [isLoading, setIsLoading] = useState(() => {
+        return !sessionStorage.getItem("hasSeenLoader");
+    });
+
+    useEffect(() => {
+        if (isLoading) {
+            const timer = setTimeout(() => {
+                setIsLoading(false);
+                sessionStorage.setItem("hasSeenLoader", "true");
+            }, 3500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [isLoading]);
+
+    // if (isLoading) {
+    //     return <LoadingScreen />;
+    // }
+
     return (
         <Router>
             <ScrollToTop />
@@ -31,6 +52,7 @@ function App() {
                     <Route path="/artworks/" element={<ArtworksPage />} />
                     <Route path="/genres" element={<Genres />} />
                     <Route path="/genres/:id" element={<GenreDetails />} />
+                    <Route path="/dev-loading" element={<LoadingScreen />} />
                 </Routes>
             </Layout>
         </Router>
