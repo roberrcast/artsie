@@ -9,6 +9,7 @@ import { buildImageUrl } from "../../utils/imageUtils";
 import DOMPurify from "dompurify";
 import placeHolderImage from "../../assets/no_image.png";
 import ArtworkModal from "../../components/ArtworkModal";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const Details: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -26,7 +27,8 @@ const Details: React.FC = () => {
         if (id) dispatch(fetchArtworkDetails(id));
     }, [id, dispatch]);
 
-    if (loading) return <p>Descubriendo detalles...</p>;
+    if (loading)
+        return <LoadingSpinner fullScreen message="Cargando detalles..." />;
     if (!selectedArtwork) return null;
 
     const imageUrl = buildImageUrl(

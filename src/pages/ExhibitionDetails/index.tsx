@@ -8,6 +8,7 @@ import { Compass, ExternalLink } from "lucide-react";
 import DOMPurify from "dompurify";
 import * as S from "./styles";
 import { formatDate } from "../../utils/dateUtils";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ExhibitionDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -26,7 +27,13 @@ const ExhibitionDetails: React.FC = () => {
     const displayableArtworks =
         relatedArtworks?.filter((art) => art.image_id) || [];
 
-    if (loading) return <p>Abriendo las puertas de la galería</p>;
+    if (loading)
+        return (
+            <LoadingSpinner
+                fullScreen
+                message="Abriendo detalles de la exhibición..."
+            />
+        );
     if (!selectedExhibition) return null;
 
     return (

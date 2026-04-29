@@ -5,6 +5,7 @@ import { fetchArtists, fetchArtistSearch } from "../../store/artistsSlice";
 import type { RootState, AppDispatch } from "../../store";
 import { ArrowRight, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import * as S from "./styles";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const Artists: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -41,7 +42,9 @@ const Artists: React.FC = () => {
     }, [dispatch]);
 
     if (loading && items.length === 0 && query.length === 0) {
-        return <p>Invocando a los maestros...</p>;
+        return (
+            <LoadingSpinner fullScreen message="Invocando a los maestros..." />
+        );
     }
 
     return (

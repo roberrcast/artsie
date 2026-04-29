@@ -7,6 +7,7 @@ import type { RootState, AppDispatch } from "../../store";
 import * as S from "./styles";
 import { ArrowLeft } from "lucide-react";
 import MasonryGrid from "../../components/MasonryGrid";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const GenreDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>(); // Tomar 'Surrealism' del URL
@@ -28,7 +29,13 @@ const GenreDetails: React.FC = () => {
     }, [genreInfo, dispatch]);
 
     if (!genreInfo) return <p>No se encontraron estilos</p>;
-    if (loading) return <p>Abriendo el archivo de {genreInfo.label}</p>;
+    if (loading)
+        return (
+            <LoadingSpinner
+                fullScreen
+                message={`Cargando obras para ${genreInfo.label}`}
+            />
+        );
     if (error) return <p>Hubo un error al cargar los estilos</p>;
 
     return (
