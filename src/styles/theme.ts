@@ -31,6 +31,7 @@ export const theme = {
         rgba10: "rgba(0, 0, 0, 0.5)",
         rgba11: "rgba(231, 229, 228, 0.9)",
         border: "rgba(26, 26, 26, 0.1)",
+        loadingSpinner: "rgba(26, 26, 26, 0.1)",
         frame: "#f6f6f6",
         border2: "#e4e4e7",
         error: "#9f3f3d",

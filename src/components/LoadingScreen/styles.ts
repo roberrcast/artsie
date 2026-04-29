@@ -1,5 +1,6 @@
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import canvasImg from "../../assets/loading_canvas.png";
+import { fluid } from "../../styles/mixins";
 
 const drawLine = keyframes`
 0% { width: 0; opacity: 0; }
@@ -22,6 +23,8 @@ export const LoadingOverlay = styled.main`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    width: 100vw;
+    box-sizing: border-box;
 `;
 
 export const CanvasBackground = styled.div`
@@ -41,13 +44,18 @@ export const CenterContent = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 42rem;
+    width: 100%;
+    /* max-width: 42rem; */
     padding: 0 1.5rem;
 `;
 
 export const ImageWrapper = styled.div`
     margin-bottom: 4rem;
     animation: ${fadeInOut} 4s ease-in-out infinite;
+
+    @media (max-width: 480px) {
+        margin-bottom: 2rem;
+    }
 
     div {
         width: 6rem;
@@ -71,11 +79,13 @@ export const ImageWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-size: 2.25rem;
+    font-size: ${fluid("1rem", "2.25rem", "480px", "1500px")};
     font-weight: 700;
     color: ${(props) => props.theme.colors.primary};
     letter-spacing: -0.02rem;
-    margin-bottom: 2rem;
+    margin-bottom: ${fluid("1rem", "2rem", "480px", "1500px")};
+    width: 100%;
+    word-wrap: break-word;
 `;
 
 export const LoaderContainer = styled.div`
@@ -97,15 +107,16 @@ export const LineLoader = styled.div`
 
 export const Subtitle = styled.p`
     color: ${(props) => props.theme.colors.footerColorTxt2};
-    font-size: 1rem;
+    font-size: ${fluid("0.875rem", "1rem", "480px", "1500px")};
+    width: 100%;
     max-width: 28rem;
-    line-heigth: 1.625;
+    line-height: 1.625;
     opacity: 0.6;
 `;
 
 export const Footer = styled.footer`
     position: absolute;
-    bottom: 3rem;
+    bottom: ${fluid("2rem", "3rem", "480px", "1500px")};
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -144,6 +155,12 @@ export const TopLeftBranding = styled.div`
     font-weight: 700;
     font-size: 1.125rem;
     color: ${(props) => props.theme.colors.primary};
+
+    @media (max-width: 480px) {
+        top: 1.5rem;
+        left: 1.5rem;
+        font-size: 1rem;
+    }
 `;
 
 export const TopRightIcon = styled.div`
@@ -156,4 +173,9 @@ export const TopRightIcon = styled.div`
     font-size: 1.5rem;
     display: flex;
     align-items: center;
+
+    @media (max-width: 480px) {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
 `;

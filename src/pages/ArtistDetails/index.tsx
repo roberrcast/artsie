@@ -8,6 +8,7 @@ import DOMPurify from "dompurify";
 import * as S from "./styles";
 import banner from "../../assets/placeholder_banner.png";
 import { ExternalLink } from "lucide-react";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ArtistDetails: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -22,7 +23,8 @@ const ArtistDetails: React.FC = () => {
         if (id) dispatch(fetchArtistsWithWorks(id));
     }, [id, dispatch]);
 
-    if (loading) return <p>Explorando el archivo</p>;
+    if (loading)
+        return <LoadingSpinner fullScreen message="Explorando el archivo..." />;
     if (!selectedArtist) return null;
 
     const heroBanner = banner;

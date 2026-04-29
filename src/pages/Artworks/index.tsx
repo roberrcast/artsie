@@ -6,6 +6,7 @@ import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import MasonryGrid from "../../components/MasonryGrid";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ArtworksPage: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -34,10 +35,9 @@ const ArtworksPage: React.FC = () => {
         return () => clearTimeout(scrollTimeout);
     }, [currentPage]);
 
-    // -- loading screens --
-    if (!loading && items.length === 0) return <p>Curando la galería...</p>;
-
-    if (!loading && items.length === 0) return <p>Curando la galería...</p>;
+    // -- loading screen --
+    if (loading)
+        return <LoadingSpinner fullScreen message="Curando la galería..." />;
 
     return (
         <S.PageContainer>
