@@ -5,6 +5,7 @@ import type { RootState, AppDispatch } from "../../store";
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/dateUtils";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ExhibitionsPage: React.FC = () => {
     const navigate = useNavigate();
@@ -33,7 +34,10 @@ const ExhibitionsPage: React.FC = () => {
                 </S.Header>
 
                 {loading ? (
-                    <p>Cargando Exhibiciones...</p>
+                    <LoadingSpinner
+                        fullScreen
+                        message="Cargando Exhibiciones"
+                    />
                 ) : (
                     <S.ExhibitionsGrid>
                         {items.map((exh) => (
