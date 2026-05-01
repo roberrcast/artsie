@@ -3,7 +3,9 @@ import {
     blur,
     buttonAlignment,
     flexAlignCenter,
+    fluid,
     iconStyle,
+    maxWidthContent,
     titleStyle,
 } from "../../styles/mixins";
 import { Search } from "lucide-react";
@@ -31,10 +33,8 @@ export const Header = styled.header<{ isHidden: boolean }>`
 `;
 
 export const HeaderContainer = styled.div`
-    max-width: 1500px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 1.5rem 0;
+    ${maxWidthContent};
+    padding: ${fluid("1rem", "1.5rem", "600px", "1500px")} 0;
     ${flexAlignCenter};
     justify-content: space-between;
     width: 100%;
@@ -55,9 +55,9 @@ export const List = styled.ul`
     padding: 0;
     margin: 0;
     ${flexAlignCenter};
-    font-size: 1rem;
+    font-size: ${fluid("0.75rem", "1rem", "650px", "1500px")};
     font-weight: 500;
-    gap: 3rem;
+    gap: ${fluid("1rem", "3rem", "700px", "1500px")};
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.colors.textMuted};

@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                             <NavLink to={"/artists/"}>Artistas</NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/artworks/"}>Colección</NavLink>
+                            <NavLink to={"/artworks/"}>Galería</NavLink>
                         </li>
                         <li>
                             <NavLink

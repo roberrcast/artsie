@@ -70,6 +70,11 @@ export const maxWidthContent = css`
     @-moz-document url-prefix() {
         max-width: 1400px;
     }
+
+    @media (max-width: 1499px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 `;
 
 export const flexAlignCenter = css`

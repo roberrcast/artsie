@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { X, ZoomIn, ZoomOut } from "lucide-react";
 import * as S from "./styles";
+import placeHolderImg from "../../assets/place_holder.png";
 
 interface ArtworkModalProps {
     isOpen: boolean;
     onClose: () => void;
     artwork: any;
     imageUrl: string;
+    placeHolder?: string;
 }
 
 const ArtworkModal: React.FC<ArtworkModalProps> = ({
@@ -91,7 +93,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                         }}
                     >
                         <img
-                            src={imageUrl}
+                            src={imageUrl || placeHolderImg}
                             alt={artwork.title}
                             style={{
                                 transformOrigin: `${origin.x}% ${origin.y}%`,

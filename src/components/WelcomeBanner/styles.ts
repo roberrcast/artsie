@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { blur, fluid } from "../../styles/mixins";
 
 export const HeroSection = styled.section<{ $bgImage: string }>`
-    padding: 6rem 0 3rem 0;
+    padding: ${fluid("3rem", "6rem", "600px", "1500px")} 0 3rem 0;
     position: relative;
     width: 100%;
     min-height: 921px;
@@ -12,7 +12,7 @@ export const HeroSection = styled.section<{ $bgImage: string }>`
     overflow: hidden;
 
     background:
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
         url(${(props) => props.$bgImage});
     background-size: cover;
     background-position: center;
@@ -29,7 +29,7 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-size: ${fluid("2rem", "4rem", "768px", "1500px")};
+    font-size: ${fluid("3rem", "4rem", "600px", "1500px")};
     font-weight: 700;
     color: ${(props) => props.theme.colors.background};
     margin-bottom: 2rem;

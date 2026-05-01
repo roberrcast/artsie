@@ -6,6 +6,7 @@ import type { RootState, AppDispatch } from "../../store";
 import MasonryGrid from "../../components/MasonryGrid";
 import { Search as SearchIcon } from "lucide-react";
 import * as S from "./styles";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const SearchPage: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -33,6 +34,9 @@ const SearchPage: React.FC = () => {
             setSearchParams({ q: localQuery }); // Actualiza la URL lo que inicializa el useEffect
         }
     };
+
+    if (loading)
+        return <LoadingSpinner fullScreen message="Cargando resultados..." />;
 
     return (
         <S.PageContainer>

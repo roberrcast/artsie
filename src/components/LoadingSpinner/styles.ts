@@ -17,6 +17,7 @@ export const SpinnerContainer = styled.div`
     width: 100%;
     position: relative;
     z-index: 10;
+    margin: auto;
 `;
 
 export const SpinnerCircle = styled.div`
