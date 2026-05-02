@@ -48,7 +48,13 @@ export const Title = styled.h1`
     ${titleStyle};
 `;
 
-export const Nav = styled.nav``;
+export const Nav = styled.nav`
+    display: none;
+
+    @media (min-width: 701px) {
+        display: block;
+    }
+`;
 
 export const List = styled.ul`
     list-style: none;
@@ -83,4 +89,24 @@ export const SearchButton = styled.button`
 
 export const SearchButtonIcon = styled(Search)`
     ${iconStyle("25px", "primary", "textMuted")};
+`;
+
+export const HamburgerButton = styled.button`
+    display: none;
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.primary};
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: opacity 0.3s ease;
+
+    @media (max-width: 700px) {
+        display: flex;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
 `;

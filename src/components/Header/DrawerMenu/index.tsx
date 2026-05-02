@@ -4,10 +4,10 @@ import { X as CloseIcon } from "lucide-react";
 import { MENU_ICONS } from "../../../constants/icons";
 
 const NAV_ITEMS = [
-    { path: "/exhibitions", label: "exhibiciones", icon: "exhibitions" },
-    { path: "/artists", label: "artistas", icon: "artists" },
-    { path: "/artworks", label: "galería", icon: "gallery" },
-    { path: "/genres", label: "estilos", icon: "styles" },
+    { path: "/exhibitions/", label: "exhibiciones", icon: "exhibitions" },
+    { path: "/artists/", label: "artistas", icon: "artists" },
+    { path: "/artworks/", label: "galería", icon: "gallery" },
+    { path: "/genres/", label: "estilos", icon: "styles" },
 ] as const;
 
 interface DrawerMenuProps {

@@ -35,7 +35,7 @@ export const DrawerHeader = styled.div`
     padding: 2.5rem 2rem;
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 700;
         color: ${(props) => props.theme.colors.primary};
     }
@@ -71,12 +71,13 @@ export const StyledNavLink = styled(NavLink)`
         background-color: ${(props) => props.theme.colors.primary};
         color: ${(props) => props.theme.colors.background};
         transform: scale(0.99);
+        pointer-events: none;
     }
 
     @media (hover: hover) {
         &:hover:not(.active) {
             background-color: ${(props) => props.theme.colors.drawerHover};
-            color: ${(props) => props.theme.colors.background};
+            color: ${(props) => props.theme.colors.primary};
         }
     }
 `;

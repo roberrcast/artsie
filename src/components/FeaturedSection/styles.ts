@@ -15,6 +15,8 @@ export const FeaturedWrapper = styled.article`
     padding-top: 6.5rem;
     padding-bottom: 10rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const ImageContainer = styled.figure`

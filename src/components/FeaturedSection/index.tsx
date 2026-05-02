@@ -13,58 +13,54 @@ const FeaturedSection: React.FC = () => {
 
     const navigate = useNavigate();
 
+    if (loading) return <p>Cargando la obra del día...</p>;
+
+    if (loading || !featuredArtwork || !iiifUrl) return null;
+
+    const imageUrl = buildImageUrl(
+        featuredArtwork.image_id,
+        featuredArtwork.thumbnail?.width,
+    );
+
     const handleViewDetails = () => {
         navigate(`/artwork/${featuredArtwork.id}`);
     };
 
-    return React.useMemo(() => {
-        if (loading) return <p>Cargando la obra del día...</p>;
+    return (
+        <S.FeaturedContainer>
+            <S.FeaturedWrapper>
+                <S.ImageContainer>
+                    <S.Image
+                        src={imageUrl}
+                        referrerPolicy="no-referrer"
+                        crossOrigin="anonymous"
+                        alt={
+                            featuredArtwork.thumbnail?.alt_text ||
+                            `Imagen de ${featuredArtwork.title}`
+                        }
+                    />
+                </S.ImageContainer>
 
-        if (loading || !featuredArtwork || !iiifUrl) return null;
+                <S.FeaturedHeader>
+                    <S.Kicker>obra del día</S.Kicker>
 
-        const imageUrl = buildImageUrl(
-            featuredArtwork.image_id,
-            featuredArtwork.thumbnail?.width,
-        );
+                    <S.FeaturedTitle>{featuredArtwork.title}</S.FeaturedTitle>
 
-        return (
-            <S.FeaturedContainer>
-                <S.FeaturedWrapper>
-                    <S.ImageContainer>
-                        <S.Image
-                            src={imageUrl}
-                            referrerPolicy="no-referrer"
-                            crossOrigin="anonymous"
-                            alt={
-                                featuredArtwork.thumbnail?.alt_text ||
-                                `Imagen de ${featuredArtwork.title}`
-                            }
-                        />
-                    </S.ImageContainer>
+                    <S.Description>
+                        {featuredArtwork.description
+                            ? stripHtml(featuredArtwork.description)
+                            : "Haz clic en el botón para más detalles acerca de la obra"}
+                    </S.Description>
 
-                    <S.FeaturedHeader>
-                        <S.Kicker>obra del día</S.Kicker>
-
-                        <S.FeaturedTitle>
-                            {featuredArtwork.title}
-                        </S.FeaturedTitle>
-
-                        <S.Description>
-                            {featuredArtwork.description
-                                ? stripHtml(featuredArtwork.description)
-                                : "Haz clic en el botón para más detalles acerca de la obra"}
-                        </S.Description>
-
-                        <S.ButtonContainer>
-                            <S.FeaturedButton onClick={handleViewDetails}>
-                                ver obra maestra
-                            </S.FeaturedButton>
-                        </S.ButtonContainer>
-                    </S.FeaturedHeader>
-                </S.FeaturedWrapper>
-            </S.FeaturedContainer>
-        );
-    }, [featuredArtwork, loading]);
+                    <S.ButtonContainer>
+                        <S.FeaturedButton onClick={handleViewDetails}>
+                            ver obra maestra
+                        </S.FeaturedButton>
+                    </S.ButtonContainer>
+                </S.FeaturedHeader>
+            </S.FeaturedWrapper>
+        </S.FeaturedContainer>
+    );
 };
 
 export default FeaturedSection;
