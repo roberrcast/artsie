@@ -29,7 +29,7 @@ const ExhibitionsPage: React.FC = () => {
                         técnica. Estas exposiciones temporales celebran la
                         convergencia entre la maestría histórica y la visión
                         contemporánea, acercando las obras de arte más
-                        importantes del mundo a nuestra comunidad local.
+                        importantes del mundo a través de este proyecto.
                     </S.Subtitle>
                 </S.Header>
 

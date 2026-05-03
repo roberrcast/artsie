@@ -29,13 +29,13 @@ export const Content = styled.div`
     position: relative;
     z-index: 10;
     max-width: 56rem;
-    padding: 0 2rem;
+    padding: 2rem 1rem;
     text-align: center;
-    color: white;
+    color: ${(props) => props.theme.colors.background};
 `;
 
 export const Title = styled.h1`
-    font-size: ${fluid("2.4rem", "4rem", "500px", "1500px")};
+    font-size: ${fluid("2rem", "4rem", "400px", "1500px")};
     font-weight: 700;
     color: ${(props) => props.theme.colors.background};
     margin-bottom: 2rem;
@@ -67,7 +67,7 @@ export const NoteContainer = styled.div`
     background: ${(props) => props.theme.colors.rgba3};
     ${blur("12")};
     border: 1px solid ${(props) => props.theme.colors.rgba4};
-    padding: 1.5rem;
+    padding: ${fluid(".75rem", "1.5rem", "500px", "1500px")};
     border-radius: 2rem;
     text-align: center;
     max-width: 900px;

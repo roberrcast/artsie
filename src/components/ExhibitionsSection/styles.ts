@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import {
+    fluid,
     lineClamp,
     maxWidthContent,
     underlineHover,
@@ -11,30 +12,53 @@ export const SectionContainer = styled.section`
 
 export const SectionWrapper = styled.div`
     ${maxWidthContent};
-    padding: 8rem 0;
+    padding: ${fluid("3.5rem", "8rem", "600px", "1500px")} 0;
+
+    @media (max-width: 768px) {
+        padding-right: unset;
+    }
 `;
 
 export const Kicker = styled.p`
+    font-size: ${fluid(".75rem", "1rem", "500px", "1500px")};
     text-transform: uppercase;
     color: ${(props) => props.theme.colors.textMuted};
     letter-spacing: 0.1rem;
     font-weight: 500;
+
+    @media (max-width: 768px) {
+        margin-bottom: 0.5rem;
+    }
 `;
 
 export const TitleNavContainer = styled.div`
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        padding-right: 1rem;
+    }
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        gap: 1rem;
+    }
 `;
 
 export const Explore = styled.button`
     text-transform: uppercase;
     color: ${(props) => props.theme.colors.tertiary};
-    font-size: 1.1rem;
+    font-size: ${fluid(".75rem", "1.1rem", "500px", "1500px")};
     letter-spacing: 0.1rem;
     border-bottom: 1px solid ${(props) => props.theme.colors.tertiary};
     position: relative;
     border: none;
     background: transparent;
+
+    @media (max-width: 499px) {
+        font-size: 0.95rem;
+        width: 175px;
+    }
 
     &::after {
         content: "";
@@ -52,7 +76,7 @@ export const Explore = styled.button`
 `;
 
 export const Title = styled.h2`
-    font-size: 2.5rem;
+    font-size: ${fluid("1.2rem", "2.5rem", "375px", "1500px")};
 `;
 
 export const Grid = styled.div`
@@ -60,6 +84,19 @@ export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4rem;
+
+    @media (max-width: 768px) {
+        display: flex;
+        overflow-x: auto;
+        gap: 1.5rem;
+        padding: 0 1.5rem 2rem;
+        scroll-snap-type: x mandatory;
+        &::-webkit-scrollbar {
+            displayl: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
 `;
 
 const commonSpacing = css`
@@ -70,14 +107,26 @@ const commonSpacing = css`
 
 export const Card = styled.div`
     ${commonSpacing};
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
+    }
 `;
 
 export const ImageContainer = styled.div`
     position: relative;
     overflow: hidden;
     background-color: ${(props) => props.theme.colors.textMuted};
-    aspect-ratio: 3/4;
+    aspect-ratio: 1 / 1;
     width: 100%;
+    border-radius: 2rem;
+
+    @media (min-width: 768px) {
+        aspect-ratio: 3 / 4;
+        border-radius: 0rem;
+    }
 
     img {
         position: absolute;
@@ -102,12 +151,17 @@ export const Type = styled.p`
     text-transform: uppercase;
     color: ${(props) => props.theme.colors.exhibitionCardText};
     font-weight: 500;
+    font-size: ${fluid(".9rem", "1rem", "600px", "1500px")};
 `;
 
 export const ExhibitionTitle = styled.h3`
-    font-size: 1.5rem;
+    font-size: ${fluid("1rem", "1.5rem", "600px", "1500px")};
     font-weight: 500;
     ${lineClamp(2)};
+
+    @media (max-width: 768px) {
+        ${lineClamp(1)};
+    }
 `;
 
 export const Description = styled.p`
@@ -115,12 +169,18 @@ export const Description = styled.p`
     line-height: 1.5;
     color: ${(props) => props.theme.colors.exhibitionCardText};
     font-weight: 500;
+    font-size: ${fluid(".95rem", "1rem", "600px", "1500px")};
+
+    @media (max-width: 768px) {
+        ${lineClamp(2)};
+    }
 `;
 
 export const DetailsLink = styled.a`
     display: inline-flex;
     text-transform: uppercase;
     color: ${(props) => props.theme.colors.tertiary};
+    font-size: ${fluid(".85rem", "1rem", "600px", "1500px")};
     font-weight: 600;
     transition: color 0.3s ease;
     align-items: center;
@@ -132,12 +192,12 @@ export const DetailsLink = styled.a`
     }
 
     @media (hover: hover) {
-        &:hover {
-            cursor: pointer;
+        ${Card}:hover & {
+            color: ${(props) => props.theme.colors.tertiary2};
+        }
 
-            span {
-                transform: translateX(1rem);
-            }
+        ${Card}:hover & span {
+            transform: translateX(1rem);
         }
     }
 `;

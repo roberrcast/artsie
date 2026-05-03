@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { border, iconStyle, maxWidthContent } from "../../styles/mixins";
+import { border, fluid, iconStyle, maxWidthContent } from "../../styles/mixins";
 
 export const Footer = styled.footer`
     background-color: ${(props) => props.theme.colors.footerBg};
@@ -10,8 +10,8 @@ export const FooterWrapper = styled.div`
     ${maxWidthContent};
     display: flex;
     flex-direction: row;
-    gap: 4rem;
-    padding: 5rem 0;
+    gap: ${fluid("2.5rem", "4rem", "500px", "1500px")};
+    padding: ${fluid("3.5rem", "5rem", "600px", "1500px")} 0;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -19,7 +19,7 @@ export const FooterWrapper = styled.div`
 
 export const TitleColumn = styled.div`
     flex: 1;
-    max-width: 350px;
+    width: 350px;
 `;
 
 export const FooterTitle = styled.h2`
@@ -36,10 +36,12 @@ export const FooterKicker = styled.h3`
 `;
 
 export const FooterDescription = styled.p`
+    font-size: ${fluid(".95rem", "1rem", "500px", "1500px")};
     line-height: 1.7;
     margin-top: 1.5rem;
     font-weight: 500;
     color: ${(props) => props.theme.colors.primary};
+    width: 350px;
 `;
 
 export const NavColumn = styled.div`
@@ -98,6 +100,8 @@ export const SearchColumn = styled.div`
 export const SearchCard = styled.div`
     background-color: ${(props) => props.theme.colors.surfaceHighest};
     padding: 2.5rem 2rem;
+    padding: ${fluid("1.5rem", "2.5rem", "500px", "1500px")}
+        ${fluid("1rem", "2rem", "500px", "1500px")};
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 `;
@@ -205,8 +209,14 @@ export const BottomBarWrapper = styled.div`
     justify-content: space-between;
     padding: 2rem 0;
 
+    @media (max-width: 500px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
     p {
-        font-size: 0.9rem;
+        font-size: ${fluid(".75rem", ".9rem", "500px", "1500px")};
         text-transform: uppercase;
         color: ${(props) => props.theme.colors.footerColorTxt3};
         letter-spacing: 0.1rem;

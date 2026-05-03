@@ -34,7 +34,7 @@ export const Header = styled.header<{ isHidden: boolean }>`
 
 export const HeaderContainer = styled.div`
     ${maxWidthContent};
-    padding: ${fluid("1rem", "1.5rem", "600px", "1500px")} 0;
+    padding: ${fluid(".65rem", "1.5rem", "600px", "1500px")} 0;
     ${flexAlignCenter};
     justify-content: space-between;
     width: 100%;

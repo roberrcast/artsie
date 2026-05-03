@@ -12,19 +12,31 @@ const Artists: React.FC = () => {
     const navigate = useNavigate();
 
     const [query, setQuery] = useState("");
+    const [lastSearched, setLastSearched] = useState("");
 
     const { items, searchResults, loading, currentPage, totalPages } =
         useSelector((state: RootState) => state.artists);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            if (query.length > 2) {
-                dispatch(fetchArtistSearch(query));
-            }
-        }, 500);
+    const handleSearch = () => {
+        const trimmed = query.trim();
 
-        return () => clearTimeout(timer);
-    }, [query, dispatch]);
+        if (trimmed.length === 0) {
+            setLastSearched("");
+            return;
+        }
+
+        if (trimmed.length > 2) {
+            dispatch(fetchArtistSearch(trimmed));
+            setLastSearched(trimmed);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleSearch();
+        }
+    };
 
     useEffect(() => {
         window.scrollTo({
@@ -34,7 +46,7 @@ const Artists: React.FC = () => {
     }, [currentPage]);
 
     // Decidir qué lista mostrar en la búsqueda
-    const isSearching = query.length > 2;
+    const isSearching = lastSearched.length > 0;
     const artistsToShow = isSearching ? searchResults : items;
 
     useEffect(() => {
@@ -62,14 +74,19 @@ const Artists: React.FC = () => {
 
                 <S.SearchSection>
                     <S.SearchBarWrapper>
-                        <span>
+                        <S.SearchButton
+                            type="button"
+                            onClick={handleSearch}
+                            aria-label="Ejecutar búsqueda"
+                        >
                             <Search />
-                        </span>
+                        </S.SearchButton>
                         <input
                             type="text"
                             placeholder="Buscar por nombre, movimiento o época..."
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                         {loading && <S.LoadingIndicator />}
                     </S.SearchBarWrapper>

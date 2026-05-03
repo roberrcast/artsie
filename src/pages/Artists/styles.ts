@@ -57,21 +57,6 @@ export const SearchBarWrapper = styled.div`
     position: relative;
     width: 100%;
 
-    span {
-        position: absolute;
-        left: 1.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: ${(props) => props.theme.colors.textMuted};
-        display: flex;
-        align-items: center;
-
-        svg {
-            width: 28px;
-            height: 28px;
-        }
-    }
-
     input {
         width: 100%;
         padding: 1.5rem 1.5rem 1.5rem 4rem;
@@ -88,6 +73,38 @@ export const SearchBarWrapper = styled.div`
             border: 2px solid
                 ${(props) => props.theme.colors.artistSearchBarRing};
         }
+    }
+`;
+
+export const SearchButton = styled.button`
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: ${(props) => props.theme.colors.textMuted};
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    z-index: 10; /* Ensure it's above the input */
+
+    svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            color: ${(props) => props.theme.colors.primary};
+            transform: translateY(-50%) scale(1.1);
+        }
+    }
+
+    &:active {
+        transform: translateY(-50%) scale(0.95);
     }
 `;
 
