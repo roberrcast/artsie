@@ -72,8 +72,8 @@ export const maxWidthContent = css`
     }
 
     @media (max-width: 1499px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: ${fluid("0.5rem", "1rem", "400px", "1499px")};
+        padding-right: ${fluid("0.5rem", "1rem", "400px", "1499px")};
     }
 `;
 
@@ -253,6 +253,13 @@ export const artworkHover = (scale: number = 1.1) => css`
     }
 `;
 
+export const externalLinkIcon = css`
+    width: ${fluid("15px", "24px", "400px", "1500px")};
+    height: ${fluid("15px", "24px", "400px", "1500px")};
+    display: flex;
+    align-items: center;
+`;
+
 export const pillButton = (
     backgroundColor: keyof ThemeType["colors"] = "primary",
     textColor: keyof ThemeType["colors"] = "background",
@@ -261,17 +268,18 @@ export const pillButton = (
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 1.25rem 2.5rem;
+    padding: ${fluid("1.1rem", "1.25rem", "400px", "1500px")}
+        ${fluid("1.5rem", "2.5rem", "400px", "1500px")};
 
-    /* Visuals */
+    /* Visuales */
     background-color: ${(props) => props.theme.colors[backgroundColor]};
     color: ${(props) => props.theme.colors[textColor]};
     border-radius: 9999px;
     border: none;
     cursor: pointer;
 
-    /* Typography */
-    font-size: 0.8rem;
+    /* Tipografía */
+    font-size: ${fluid(".7rem", ".8rem", "400px", "1500px")};
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1rem;

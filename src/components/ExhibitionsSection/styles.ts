@@ -121,7 +121,7 @@ export const ImageContainer = styled.div`
     background-color: ${(props) => props.theme.colors.textMuted};
     aspect-ratio: 1 / 1;
     width: 100%;
-    border-radius: 2rem;
+    border-radius: 3rem;
 
     @media (min-width: 768px) {
         aspect-ratio: 3 / 4;
@@ -171,7 +171,7 @@ export const Description = styled.p`
     font-weight: 500;
     font-size: ${fluid(".95rem", "1rem", "600px", "1500px")};
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         ${lineClamp(2)};
     }
 `;

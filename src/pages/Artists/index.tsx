@@ -92,8 +92,20 @@ const Artists: React.FC = () => {
                     </S.SearchBarWrapper>
                 </S.SearchSection>
 
-                <S.ArtistGrid $isLoading={loading && query.length > 0}>
-                    {artistsToShow.length > 0 ? (
+                <S.ArtistGrid $isLoading={loading}>
+                    {loading ? (
+                        <div
+                            style={{ gridColumn: "1 / -1", padding: "4rem 0" }}
+                        >
+                            <LoadingSpinner
+                                message={
+                                    isSearching
+                                        ? "Buscando visionarios..."
+                                        : "Invocando a los maestros..."
+                                }
+                            />
+                        </div>
+                    ) : artistsToShow.length > 0 ? (
                         artistsToShow.map((artist) => (
                             <S.ArtistEntry
                                 key={artist.id}
@@ -101,7 +113,6 @@ const Artists: React.FC = () => {
                             >
                                 <S.EntryHeader>
                                     <S.ArtistName>{artist.title}</S.ArtistName>
-
                                     <S.AgentTag>Artista</S.AgentTag>
                                 </S.EntryHeader>
 
@@ -118,16 +129,15 @@ const Artists: React.FC = () => {
                                 </S.ViewDetails>
                             </S.ArtistEntry>
                         ))
-                    ) : (
+                    ) : isSearching ? (
                         <S.NoResults>
                             <p>
                                 No se encontraron artistas que coincidan con "
-                                {query}"
+                                {lastSearched}"
                             </p>
                         </S.NoResults>
-                    )}
+                    ) : null}
                 </S.ArtistGrid>
-
                 {!isSearching && (
                     <S.PaginationWrapper>
                         <button
