@@ -36,6 +36,7 @@ export const theme = {
         loadingSpinner: "rgba(26, 26, 26, 0.1)",
         frame: "#f6f6f6",
         border2: "#e4e4e7",
+        border3: "#ADB4B433",
         error: "#9f3f3d",
         textMuted: "#666666",
         placeHolderText: "#d4d4d4",
@@ -51,6 +52,7 @@ export const theme = {
         artistTagFont: "#634C2D",
         modalBg: "#171718",
         noteText: "#d6d3d1",
+        mobileDetailsText: "#2D3435",
     },
 
     fonts: {

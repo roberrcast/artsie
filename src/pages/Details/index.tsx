@@ -84,6 +84,31 @@ const Details: React.FC = () => {
                                 <S.Value>{selectedArtwork.credit_line}</S.Value>
                             </S.CreditLine>
                         </S.ArtworkDetails>
+
+                        {/* --- Mobile --- */}
+                        <S.MobileArtworkDetails>
+                            <S.MobileDate>
+                                <S.MobileLabel>Fecha</S.MobileLabel>
+                                <S.MobileValue>
+                                    {selectedArtwork.date_display}
+                                </S.MobileValue>
+                            </S.MobileDate>
+
+                            <S.MobileMedium>
+                                <S.MobileLabel>Medio</S.MobileLabel>
+                                <S.MobileValue>
+                                    {selectedArtwork.medium_display}
+                                </S.MobileValue>
+                            </S.MobileMedium>
+
+                            <S.MobileDimensions>
+                                <S.MobileLabel>Dimensiones</S.MobileLabel>
+                                <S.MobileValue>
+                                    {selectedArtwork.dimensions}
+                                </S.MobileValue>
+                            </S.MobileDimensions>
+                        </S.MobileArtworkDetails>
+                        {/* --- End of Mobile --- */}
                     </S.MetaContainer>
                 </S.DetailsWrapper>
             </S.DetailsContainer>
