@@ -1,6 +1,8 @@
 import { css, ThemeProvider } from "styled-components";
 import type { ThemeType } from "./theme";
 
+/* --- Inicio de "fluid" --- */
+
 // Tipado interno
 interface ParsedValue {
     val: number;
@@ -54,9 +56,15 @@ export const fluid = (
     //La parte media de la función clamp(), usando el slope e intercept calculados
     const preferredValue = `${(slope * 100).toFixed(4)}vw + ${(interceptPx / 16).toFixed(4)}rem`;
 
+    /* En caso de valores negativos por ejemplo '-3rem', '-6rem', '400px', '1500px' */
+    const minValue = minSizePx < maxSizePx ? minSize : maxSize;
+    const maxValue = minSizePx < maxSizePx ? maxSize : minSize;
+
     //Usamos los valores originales de min/max en el clamp() final para precisión
-    return `clamp(${minSize}, ${preferredValue}, ${maxSize})`;
+    return `clamp(${minValue}, ${preferredValue}, ${maxValue})`;
 };
+
+/* --- Final de "fluid" ---  */
 
 export const backgroundSurface = css`
     background-color: ${(props) => props.theme.colors.surface};

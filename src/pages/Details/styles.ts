@@ -166,6 +166,11 @@ export const DescriptionTitle = styled.h4`
     line-height: 1.2;
     max-width: 300px;
     flex-shrink: 0;
+    padding-left: 0.5rem;
+
+    @media (max-width: 899px) {
+        padding-left: 0;
+    }
 `;
 
 export const DescriptionTextContainer = styled.div`
