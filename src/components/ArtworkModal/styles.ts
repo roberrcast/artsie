@@ -227,6 +227,10 @@ export const ModalSubMeta = styled.div`
     align-items: center;
     gap: 1rem;
     color: ${(props) => props.theme.colors.rgba8};
+
+    span:first-child {
+        ${lineClamp(2)};
+    }
 `;
 
 export const StyleTag = styled.span`

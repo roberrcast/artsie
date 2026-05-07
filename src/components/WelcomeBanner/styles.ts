@@ -5,7 +5,7 @@ export const HeroSection = styled.section<{ $bgImage: string }>`
     padding: ${fluid("3rem", "6rem", "600px", "1500px")} 0 3rem 0;
     position: relative;
     width: 100%;
-    min-height: 921px;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,10 +18,8 @@ export const HeroSection = styled.section<{ $bgImage: string }>`
     background-position: center;
     background-attachment: fixed;
 
-    @media (max-width: 500px) {
-        background-image:
-            linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-            url(${(props) => props.$bgImage});
+    @media (max-width: 1024px) {
+        background-attachment: scroll;
     }
 `;
 

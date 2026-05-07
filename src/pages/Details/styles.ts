@@ -3,8 +3,8 @@ import { border, fluid, maxWidthContent } from "../../styles/mixins";
 
 export const DetailsContainer = styled.section`
     background-color: ${(props) => props.theme.colors.surface};
-    /* padding: 8rem 0 7rem; */
-    padding: ${fluid("3rem", "8rem", "400px", "1500px")} 0 7rem;
+    padding: ${fluid("5rem", "8rem", "400px", "1500px")} 0
+        ${fluid("1rem", "7rem", "400px", "1500px")};
 `;
 
 export const DetailsWrapper = styled.article`
@@ -34,11 +34,11 @@ export const ImageContainer = styled.figure`
 
     @media (max-width: 770px) {
         height: auto;
-        aspect-ratio: 3 / 4;
         width: 100%;
         border-radius: 0;
         padding: 2rem;
         box-sizing: border-box;
+        background-color: ${(props) => props.theme.colors.frameMobile};
     }
 `;
 
@@ -83,6 +83,10 @@ export const DateDisplay = styled.p`
 export const Title = styled.h1`
     font-size: ${fluid("1.75rem", "2rem", "400px", "1500px")};
     font-weight: 600;
+
+    @media (max-width: 770px) {
+        font-weight: 700;
+    }
 `;
 
 export const ArtistDisplay = styled.p`

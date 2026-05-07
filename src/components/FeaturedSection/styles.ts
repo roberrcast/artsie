@@ -32,6 +32,8 @@ export const ImageContainer = styled.figure`
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
 
+    will-change: transform;
+
     @media (min-width: 700px) {
         width: 600px;
         height: 800px;
@@ -104,11 +106,13 @@ export const FeaturedButton = styled.button`
     background-color: ${(props) => props.theme.colors.secondary2};
     padding: 1rem;
     border: 1px solid ${(props) => props.theme.colors.secondary2};
-    transition: all 0.3s ease-in-out;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        color 0.3s ease;
     ${buttonHover("background", "primary")};
 
     &:active {
-        transition: all 0.3s ease;
         color: ${(props) => props.theme.colors.primary};
         background-color: ${(props) => props.theme.colors.background};
         transform: scale(0.94);
@@ -170,12 +174,17 @@ export const MobileButton = styled.button`
     text-transform: uppercase;
     align-self: flex-start;
     flex-shrink: 0;
-    transition: all 0.3s ease-in-out;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        color 0.3s ease;
+    pointer-events: auto;
     ${buttonHover("tertiary2", "primary")};
 
     &:active {
-        background-color: ${(props) => props.theme.colors.tertiary2};
-        color: ${(props) => props.theme.colors.primary};
+        /* transition: all 0.1s ease; */
+        background-color: ${(props) => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.background};
         transform: scale(0.94);
     }
 `;

@@ -32,7 +32,16 @@ export const HeroSection = styled.section<{ $bgImage?: string }>`
 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    transform: translateZ(0);
+    background-attachment: scroll;
+
+    will-change: transform;
+
+    @media (min-width: 1024px) {
+        background-attachment: fixed;
+        transform: none;
+        will-change: auto;
+    }
 `;
 
 export const HeroContainer = styled.div`

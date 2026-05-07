@@ -35,6 +35,7 @@ export const theme = {
         border: "rgba(26, 26, 26, 0.1)",
         loadingSpinner: "rgba(26, 26, 26, 0.1)",
         frame: "#f6f6f6",
+        frameMobile: "#ebeeef",
         border2: "#e4e4e7",
         border3: "#ADB4B433",
         error: "#9f3f3d",

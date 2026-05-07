@@ -104,3 +104,10 @@ export const CloseButton = styled.button<{ $isOpen: boolean }>`
     visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 `;
+
+export const StyledIcon = styled.svg`
+    display: inline-block;
+    vertical-align: middle;
+    overflow: visible;
+    flex-shrink: 0;
+`;

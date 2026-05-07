@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./styles";
 import { X as CloseIcon } from "lucide-react";
 import { MENU_ICONS } from "../../../constants/icons";
 
 const NAV_ITEMS = [
-    { path: "/exhibitions/", label: "exhibiciones", icon: "exhibitions" },
+    { path: "/exhibitions/", label: "exhibiciones", icon: "museum" },
     { path: "/artists/", label: "artistas", icon: "artists" },
     { path: "/artworks/", label: "galería", icon: "gallery" },
     { path: "/genres/", label: "estilos", icon: "styles" },
@@ -17,7 +17,7 @@ interface DrawerMenuProps {
 
 const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
     const renderIcon = (name: keyof typeof MENU_ICONS, isActive: boolean) => (
-        <svg
+        <S.StyledIcon
             height="24"
             width="24"
             viewBox="0 -960 960 960"
@@ -30,8 +30,24 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
                         : MENU_ICONS[name].outline
                 }
             />
-        </svg>
+        </S.StyledIcon>
     );
+
+    const setBodyOverflow = (value: string) => {
+        document.body.style.overflow = value;
+    };
+
+    useEffect(() => {
+        if (isOpen) {
+            setBodyOverflow("hidden");
+        } else {
+            setBodyOverflow("unset");
+        }
+
+        return () => {
+            setBodyOverflow("unset");
+        };
+    }, [isOpen]);
 
     return (
         <>

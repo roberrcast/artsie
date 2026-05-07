@@ -21,13 +21,12 @@ const FeaturedSection: React.FC = () => {
 
     if (loading || !featuredArtwork || !iiifUrl) return null;
 
-    const imageUrl = buildImageUrl(
-        featuredArtwork.image_id,
-        featuredArtwork.thumbnail?.width,
-    );
+    const imageUrl = buildImageUrl(featuredArtwork.image_id, 800);
 
     const handleViewDetails = () => {
-        navigate(`/artwork/${featuredArtwork.id}`);
+        setTimeout(() => {
+            navigate(`/artwork/${featuredArtwork.id}`);
+        }, 200);
     };
 
     return (
@@ -36,6 +35,7 @@ const FeaturedSection: React.FC = () => {
                 <S.ImageContainer>
                     <S.Image
                         src={imageUrl}
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         crossOrigin="anonymous"
                         alt={

@@ -42,6 +42,7 @@ export const TitleNavContainer = styled.div`
     @media (max-width: 500px) {
         flex-direction: column;
         gap: 1rem;
+        align-items: flex-start;
     }
 `;
 
@@ -57,7 +58,6 @@ export const Explore = styled.button`
 
     @media (max-width: 499px) {
         font-size: 0.95rem;
-        width: 175px;
     }
 
     &::after {
