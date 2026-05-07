@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { maxWidthContent } from "../../styles/mixins";
+import { fluid, maxWidthContent } from "../../styles/mixins";
 
 export const PageContainer = styled.article`
     padding: 8rem 0;
@@ -41,7 +41,7 @@ export const BackButton = styled.button`
 `;
 
 export const Title = styled.h2`
-    font-size: 5.5rem;
+    font-size: ${fluid("2.1rem", "5.5rem", "400px", "1500px")};
     color: ${(props) => props.theme.colors.exhibitionsHeaderText};
     font-weight: 700;
     margin-bottom: 1rem;

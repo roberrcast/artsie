@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { X, Search } from "lucide-react";
 import {
     flexAlignCenter,
+    fluid,
     iconStyle,
     maxWidthContent,
     titleStyle,
@@ -46,7 +47,7 @@ export const SearchContainer = styled.div<StyledProps>`
     flex-direction: column;
     gap: 2rem;
 
-    padding: 1.5rem 0;
+    padding: ${fluid(".65rem", "1.5rem", "600px", "1500px")} 0;
     ${flexAlignCenter};
     animation: ${(props) => (props.$isClosing ? slideUp : slideDown)} 0.4s
         ease-in-out forwards;
@@ -62,7 +63,7 @@ export const TitleButtonContainer = styled.div`
     justify-content: space-between;
     ${maxWidthContent};
     margin: 0 auto;
-    padding-bottom: 1.5rem;
+    padding-bottom: ${fluid(".65rem", "1.5rem", "600px", "1500px")};
 `;
 
 export const Title = styled.h1`
@@ -189,7 +190,7 @@ export const CollectionItem = styled.div`
 
 export const CollectionImageWrapper = styled.div`
     width: 64px;
-    heigth: 64px;
+    height: 64px;
     background-color: ${(props) => props.theme.colors.surface2};
     overflow: hidden;
 

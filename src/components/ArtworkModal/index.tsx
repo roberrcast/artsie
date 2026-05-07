@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { X, ZoomIn, ZoomOut } from "lucide-react";
 import * as S from "./styles";
+import placeHolderImg from "../../assets/place_holder.png";
 
 interface ArtworkModalProps {
     isOpen: boolean;
     onClose: () => void;
     artwork: any;
     imageUrl: string;
+    placeHolder?: string;
 }
 
 const ArtworkModal: React.FC<ArtworkModalProps> = ({
@@ -48,6 +50,25 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
 
     const [origin, setOrigin] = useState({ x: 50, y: 50 });
 
+    /* --- Scroll con touch --- */
+    const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+        if (!isZoomed) return;
+
+        const touch = e.touches[0];
+
+        const { left, top, width, height } =
+            e.currentTarget.getBoundingClientRect();
+
+        const x = 100 - ((touch.clientX - left) / width) * 100;
+        const y = 100 - ((touch.clientY - top) / height) * 100;
+
+        setOrigin({
+            x: Math.max(0, Math.min(100, x)),
+            y: Math.max(0, Math.min(100, y)),
+        });
+    };
+
+    /*  --- Scroll con el mouse --- */
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!isZoomed) return;
 
@@ -66,6 +87,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
 
     return (
         <S.ModalOverlay $isOpen={isOpen} onClick={onClose}>
+            {/* --- Encabezado --- */}
             <S.ModalHeader onClick={(e) => e.stopPropagation()}>
                 <S.ModalLogo>The Open Gallery</S.ModalLogo>
 
@@ -76,6 +98,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                 </S.ModalActions>
             </S.ModalHeader>
 
+            {/* --- Imagen y botón --- */}
             <S.MainDisplaySection
                 $isOpen={isOpen}
                 onClick={(e) => e.stopPropagation()}
@@ -85,13 +108,14 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                         $isZoomed={isZoomed}
                         $isOpen={isOpen}
                         onMouseMove={handleMouseMove}
+                        onTouchMove={handleTouchMove}
                         onClick={(e) => {
                             e.stopPropagation();
                             setIsZoomed(!isZoomed);
                         }}
                     >
                         <img
-                            src={imageUrl}
+                            src={imageUrl || placeHolderImg}
                             alt={artwork.title}
                             style={{
                                 transformOrigin: `${origin.x}% ${origin.y}%`,

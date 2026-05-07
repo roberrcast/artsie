@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import {
     blur,
+    externalLinkIcon,
+    fluid,
     lineClamp,
     maxWidthContent,
     pillButton,
 } from "../../styles/mixins";
+import { ExternalLink } from "lucide-react";
 
 export const MainContent = styled.article`
-    padding: 4.84rem 0 0 0;
+    padding: ${fluid("3rem", "4.84rem", "449.09px", "1500px")} 0 0 0;
     width: 100%;
 `;
 
@@ -29,7 +32,16 @@ export const HeroSection = styled.section<{ $bgImage?: string }>`
 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    transform: translateZ(0);
+    background-attachment: scroll;
+
+    will-change: transform;
+
+    @media (min-width: 1024px) {
+        background-attachment: fixed;
+        transform: none;
+        will-change: auto;
+    }
 `;
 
 export const HeroContainer = styled.div`
@@ -50,7 +62,7 @@ export const Kicker = styled.p`
 `;
 
 export const Title = styled.h2`
-    font-size: 3.5rem;
+    font-size: ${fluid("2.5rem", "3.5rem", "375px", "1500px")};
     color: ${(props) => props.theme.colors.background};
     font-weight: 700;
     text-align: center;
@@ -67,6 +79,7 @@ export const DataBadge = styled.div`
     border-radius: 9999px;
 
     p {
+        text-align: center;
         color: ${(props) => props.theme.colors.background};
         font-size: 0.875rem;
         font-weight: 500;
@@ -89,8 +102,8 @@ export const DescriptionWrapper = styled.div`
     ${maxWidthContent};
 `;
 
-// Add a different icon wrapper for the compass icon
-export const IconWrapper = styled.div<{ $size?: string }>`
+// Palette
+export const IconWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,8 +111,8 @@ export const IconWrapper = styled.div<{ $size?: string }>`
     color: ${(props) => props.theme.colors.tertiary};
 
     svg {
-        width: ${(props) => props.$size || "54px"};
-        height: ${(props) => props.$size || "54px"};
+        width: 54px;
+        height: 54px;
     }
 `;
 
@@ -254,22 +267,40 @@ export const OverlayDisplay = styled.p`
 export const EmptyState = styled.div`
     background-color: ${(props) => props.theme.colors.surface2};
     padding: 5rem 0;
+
+    @media (max-width: 1499px) {
+        padding: 5rem 1rem;
+    }
 `;
 
 export const EmptyWrapper = styled.div`
     ${maxWidthContent};
     background-color: ${(props) => props.theme.colors.background};
     border-radius: 3rem;
-    padding: 5rem;
+    padding: ${fluid("1rem", "5rem", "500px", "1500px")};
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1em;
 `;
 
+export const IconWrapperEmpty = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: ${fluid("0rem", "1rem", "500px", "1500px")};
+    color: ${(props) => props.theme.colors.tertiary};
+
+    svg {
+        width: "30px";
+        height: "30px";
+    }
+`;
+
 export const EmptyTitle = styled.h4`
-    font-size: 1.875rem;
+    font-size: ${fluid("1.15rem", "1.875rem", "400px", "1500px")};
     font-weight: 700;
+    text-align: center;
 `;
 
 export const EmptyText = styled.p`
@@ -277,6 +308,10 @@ export const EmptyText = styled.p`
     max-width: 36rem;
     color: ${(props) => props.theme.colors.exhibitionCardText};
     font-weight: 500;
+`;
+
+export const ExternalIcon = styled(ExternalLink)`
+    ${externalLinkIcon};
 `;
 
 export const EmptyButton = styled.a`

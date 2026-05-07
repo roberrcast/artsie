@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
                             <Link to={"/artists/"}>Artistas</Link>
                         </li>
                         <li>
-                            <Link to={"/artworks/"}>Colección</Link>
+                            <Link to={"/artworks/"}>Galería</Link>
                         </li>
                         <li>
                             <Link to={"/genres/"}>Estilos</Link>

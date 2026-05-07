@@ -1,5 +1,4 @@
 import React from "react";
-import { ExternalLink } from "lucide-react";
 import * as S from "./styles";
 
 const Attribution: React.FC = () => {
@@ -26,7 +25,7 @@ const Attribution: React.FC = () => {
                     >
                         <span>visite el sitio del aic</span>
                         <span>
-                            <ExternalLink />
+                            <S.Link />
                         </span>
                     </S.LinkHome>
 
@@ -37,7 +36,7 @@ const Attribution: React.FC = () => {
                     >
                         <span>documentación api</span>
                         <span>
-                            <ExternalLink />
+                            <S.Link />
                         </span>
                     </S.LinkDocs>
                 </S.ButtonContainer>

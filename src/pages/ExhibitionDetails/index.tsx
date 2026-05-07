@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchExhibitionDetails } from "../../store/exhibitionsSlice";
 import type { RootState, AppDispatch } from "../../store";
 import { buildImageUrl } from "../../utils/imageUtils";
-import { Compass, ExternalLink } from "lucide-react";
+import { Compass } from "lucide-react";
 import DOMPurify from "dompurify";
 import * as S from "./styles";
 import { formatDate } from "../../utils/dateUtils";
@@ -129,9 +129,9 @@ const ExhibitionDetails: React.FC = () => {
             ) : (
                 <S.EmptyState>
                     <S.EmptyWrapper>
-                        <S.IconWrapper $size="30px">
+                        <S.IconWrapperEmpty>
                             <Compass />
-                        </S.IconWrapper>
+                        </S.IconWrapperEmpty>
 
                         <S.EmptyTitle>Profundiza tu experiencia</S.EmptyTitle>
 
@@ -150,7 +150,7 @@ const ExhibitionDetails: React.FC = () => {
                         >
                             <span>ver exhibición en el aic</span>{" "}
                             <span>
-                                <ExternalLink />
+                                <S.ExternalIcon />
                             </span>
                         </S.EmptyButton>
                     </S.EmptyWrapper>

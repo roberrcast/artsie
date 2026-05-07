@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { blur, flexAlignCenter, lineClamp } from "../../styles/mixins";
+import { blur, flexAlignCenter, fluid, lineClamp } from "../../styles/mixins";
 
 export const ModalOverlay = styled.div<{ $isOpen: boolean }>`
     position: fixed;
@@ -28,6 +28,10 @@ export const ModalHeader = styled.header`
     ${flexAlignCenter};
     justify-content: space-between;
     z-index: 70;
+
+    @media (max-width: 454px) {
+        padding: ${fluid("1rem", "1.5rem", "375px", "454px")};
+    }
 `;
 
 export const ModalLogo = styled.span`
@@ -35,6 +39,10 @@ export const ModalLogo = styled.span`
     font-style: italic;
     color: ${(props) => props.theme.colors.rgba};
     font-size: 1.25rem;
+
+    @media (max-width: 454px) {
+        font-size: ${fluid("1rem", "1.25rem", "375px", "454px")};
+    }
 `;
 
 export const ModalActions = styled.div`
@@ -57,11 +65,11 @@ export const CloseButton = styled.button`
     gap: 0.5rem;
     cursor: pointer;
     ${blur(12)};
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
     @media (hover: hover) {
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
     }
 `;
@@ -72,7 +80,7 @@ export const MainDisplaySection = styled.section<{ $isOpen: boolean }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 6rem;
+    padding: ${fluid("1rem", "6rem", "400px", "1500px")};
     position: relative;
     z-index: 60;
 
@@ -97,6 +105,7 @@ export const ImageFrame = styled.div<{ $isZoomed: boolean; $isOpen: boolean }>`
     box-shadow: 0 50px 100px ${(props) => props.theme.colors.rgba10};
     cursor: ${(props) => (props.$isZoomed ? "zoom-out" : "zoom-in")};
     pointer-events: ${({ $isOpen }) => ($isOpen ? "auto" : "none")};
+    touch-action: ${({ $isZoomed }) => ($isZoomed ? "none" : "auto")};
 
     img {
         max-width: 100%;
@@ -110,15 +119,13 @@ export const ImageFrame = styled.div<{ $isZoomed: boolean; $isOpen: boolean }>`
     }
 `;
 
+const buttonSize = fluid("23px", "40px", "400px", "1500px");
+
 export const ZoomButton = styled.div`
     position: absolute;
-    bottom: 5rem;
-    right: -4rem;
-    display: none;
-
-    @media (min-width: 768px) {
-        display: flex;
-    }
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
 
     align-items: center;
     gap: 0.75rem;
@@ -130,8 +137,8 @@ export const ZoomButton = styled.div`
     z-index: 100;
 
     button {
-        width: 40px;
-        height: 40px;
+        width: ${buttonSize};
+        height: ${buttonSize};
         display: flex;
         align-items: center;
         justify-content: center;
@@ -156,6 +163,10 @@ export const ContextPanel = styled.div`
     left: 2rem;
     max-width: 250px;
     z-index: 40;
+
+    @media (max-width: 1170px) {
+        display: none;
+    }
 `;
 
 export const ContextLabel = styled.span`
@@ -185,22 +196,29 @@ export const ModalFooter = styled.footer<{ $isZoomed: boolean }>`
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 3rem 4rem;
+    padding: ${fluid("1rem", "3rem", "400px", "1500px")}
+        ${fluid("1.5rem", "4rem", "400px", "1500px")};
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     z-index: ${(props) => (props.$isZoomed ? "50" : "70")};
     pointer-events: none;
 
-    & > div {
-        pointer-events: auto;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 375px) {
+        display: none;
     }
 `;
 
 export const ModalTitle = styled.h1`
     ${lineClamp(1)};
-    color: white;
-    font-size: 3rem;
+    color: ${(props) => props.theme.colors.background};
+    font-size: ${fluid("1.5rem", "3rem", "460px", "1500px")};
     margin-bottom: 0.5rem;
 `;
 
@@ -209,6 +227,10 @@ export const ModalSubMeta = styled.div`
     align-items: center;
     gap: 1rem;
     color: ${(props) => props.theme.colors.rgba8};
+
+    span:first-child {
+        ${lineClamp(2)};
+    }
 `;
 
 export const StyleTag = styled.span`
@@ -227,7 +249,11 @@ export const Separator = styled.div`
 export const FooterInfoLeft = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 60%;
+    max-width: 100%;
+
+    @media (min-width: 768px) {
+        width: 60%;
+    }
 `;
 
 export const FooterInfoRight = styled.div`
@@ -240,6 +266,10 @@ export const FooterInfoRight = styled.div`
     span:last-child {
         font-size: 0.9rem;
         opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        align-items: flex-start;
     }
 `;
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { lineClamp, maxWidthContent } from "../../styles/mixins";
+import { fluid, lineClamp, maxWidthContent } from "../../styles/mixins";
 
 export const PageContainer = styled.article`
     background-color: ${(props) => props.theme.colors.surface};
@@ -20,7 +20,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.h2`
-    font-size: 3.5rem;
+    font-size: ${fluid("2.5rem", "3.5rem", "500px", "1500px")};
     font-weight: 700;
     color: ${(props) => props.theme.colors.exhibitionsHeaderText};
 `;
@@ -34,8 +34,17 @@ export const Subtitle = styled.h3`
 export const ExhibitionsGrid = styled.div`
     margin-top: 3rem;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    @media (min-width: 650px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+    }
 `;
 
 export const ExhibitionCard = styled.div`

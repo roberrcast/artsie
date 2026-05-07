@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import {
     bannerButtonHover,
+    fluid,
     maxWidthContent,
     slideIconHover,
 } from "../../styles/mixins";
+import { ExternalLink } from "lucide-react";
 
 export const Banner = styled.section`
     background-color: ${(props) => props.theme.colors.surfaceTint};
@@ -16,12 +18,13 @@ export const BannerWrapper = styled.section`
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 5rem;
+    padding: ${fluid("3.5rem", "5rem", "600px", "1500px")};
 `;
 
 export const BannerKicker = styled.p`
     color: ${(props) => props.theme.colors.background};
     text-transform: uppercase;
+    font-size: ${fluid(".85rem", "1rem", "500px", "1500px")};
     font-weight: 600;
     letter-spacing: 0.1rem;
     opacity: 0.8;
@@ -30,31 +33,39 @@ export const BannerKicker = styled.p`
 
 export const BannerTitle = styled.h2`
     color: ${(props) => props.theme.colors.background};
-    font-size: 3rem;
+    font-size: ${fluid("1.75rem", "3rem", "500px", "1500px")};
     margin-bottom: 2.5rem;
+    text-align: center;
 `;
 
 export const BannerText = styled.p`
+    font-size: ${fluid(".85rem", "1.1rem", "500px", "1500px")};
     color: ${(props) => props.theme.colors.background};
     font-weight: 600;
     opacity: 0.9;
     max-width: 42rem;
     text-align: center;
-    line-heigth: 1.5rem;
+    line-height: 1.5rem;
     margin-bottom: 3rem;
 `;
 
 export const ButtonContainer = styled.div`
     display: flex;
     gap: 2rem;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
 `;
 
 export const BaseButton = styled.a`
+    font-size: ${fluid(".75rem", "1rem", "500px", "1500px")};
     text-transform: uppercase;
     font-weight: 900;
     padding: 1rem 2rem;
     letter-spacing: 0.1rem;
     ${slideIconHover()};
+    text-align: center;
 `;
 
 // -- bannerButtonHover --
@@ -74,6 +85,14 @@ export const LinkHome = styled(BaseButton)`
         "surfaceTint",
         "backgroundLink1",
     )};
+
+    &:active {
+        transition: all 0.3s ease;
+        background-color: ${(props) => props.theme.colors.surfaceTint};
+        color: ${(props) => props.theme.colors.background};
+        transform: scale(0.95);
+        border-color: color: ${(props) => props.theme.colors.background};;
+    }
 `;
 
 export const LinkDocs = styled(BaseButton)`
@@ -83,4 +102,16 @@ export const LinkDocs = styled(BaseButton)`
         "surface",
         "backgroundLink2",
     )};
+
+    &:active {
+        transition: all 0.1s ease;
+        background-color: ${(props) => props.theme.colors.surface};
+        color: ${(props) => props.theme.colors.surfaceTint};
+        transform: scale(0.95);
+    }
+`;
+
+export const Link = styled(ExternalLink)`
+    width: ${fluid("15px", "24px", "500px", "1500px")};
+    height: ${fluid("15px", "24px", "500px", "1500px")};
 `;

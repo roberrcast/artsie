@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { artworkHover, maxWidthContent } from "../../styles/mixins";
+import { artworkHover, fluid, maxWidthContent } from "../../styles/mixins";
 
 export const PageContainer = styled.article`
     padding: 8rem 0;
@@ -16,7 +16,7 @@ export const HeaderSection = styled.header`
 `;
 
 export const Title = styled.h2`
-    font-size: 4rem;
+    font-size: ${fluid("3rem", "4rem", "400px", "1500px")};
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: ${(props) => props.theme.colors.exhibitionsHeaderText};
@@ -56,6 +56,11 @@ export const GenreCard = styled.section`
         transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
+    &:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+
     ${artworkHover(1.08)};
 `;
 
@@ -65,6 +70,10 @@ export const Overlay = styled.div`
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
     opacity: 0.7;
     transition: opacity 0.5s ease;
+
+    @media (max-width: 768px) {
+        opacity: 0.85;
+    }
 
     @media (hover: hover) {
         ${GenreCard}:hover & {
@@ -96,6 +105,11 @@ export const GenreDescription = styled.p`
     transform: translateY(15px);
     transition: all 0.4s ease;
     font-weight: 500;
+
+    @media (max-width: 768px) {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
     @media (hover: hover) {
         ${GenreCard}:hover & {

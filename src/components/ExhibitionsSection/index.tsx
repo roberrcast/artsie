@@ -52,7 +52,10 @@ const ExhibitionsSection: React.FC = () => {
 
                 <S.Grid>
                     {featuredExhibitions.map((exh) => (
-                        <S.Card key={exh.id}>
+                        <S.Card
+                            key={exh.id}
+                            onClick={() => navigate(`/exhibition/${exh.id}`)}
+                        >
                             <S.ImageContainer>
                                 {exh.image_url ? (
                                     <img src={exh.image_url} alt={exh.title} />
@@ -81,11 +84,7 @@ const ExhibitionsSection: React.FC = () => {
                                         : "Explora esta exhibición."}
                                 </S.Description>
 
-                                <S.DetailsLink
-                                    onClick={() =>
-                                        navigate(`/exhibition/${exh.id}`)
-                                    }
-                                >
+                                <S.DetailsLink>
                                     Detalles
                                     <span>
                                         <ArrowRight size={20} />

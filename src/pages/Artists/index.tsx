@@ -12,19 +12,31 @@ const Artists: React.FC = () => {
     const navigate = useNavigate();
 
     const [query, setQuery] = useState("");
+    const [lastSearched, setLastSearched] = useState("");
 
     const { items, searchResults, loading, currentPage, totalPages } =
         useSelector((state: RootState) => state.artists);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            if (query.length > 2) {
-                dispatch(fetchArtistSearch(query));
-            }
-        }, 500);
+    const handleSearch = () => {
+        const trimmed = query.trim();
 
-        return () => clearTimeout(timer);
-    }, [query, dispatch]);
+        if (trimmed.length === 0) {
+            setLastSearched("");
+            return;
+        }
+
+        if (trimmed.length > 2) {
+            dispatch(fetchArtistSearch(trimmed));
+            setLastSearched(trimmed);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleSearch();
+        }
+    };
 
     useEffect(() => {
         window.scrollTo({
@@ -34,7 +46,7 @@ const Artists: React.FC = () => {
     }, [currentPage]);
 
     // Decidir qué lista mostrar en la búsqueda
-    const isSearching = query.length > 2;
+    const isSearching = lastSearched.length > 0;
     const artistsToShow = isSearching ? searchResults : items;
 
     useEffect(() => {
@@ -62,21 +74,38 @@ const Artists: React.FC = () => {
 
                 <S.SearchSection>
                     <S.SearchBarWrapper>
-                        <span>
+                        <S.SearchButton
+                            type="button"
+                            onClick={handleSearch}
+                            aria-label="Ejecutar búsqueda"
+                        >
                             <Search />
-                        </span>
+                        </S.SearchButton>
                         <input
                             type="text"
                             placeholder="Buscar por nombre, movimiento o época..."
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                         {loading && <S.LoadingIndicator />}
                     </S.SearchBarWrapper>
                 </S.SearchSection>
 
-                <S.ArtistGrid $isLoading={loading && query.length > 0}>
-                    {artistsToShow.length > 0 ? (
+                <S.ArtistGrid $isLoading={loading}>
+                    {loading ? (
+                        <div
+                            style={{ gridColumn: "1 / -1", padding: "4rem 0" }}
+                        >
+                            <LoadingSpinner
+                                message={
+                                    isSearching
+                                        ? "Buscando visionarios..."
+                                        : "Invocando a los maestros..."
+                                }
+                            />
+                        </div>
+                    ) : artistsToShow.length > 0 ? (
                         artistsToShow.map((artist) => (
                             <S.ArtistEntry
                                 key={artist.id}
@@ -84,7 +113,6 @@ const Artists: React.FC = () => {
                             >
                                 <S.EntryHeader>
                                     <S.ArtistName>{artist.title}</S.ArtistName>
-
                                     <S.AgentTag>Artista</S.AgentTag>
                                 </S.EntryHeader>
 
@@ -101,16 +129,15 @@ const Artists: React.FC = () => {
                                 </S.ViewDetails>
                             </S.ArtistEntry>
                         ))
-                    ) : (
+                    ) : isSearching ? (
                         <S.NoResults>
                             <p>
                                 No se encontraron artistas que coincidan con "
-                                {query}"
+                                {lastSearched}"
                             </p>
                         </S.NoResults>
-                    )}
+                    ) : null}
                 </S.ArtistGrid>
-
                 {!isSearching && (
                     <S.PaginationWrapper>
                         <button

@@ -3,7 +3,9 @@ import {
     blur,
     buttonAlignment,
     flexAlignCenter,
+    fluid,
     iconStyle,
+    maxWidthContent,
     titleStyle,
 } from "../../styles/mixins";
 import { Search } from "lucide-react";
@@ -31,10 +33,8 @@ export const Header = styled.header<{ isHidden: boolean }>`
 `;
 
 export const HeaderContainer = styled.div`
-    max-width: 1500px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 1.5rem 0;
+    ${maxWidthContent};
+    padding: ${fluid(".65rem", "1.5rem", "600px", "1500px")} 0;
     ${flexAlignCenter};
     justify-content: space-between;
     width: 100%;
@@ -48,16 +48,22 @@ export const Title = styled.h1`
     ${titleStyle};
 `;
 
-export const Nav = styled.nav``;
+export const Nav = styled.nav`
+    display: none;
+
+    @media (min-width: 701px) {
+        display: block;
+    }
+`;
 
 export const List = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
     ${flexAlignCenter};
-    font-size: 1rem;
+    font-size: ${fluid("0.75rem", "1rem", "650px", "1500px")};
     font-weight: 500;
-    gap: 3rem;
+    gap: ${fluid("1rem", "3rem", "700px", "1500px")};
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     color: ${(props) => props.theme.colors.textMuted};
@@ -83,4 +89,24 @@ export const SearchButton = styled.button`
 
 export const SearchButtonIcon = styled(Search)`
     ${iconStyle("25px", "primary", "textMuted")};
+`;
+
+export const HamburgerButton = styled.button`
+    display: none;
+    cursor: pointer;
+    color: ${(props) => props.theme.colors.primary};
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: opacity 0.3s ease;
+
+    @media (max-width: 700px) {
+        display: flex;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            opacity: 0.7;
+        }
+    }
 `;

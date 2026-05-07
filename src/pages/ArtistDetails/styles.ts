@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import {
     artworkHover,
+    externalLinkIcon,
+    fluid,
     lineClamp,
     maxWidthContent,
     pillButton,
 } from "../../styles/mixins";
+import { ExternalLink } from "lucide-react";
 
 export const MainContent = styled.article`
-    padding: 4.84rem 0;
+    padding: ${fluid("3.1rem", "4.84rem", "400px", "1500px")} 0;
 `;
 
 export const HeroSection = styled.div<{ $bgImage?: string }>`
@@ -47,8 +50,8 @@ export const ArtistTag = styled.p`
 `;
 
 export const Name = styled.h1`
-    font-size: 6rem;
-    font-weigth: 700;
+    font-size: ${fluid("2.3rem", "6rem", "400px", "1500px")};
+    font-weight: 700;
     color: ${(props) => props.theme.colors.background};
     margin-bottom: 1rem;
 `;
@@ -81,7 +84,7 @@ export const BioTitleWrapper = styled.div`
 `;
 
 export const BioTitle = styled.h3`
-    font-size: 2.25rem;
+    font-size: ${fluid("2rem", "2.25rem", "400px", "1500px")};
 `;
 
 export const TitleAccent = styled.div`
@@ -93,7 +96,7 @@ export const TitleAccent = styled.div`
 `;
 
 export const BioText = styled.div`
-    font-size: 1.125rem;
+    font-size: ${fluid("1rem", "1.125rem", "400px", "1500px")};
     line-height: 1.8;
     color: ${(props) => props.theme.colors.textMuted};
 
@@ -103,6 +106,12 @@ export const BioText = styled.div`
 
     p {
         margin-bottom: 2rem;
+
+        a {
+            color: ${(props) => props.theme.colors.tertiary};
+            font-weight: 600;
+            border-bottom: 2.5px solid ${(props) => props.theme.colors.tertiary};
+        }
     }
 `;
 
@@ -207,6 +216,11 @@ export const SmallCard = styled.div`
 export const RestrictedSection = styled.section`
     border-top: 1px solid ${(props) => props.theme.colors.borderColor};
     padding-top: 3rem;
+
+    @media (max-width: 1499px) {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
 `;
 
 export const RestrictedWrapper = styled.div`
@@ -217,9 +231,13 @@ export const RestrictedWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    padding: 6rem;
+    gap: ${fluid("1rem", "2rem", "400px", "1500px")};
+    padding: ${fluid("2rem", "6rem", "400px", "1500px")}
+        ${fluid(".5rem", "6rem", "400px", "1500px")};
 `;
+
+// --- Tamaño para el icono ---
+const size = fluid("30px", "50px", "400px", "1500px");
 
 export const LockIcon = styled.div`
     width: 100%;
@@ -227,15 +245,15 @@ export const LockIcon = styled.div`
     justify-content: center;
 
     svg {
-        height: 50px;
-        width: 50px;
+        height: ${size};
+        width: ${size};
         color: ${(props) => props.theme.colors.tertiary2};
         filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.05));
     }
 `;
 
 export const RestrictedTitle = styled.h3`
-    font-size: 2.25rem;
+    font-size: ${fluid("1.5rem", "2.25rem", "400px", "1500px")};
     text-align: center;
 `;
 
@@ -245,6 +263,10 @@ export const RestrictedText = styled.p`
     text-align: center;
     color: ${(props) => props.theme.colors.exhibitionCardText};
     font-weight: 500;
+`;
+
+export const ExternalIcon = styled(ExternalLink)`
+    ${externalLinkIcon};
 `;
 
 export const ExternalLinkButton = styled.a`

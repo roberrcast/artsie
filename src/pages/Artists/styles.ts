@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
-import { maxWidthContent } from "../../styles/mixins";
+import { fluid, maxWidthContent } from "../../styles/mixins";
 
 const spin = keyframes`
 0% { transform: rotate(0deg); }
@@ -38,7 +38,7 @@ export const HeaderSection = styled.section`
 `;
 
 export const Title = styled.h2`
-    font-size: 5.5rem;
+    font-size: ${fluid("3.5rem", "5.5rem", "400px", "1500px")};
     font-weight: 700;
     color: ${(props) => props.theme.colors.exhibitionsHeaderText};
 `;
@@ -53,28 +53,18 @@ export const SearchSection = styled.form`
     margin-bottom: 5rem;
 `;
 
+// --- Valores del padding para más DRY ---
+const p = fluid("1.4rem", "1.5rem", "400px", "1500px");
+const pLeft = fluid("3.5rem", "4rem", "400px", "1500px");
+
 export const SearchBarWrapper = styled.div`
     position: relative;
     width: 100%;
 
-    span {
-        position: absolute;
-        left: 1.5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: ${(props) => props.theme.colors.textMuted};
-        display: flex;
-        align-items: center;
-
-        svg {
-            width: 28px;
-            height: 28px;
-        }
-    }
-
     input {
         width: 100%;
-        padding: 1.5rem 1.5rem 1.5rem 4rem;
+        // Constantes del padding
+        padding: ${p} ${p} ${p} ${pLeft};
         border-radius: 9999px;
         border: 2px solid transparent;
         background-color: ${(props) => props.theme.colors.artistsSearchBarBg};
@@ -88,6 +78,38 @@ export const SearchBarWrapper = styled.div`
             border: 2px solid
                 ${(props) => props.theme.colors.artistSearchBarRing};
         }
+    }
+`;
+
+export const SearchButton = styled.button`
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: ${(props) => props.theme.colors.textMuted};
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    z-index: 10; /* Ensure it's above the input */
+
+    svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            color: ${(props) => props.theme.colors.primary};
+            transform: translateY(-50%) scale(1.1);
+        }
+    }
+
+    &:active {
+        transform: translateY(-50%) scale(0.95);
     }
 `;
 
@@ -130,7 +152,7 @@ export const EntryHeader = styled.div`
 `;
 
 export const ArtistName = styled.h3`
-    font-size: 1.875rem;
+    font-size: ${fluid("1.55rem", "1.875rem", "400px", "1500px")};
     font-weight: 700;
 `;
 

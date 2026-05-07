@@ -62,10 +62,27 @@ export const getArtStyles = (limit = 4) => {
 
 // Fetch para el featured artworks (dominio público)
 export const getFeaturedBatch = () => {
-    // Usamos el endpoint búsqueda con el filtro para dominio público
-    return api.get(
-        `/artworks/search?query[term][is_public_domain]=true&limit=50&fields=id,title,artist_display,image_id,description,thumbnail&sort=id`,
-    );
+    const query = {
+        query: {
+            bool: {
+                must: [
+                    { term: { is_public_domain: true } },
+                    {
+                        match: {
+                            term_titles: "Impressionism",
+                        },
+                    },
+                ],
+            },
+        },
+        size: 50,
+        from: 0,
+    };
+
+    const encodedParams = encodeURIComponent(JSON.stringify(query));
+    const fields = "id,title,artist_display,image_id,description,thumbnail";
+
+    return api.get(`/artworks/search?params=${encodedParams}&fields=${fields}`);
 };
 
 // Fetch para las exhibiciones actuales

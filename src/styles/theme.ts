@@ -5,6 +5,7 @@ export const theme = {
         secondary2: "#5f5d5d",
         tertiary: "#745b3b",
         tertiary2: "#C5A059",
+        drawerHover: "rgba(166, 137, 102, 0.1)",
         neutral: "#f7f7f7",
         surface: "#f9f9f9",
         surface2: "#f2f4f4",
@@ -19,6 +20,7 @@ export const theme = {
         footerBg: "#f4f4f5",
         borderColor: "#e5e5e5",
         background: "#fefefe",
+        drawerBackdrop: "rgba(26, 26, 26, 0.2)", // color primario al 20%
         rgba: "rgba(255, 255, 255, 0.8)",
         rgba2: "rgb(235 ,238 ,239, 1)",
         rgba3: "rgba(255, 255, 255, 0.1)",
@@ -33,7 +35,9 @@ export const theme = {
         border: "rgba(26, 26, 26, 0.1)",
         loadingSpinner: "rgba(26, 26, 26, 0.1)",
         frame: "#f6f6f6",
+        frameMobile: "#ebeeef",
         border2: "#e4e4e7",
+        border3: "#ADB4B433",
         error: "#9f3f3d",
         textMuted: "#666666",
         placeHolderText: "#d4d4d4",
@@ -49,6 +53,7 @@ export const theme = {
         artistTagFont: "#634C2D",
         modalBg: "#171718",
         noteText: "#d6d3d1",
+        mobileDetailsText: "#2D3435",
     },
 
     fonts: {

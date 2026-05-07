@@ -7,7 +7,7 @@ import { buildImageUrl } from "../../utils/imageUtils";
 import DOMPurify from "dompurify";
 import * as S from "./styles";
 import banner from "../../assets/placeholder_banner.png";
-import { ExternalLink } from "lucide-react";
+
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ArtistDetails: React.FC = () => {
@@ -169,7 +169,7 @@ const ArtistDetails: React.FC = () => {
                         >
                             <span>visite el aic para más detalles</span>{" "}
                             <span>
-                                <ExternalLink />
+                                <S.ExternalIcon />
                             </span>
                         </S.ExternalLinkButton>
                     </S.RestrictedWrapper>
