@@ -65,6 +65,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
         return () => window.removeEventListener("keydown", handleEsc);
     }, [onClose]);
 
+    const setBodyOverflow = (value: string) => {
+        document.body.style.overflow = value;
+    };
+
+    useEffect(() => {
+        setBodyOverflow("hidden");
+
+        return () => {
+            setBodyOverflow("unset");
+        };
+    }, []);
+
     return (
         <S.Overlay onClick={handleStartClose} $isClosing={isClosing}>
             <S.SearchContainer

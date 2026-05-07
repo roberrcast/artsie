@@ -97,7 +97,6 @@ export const HamburgerButton = styled.button`
     color: ${(props) => props.theme.colors.primary};
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
     transition: opacity 0.3s ease;
 
     @media (max-width: 700px) {
