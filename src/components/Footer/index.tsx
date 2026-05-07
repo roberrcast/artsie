@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     const handleFooterSearch = (e: React.SubmitEvent) => {
         e.preventDefault();
         if (query.trim()) {
-            navigate(`/search/?q=${encodeURIComponent(query)}`);
+            navigate(`/search?q=${encodeURIComponent(query)}`);
             setQuery(""); // Limpiar le input después de buscar
         }
     };

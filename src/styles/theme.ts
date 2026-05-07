@@ -54,6 +54,7 @@ export const theme = {
         modalBg: "#171718",
         noteText: "#d6d3d1",
         mobileDetailsText: "#2D3435",
+        mobileSubmenuBorder: "#f3f4f6",
     },
 
     fonts: {
