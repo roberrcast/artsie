@@ -214,7 +214,11 @@ export const SubmenuList = styled.ul`
     }
 `;
 
-export const SubmenuCollection = styled.div``;
+export const SubmenuCollection = styled.div`
+    @media (max-width: 768px) {
+        padding-bottom: 80px;
+    }
+`;
 
 export const CollectionItem = styled.div`
     display: flex;

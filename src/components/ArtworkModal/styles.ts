@@ -4,7 +4,7 @@ import { blur, flexAlignCenter, fluid, lineClamp } from "../../styles/mixins";
 export const ModalOverlay = styled.div<{ $isOpen: boolean }>`
     position: fixed;
     inset: 0;
-    z-index: 2000;
+    z-index: 3000;
     background-color: ${(props) => props.theme.colors.modalBg};
     ${blur(24)};
     display: flex;

@@ -17,12 +17,7 @@ interface DrawerMenuProps {
 
 const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
     const renderIcon = (name: keyof typeof MENU_ICONS, isActive: boolean) => (
-        <S.StyledIcon
-            height="24"
-            width="24"
-            viewBox="0 -960 960 960"
-            fill="currentColor"
-        >
+        <S.StyledIcon viewBox="0 -960 960 960" fill="currentColor">
             <path
                 d={
                     isActive

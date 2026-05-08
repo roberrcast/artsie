@@ -106,6 +106,8 @@ export const CloseButton = styled.button<{ $isOpen: boolean }>`
 `;
 
 export const StyledIcon = styled.svg`
+    height: 24px;
+    width: 24px;
     display: inline-block;
     vertical-align: middle;
     overflow: visible;
