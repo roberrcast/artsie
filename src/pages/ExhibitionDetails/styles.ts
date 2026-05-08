@@ -244,6 +244,10 @@ export const ArtInfoOverlay = styled.div`
     justify-content: flex-end;
     padding: 2rem;
 
+    @media (max-width: 1024px) {
+        opacity: 1;
+    }
+
     @media (hover: hover) {
         ${ArtCard}:hover & {
             opacity: 1;

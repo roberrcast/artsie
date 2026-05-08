@@ -8,7 +8,7 @@ import {
     maxWidthContent,
     titleStyle,
 } from "../../styles/mixins";
-import { Search } from "lucide-react";
+import { Home, Search } from "lucide-react";
 
 export const Header = styled.header<{ isHidden: boolean }>`
     ${flexAlignCenter};
@@ -46,6 +46,13 @@ export const HeaderContainer = styled.div`
 
 export const Title = styled.h1`
     ${titleStyle};
+
+    a {
+        @media (max-width: 768px) {
+            pointer-events: none;
+            cursor: default;
+        }
+    }
 `;
 
 export const Nav = styled.nav`
@@ -114,10 +121,20 @@ export const HamburgerButton = styled.button`
     }
 `;
 
-export const Spacer = styled.div`
+export const HomeContainer = styled.div`
     display: none;
 
     @media (max-width: 768px) {
         display: block;
+
+        a {
+            display: flex;
+            align-items: center;
+        }
     }
+`;
+
+export const HomeIcon = styled(Home)`
+    width: 25px;
+    height: 25px;
 `;
