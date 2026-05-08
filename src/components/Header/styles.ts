@@ -51,7 +51,7 @@ export const Title = styled.h1`
 export const Nav = styled.nav`
     display: none;
 
-    @media (min-width: 701px) {
+    @media (min-width: 1024px) {
         display: block;
     }
 `;
@@ -99,7 +99,7 @@ export const HamburgerButton = styled.button`
     justify-content: center;
     transition: opacity 0.3s ease;
 
-    @media (max-width: 700px) {
+    @media (max-width: 1024px) {
         display: flex;
     }
 
@@ -107,5 +107,17 @@ export const HamburgerButton = styled.button`
         &:hover {
             opacity: 0.7;
         }
+    }
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+`;
+
+export const Spacer = styled.div`
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
     }
 `;

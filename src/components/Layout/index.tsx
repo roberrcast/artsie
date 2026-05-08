@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../store/index";
 import { setSearchOpen } from "../../store/artworksSlice";
+import BottomNavBar from "../BottomNavBar";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -26,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <S.MainContent>{children}</S.MainContent>
             <Attribution />
             <Footer />
+            <BottomNavBar />
         </S.PageWrapper>
     );
 };

@@ -36,6 +36,9 @@ const Header: React.FC = () => {
         <>
             <S.Header isHidden={isHidden}>
                 <S.HeaderContainer>
+                    {/* Para mantener el logo centrado después de los 768px */}
+                    <S.Spacer />
+
                     <S.HamburgerButton
                         arial-label="Abrir Menu"
                         onClick={() => setIsMenuOpen(true)}
@@ -84,6 +87,7 @@ const Header: React.FC = () => {
                 </S.HeaderContainer>
             </S.Header>
 
+            {/* Menu desplegable que aparece después de los 1024px */}
             <DrawerMenu
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
