@@ -30,7 +30,7 @@ export const ImageContainer = styled.figure`
     aspect-ratio: 4/5;
     border-radius: 2rem;
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
 
     will-change: transform;
 
