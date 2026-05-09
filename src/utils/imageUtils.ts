@@ -16,3 +16,25 @@ export const buildImageUrl = (
     const size = getOptimalImageSize(thumbnailWidth);
     return `/iiif/2/${imageId}/full/${size},/0/default.jpg`;
 };
+
+/* Función para optimizar el tamaño de las imágenes que obtenemos para la sección de exhibiciones
+ * en home page */
+
+export const optimizeExhibitionImage = (
+    url: string | null | undefined,
+): string => {
+    if (!url) return "";
+
+    if (url.includes("imgix.net")) {
+        const baseUrl = url.split("?")[0]; // quitar la alta resolución de las imágenes de exhibiciones
+
+        // Paramétros optimizados
+        // w=600: suficiente para tarjetas
+        // q=60: buen balance de calidad/tamaño
+        // auto=format,compress: mejor compresión (webp/avif)
+        // fit=crop: llena el contenedor
+        return `${baseUrl}?auto=format,compress&fit=crop&w=600q=60`;
+    }
+
+    return url;
+};

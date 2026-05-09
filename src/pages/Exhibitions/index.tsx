@@ -6,6 +6,7 @@ import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../utils/dateUtils";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import { optimizeExhibitionImage } from "../../utils/imageUtils";
 
 const ExhibitionsPage: React.FC = () => {
     const navigate = useNavigate();
@@ -48,7 +49,12 @@ const ExhibitionsPage: React.FC = () => {
                                 }
                             >
                                 <S.ImageContainer>
-                                    <img src={exh.image_url} alt={exh.title} />
+                                    <img
+                                        src={optimizeExhibitionImage(
+                                            exh.image_url,
+                                        )}
+                                        alt={exh.title}
+                                    />
                                 </S.ImageContainer>
 
                                 <S.Content>

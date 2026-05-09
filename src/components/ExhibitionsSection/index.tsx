@@ -7,6 +7,7 @@ import type { RootState, AppDispatch } from "../../store";
 import { stripHtml } from "../../utils/textUtils";
 import * as S from "./styles";
 import LoadingSpinner from "../LoadingSpinner";
+import { optimizeExhibitionImage } from "../../utils/imageUtils";
 
 const ExhibitionsSection: React.FC = () => {
     const navigate = useNavigate();
@@ -60,7 +61,9 @@ const ExhibitionsSection: React.FC = () => {
                             <S.ImageContainer>
                                 {exh.image_url ? (
                                     <img
-                                        src={exh.image_url}
+                                        src={optimizeExhibitionImage(
+                                            exh.image_url,
+                                        )}
                                         alt={exh.title}
                                         decoding="async"
                                         loading="lazy"

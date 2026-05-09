@@ -27,8 +27,16 @@ export const Drawer = styled.aside<{ $isOpen: boolean }>`
     box-shadow: 20px 0 50px rgba(0, 0, 0, 0.1);
     border-right: 1px solid ${(props) => props.theme.colors.border2};
 
+    overflow-y: auto;
+    overflow-x: hidden;
+
     transform: translateX(${({ $isOpen }) => ($isOpen ? "0" : "-100%")});
     transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
 `;
 
 export const DrawerHeader = styled.div`
