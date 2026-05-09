@@ -36,7 +36,6 @@ const genresSlice = createSlice({
         builder
             .addCase(fetchGenreArtworks.pending, (state) => {
                 state.loading = true;
-                state.items = [];
             })
 
             .addCase(fetchGenreArtworks.fulfilled, (state, action) => {

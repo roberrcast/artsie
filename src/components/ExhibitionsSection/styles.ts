@@ -91,8 +91,11 @@ export const Grid = styled.div`
         gap: 1.5rem;
         padding: 0 1.5rem 2rem;
         scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        will-change: transform;
+        transform: translateZ(0);
         &::-webkit-scrollbar {
-            displayl: none;
+            display: none;
         }
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -140,6 +143,13 @@ export const ImageContainer = styled.div`
 
         min-width: 100%;
         min-height: 100%;
+
+        will-change: transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
     }
 `;
 

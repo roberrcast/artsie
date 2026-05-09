@@ -147,8 +147,8 @@ const artistsSlice = createSlice({
             // Fetch de los detalles de un artista
             .addCase(fetchArtistsWithWorks.pending, (state) => {
                 state.loading = true;
-                state.selectedArtist = null;
-                state.artistWorks = [];
+                // state.selectedArtist = null;
+                // state.artistWorks = [];
             })
 
             .addCase(fetchArtistsWithWorks.fulfilled, (state, action) => {

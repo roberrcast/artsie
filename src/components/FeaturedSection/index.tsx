@@ -14,12 +14,12 @@ const FeaturedSection: React.FC = () => {
 
     const navigate = useNavigate();
 
-    if (loading)
+    if (loading && !featuredArtwork)
         return (
             <LoadingSpinner fullScreen message="Cargando la obra del día..." />
         );
 
-    if (loading || !featuredArtwork || !iiifUrl) return null;
+    if (!featuredArtwork || !iiifUrl) return null;
 
     const imageUrl = buildImageUrl(featuredArtwork.image_id, 800);
 

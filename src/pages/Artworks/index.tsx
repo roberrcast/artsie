@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchArtworks } from "../../store/artworksSlice";
 import type { RootState, AppDispatch } from "../../store";
 import * as S from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigationType } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import MasonryGrid from "../../components/MasonryGrid";
 import LoadingSpinner from "../../components/LoadingSpinner";
@@ -21,22 +21,26 @@ const ArtworksPage: React.FC = () => {
         dispatch(fetchArtworks(1));
     }, [dispatch]);
 
+    const navType = useNavigationType();
+
     // -- useEffect para el scroll --
     /* setTimeout para Firefox (no funcionaba correctamente
      * después de pasar 75% de la pantalla) */
     useEffect(() => {
-        const scrollTimeout = setTimeout(() => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        }, 0);
+        if (navType !== "POP") {
+            const scrollTimeout = setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }, 0);
 
-        return () => clearTimeout(scrollTimeout);
-    }, [currentPage]);
+            return () => clearTimeout(scrollTimeout);
+        }
+    }, [currentPage, navType]);
 
     // -- loading screen --
-    if (loading)
+    if (loading && items.length === 0)
         return <LoadingSpinner fullScreen message="Curando la galería..." />;
 
     return (

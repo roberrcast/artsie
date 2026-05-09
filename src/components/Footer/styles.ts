@@ -15,6 +15,11 @@ export const FooterWrapper = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (max-width: 769px) {
+        flex-direction: column;
+        gap: 3rem;
+    }
 `;
 
 export const TitleColumn = styled.div`
@@ -38,7 +43,7 @@ export const FooterKicker = styled.h3`
 export const FooterDescription = styled.p`
     font-size: ${fluid(".95rem", "1rem", "500px", "1500px")};
     line-height: 1.7;
-    margin-top: 1.5rem;
+    margin-top: ${fluid("1rem", "1.5rem", "400px", "1500px")};
     font-weight: 500;
     color: ${(props) => props.theme.colors.primary};
     width: 350px;
@@ -60,6 +65,10 @@ export const NavList = styled.ul`
         a {
             color: ${(props) => props.theme.colors.footerColorTxt};
         }
+    }
+
+    @media (max-width: 768px) {
+        display: none;
     }
 `;
 
@@ -95,6 +104,11 @@ export const SearchColumn = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        align-items: center;
+    }
 `;
 
 export const SearchCard = styled.div`
@@ -220,5 +234,23 @@ export const BottomBarWrapper = styled.div`
         text-transform: uppercase;
         color: ${(props) => props.theme.colors.footerColorTxt3};
         letter-spacing: 0.1rem;
+    }
+`;
+
+export const MobileNav = styled.ul`
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+
+        li {
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+
+            a {
+                color: ${(props) => props.theme.colors.footerColorTxt};
+            }
+        }
     }
 `;

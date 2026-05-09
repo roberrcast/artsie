@@ -36,7 +36,6 @@ const Header: React.FC = () => {
         <>
             <S.Header isHidden={isHidden}>
                 <S.HeaderContainer>
-                    {/* Para mantener el logo centrado después de los 768px */}
                     <S.HomeContainer>
                         <Link to={"/"}>
                             <S.HomeIcon />

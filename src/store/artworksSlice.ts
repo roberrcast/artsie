@@ -204,7 +204,7 @@ const artworkSlice = createSlice({
             // Casos para los detalles de una obra
             .addCase(fetchArtworkDetails.pending, (state) => {
                 state.loading = true;
-                state.selectedArtwork = null; // para limpiar la obra anterior con la nueva
+                /* state.selectedArtwork = null; */
             })
             .addCase(fetchArtworkDetails.fulfilled, (state, action) => {
                 state.loading = false;
