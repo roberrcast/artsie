@@ -33,13 +33,13 @@ const ExhibitionsPage: React.FC = () => {
                     </S.Subtitle>
                 </S.Header>
 
-                {loading ? (
+                {loading && items.length === 0 ? (
                     <LoadingSpinner
                         fullScreen
                         message="Cargando Exhibiciones"
                     />
                 ) : (
-                    <S.ExhibitionsGrid>
+                    <S.ExhibitionsGrid $isLoading={loading}>
                         {items.map((exh) => (
                             <S.ExhibitionCard
                                 key={exh.id}

@@ -29,7 +29,7 @@ const GenreDetails: React.FC = () => {
     }, [genreInfo, dispatch]);
 
     if (!genreInfo) return <p>No se encontraron estilos</p>;
-    if (loading)
+    if (loading && items.length === 0)
         return (
             <LoadingSpinner
                 fullScreen

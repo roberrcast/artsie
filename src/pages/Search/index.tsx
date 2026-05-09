@@ -35,7 +35,7 @@ const SearchPage: React.FC = () => {
         }
     };
 
-    if (loading)
+    if (loading && results.length === 0)
         return <LoadingSpinner fullScreen message="Cargando resultados..." />;
 
     return (

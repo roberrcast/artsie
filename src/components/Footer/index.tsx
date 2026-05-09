@@ -33,6 +33,12 @@ const Footer: React.FC = () => {
                 <S.NavColumn>
                     <S.FooterKicker>Explora</S.FooterKicker>
 
+                    <S.MobileNav>
+                        <li>
+                            <Link to={"/"}>Inicio</Link>
+                        </li>
+                    </S.MobileNav>
+
                     <S.NavList>
                         <li>
                             <Link to={"/exhibitions/"}>Exhibiciones</Link>

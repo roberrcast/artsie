@@ -23,8 +23,10 @@ const ArtistDetails: React.FC = () => {
         if (id) dispatch(fetchArtistsWithWorks(id));
     }, [id, dispatch]);
 
-    if (loading)
+    if (loading && (!selectedArtist || selectedArtist.id !== Number(id))) {
         return <LoadingSpinner fullScreen message="Explorando el archivo..." />;
+    }
+
     if (!selectedArtist) return null;
 
     const heroBanner = banner;

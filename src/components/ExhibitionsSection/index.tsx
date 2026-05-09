@@ -6,6 +6,7 @@ import { fetchExhibitionsWithImages } from "../../store/exhibitionsSlice";
 import type { RootState, AppDispatch } from "../../store";
 import { stripHtml } from "../../utils/textUtils";
 import * as S from "./styles";
+import LoadingSpinner from "../LoadingSpinner";
 
 const ExhibitionsSection: React.FC = () => {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ const ExhibitionsSection: React.FC = () => {
     if (loading && items.length === 0)
         return (
             <S.SectionContainer>
-                <p>Cargando Exhibiciones...</p>
+                <LoadingSpinner message="Cargando exhibiciones..." />
             </S.SectionContainer>
         );
 
@@ -58,7 +59,16 @@ const ExhibitionsSection: React.FC = () => {
                         >
                             <S.ImageContainer>
                                 {exh.image_url ? (
-                                    <img src={exh.image_url} alt={exh.title} />
+                                    <img
+                                        src={exh.image_url}
+                                        alt={exh.title}
+                                        decoding="async"
+                                        loading="lazy"
+                                        onLoad={(e) =>
+                                            (e.currentTarget.style.opacity =
+                                                "1")
+                                        }
+                                    />
                                 ) : (
                                     <div
                                         style={{

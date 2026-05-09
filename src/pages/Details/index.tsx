@@ -27,8 +27,9 @@ const Details: React.FC = () => {
         if (id) dispatch(fetchArtworkDetails(id));
     }, [id, dispatch]);
 
-    if (loading)
+    if (loading && (!selectedArtwork || selectedArtwork.id || Number(id))) {
         return <LoadingSpinner fullScreen message="Cargando detalles..." />;
+    }
     if (!selectedArtwork) return null;
 
     const imageUrl = buildImageUrl(

@@ -31,11 +31,13 @@ export const Subtitle = styled.h3`
     margin-top: 1rem;
 `;
 
-export const ExhibitionsGrid = styled.div`
+export const ExhibitionsGrid = styled.div<{ $isLoading?: boolean }>`
     margin-top: 3rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
+    opacity: ${(props) => (props.$isLoading ? 0.7 : 1)};
+    transition: opacity 0.3s ease;
 
     @media (min-width: 650px) {
         grid-template-columns: repeat(2, 1fr);
