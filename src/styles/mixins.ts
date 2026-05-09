@@ -118,7 +118,7 @@ export const iconStyle = (
 `;
 
 export const titleStyle = css`
-    font-size: 1.3rem;
+    font-size: ${fluid("1.4rem", "1.70rem", "400px", "1500px")};
     font-weight: 600;
 `;
 
