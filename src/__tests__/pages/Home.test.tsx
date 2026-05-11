@@ -1,0 +1,10 @@
+import { describe, it, expect, vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { configureStore } from "@reduxjs/toolkit";
+import Home from "../../pages/Home";
+import artworksReducer from "../../store/artworksSlice";
+import exhibitionsReducer from "../../store/exhibitionsSlice";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../../styles/theme";
