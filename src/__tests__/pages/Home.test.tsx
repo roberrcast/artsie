@@ -8,3 +8,65 @@ import artworksReducer from "../../store/artworksSlice";
 import exhibitionsReducer from "../../store/exhibitionsSlice";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme";
+
+const createMockStore = () =>
+    configureStore({
+        reducer: {
+            artworks: artworksReducer,
+            exhibitions: exhibitionsReducer,
+        },
+        preloadedState: {
+            artworks: {
+                items: [],
+                artists: [],
+                styles: [],
+                loading: false,
+                error: null,
+                total: 0,
+                currentPage: 1,
+                totalPages: 1,
+                featuredArtwork: {
+                    id: 1,
+                    title: "Mock Masterpiece",
+                    description: "Mock Description",
+                    artist_display: "Artist",
+                    image_id: "some-fake-id",
+                    thumnail: { width: 400, height: 400, alt_text: "Alt" },
+                },
+                iiifUrl: "https://example.com/",
+                selectedArtwork: null,
+                isSearchOpen: false,
+            },
+
+            exhibitions: {
+                items: [
+                    { id: 101, title: "Mocked Expo", image_url: "test.jpg" },
+                ],
+                loading: false,
+                error: null,
+            },
+        } as any,
+    });
+
+describe("Home Page", () => {
+    it("renders all main sections", () => {
+        render(
+            <Provider store={createMockStore()}>
+                <BrowserRouter>
+                    <ThemeProvider theme={theme}>
+                        <Home />
+                    </ThemeProvider>
+                </BrowserRouter>
+            </Provider>,
+        );
+
+        // Hero banner renderiza
+        expect(screen.getByText(/Bienvenido a/i)).toBeInTheDocument();
+
+        // Revisar si el featured section muestra la obra
+        expect(screen.getAllByText(/Mock Masterpiece/i)[0]).toBeInTheDocument();
+
+        // Revisar exhibiciones se muestran
+        expect(screen.getByText(/MOcked Expo/i)).toBeInTheDocument();
+    });
+});
