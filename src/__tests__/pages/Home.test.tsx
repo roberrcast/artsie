@@ -58,7 +58,7 @@ describe("Home Page", () => {
         mockNavigate.mockClear();
     });
 
-    it("renders all main sections and tests button click and navigation", async () => {
+    it("renders all main sections and tests both navigations", async () => {
         render(
             <Provider store={createMockStore()}>
                 <BrowserRouter>
@@ -80,7 +80,7 @@ describe("Home Page", () => {
         // Revisar exhibiciones se muestran
         expect(screen.getByText(/Mocked Expo/i)).toBeInTheDocument();
 
-        // Buttons clicks (featured mobile)
+        // Button click (featured mobile)
         const featuredMobileButton = screen.getAllByLabelText(
             "Botón para ver obra",
         )[0];
@@ -92,5 +92,11 @@ describe("Home Page", () => {
             },
             { timeout: 1000 },
         );
+
+        // Exhibition card click navigation
+        const expoCard = screen.getByText(/mocked expo/i).closest("div");
+        if (expoCard) fireEvent.click(expoCard);
+
+        expect(mockNavigate).toHaveBeenCalledWith("/exhibition/101");
     });
 });
