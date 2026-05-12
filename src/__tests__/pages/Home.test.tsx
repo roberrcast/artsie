@@ -67,6 +67,6 @@ describe("Home Page", () => {
         expect(screen.getAllByText(/Mock Masterpiece/i)[0]).toBeInTheDocument();
 
         // Revisar exhibiciones se muestran
-        expect(screen.getByText(/MOcked Expo/i)).toBeInTheDocument();
+        expect(screen.getByText(/Mocked Expo/i)).toBeInTheDocument();
     });
 });

@@ -81,7 +81,7 @@ const Header: React.FC = () => {
 
                     <S.ButtonWrapper>
                         <S.SearchButton
-                            aria-label="Open search"
+                            aria-label="Abrir búsqueda"
                             onClick={handleOpenSearch}
                         >
                             <S.SearchButtonIcon />
@@ -92,6 +92,7 @@ const Header: React.FC = () => {
 
             {/* Menu desplegable que aparece después de los 1024px */}
             <DrawerMenu
+                aria-label="Abrir Menu"
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
             />
