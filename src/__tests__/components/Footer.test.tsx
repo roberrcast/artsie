@@ -1,11 +1,21 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme";
 
+const mockNavigate = vi.fn();
+vi.mock("react-router-dom", async () => ({
+    ...(await vi.importActual("react-router-dom")),
+    useNavigate: () => mockNavigate,
+}));
+
 describe("Footer component", () => {
+    beforeEach(() => {
+        mockNavigate.mockClear();
+    });
+
     it("renders the main sections and social links", () => {
         render(
             <BrowserRouter>
@@ -59,8 +69,7 @@ describe("Footer component", () => {
             fireEvent.submit(form);
         }
 
-        expect(window.location.pathname).toBe("/search");
-        expect(window.location.search).toBe("?q=monet");
+        expect(mockNavigate).toHaveBeenCalledWith("/search?q=monet");
     });
 
     it("navigagtes to the specific search when a tag is clicked", () => {
@@ -75,7 +84,8 @@ describe("Footer component", () => {
         const tag = screen.getByText(/óleo sobre lienzo/i);
         fireEvent.click(tag);
 
-        expect(window.location.pathname).toBe("/search");
-        expect(window.location.search).toContain("q=Oil%20on%20Canvas");
+        // expect(window.location.pathname).toBe("/search");
+        // expect(window.location.search).toContain("");
+        expect(mockNavigate).toHaveBeenCalledWith("/search?q=Oil on Canvas");
     });
 });
