@@ -28,7 +28,7 @@ export const TitleColumn = styled.div`
 `;
 
 export const FooterTitle = styled.h2`
-    font-size: 1.3rem;
+    font-size: ${fluid("1.3rem", "1.65rem", "400px", "1500px")};
     font-weight: 600;
 `;
 
