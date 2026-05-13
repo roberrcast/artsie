@@ -1,9 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { renderWithProviders, screen, fireEvent } from "../test-utils";
 import Footer from "../../components/Footer";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../../styles/theme";
 
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async () => ({
@@ -17,13 +14,7 @@ describe("Footer component", () => {
     });
 
     it("renders the main sections and social links", () => {
-        render(
-            <BrowserRouter>
-                <ThemeProvider theme={theme}>
-                    <Footer />
-                </ThemeProvider>
-            </BrowserRouter>,
-        );
+        renderWithProviders(<Footer />);
 
         expect(screen.getByText(/Inicio/i)).toBeInTheDocument();
 
@@ -49,13 +40,7 @@ describe("Footer component", () => {
     });
 
     it("navigates to the search page once a query is submitted in the footer", () => {
-        render(
-            <BrowserRouter>
-                <ThemeProvider theme={theme}>
-                    <Footer />
-                </ThemeProvider>
-            </BrowserRouter>,
-        );
+        renderWithProviders(<Footer />);
 
         const searchInput = screen.getByPlaceholderText(
             /explora los archivos del aic/i,
@@ -73,13 +58,7 @@ describe("Footer component", () => {
     });
 
     it("navigagtes to the specific search when a tag is clicked", () => {
-        render(
-            <BrowserRouter>
-                <ThemeProvider theme={theme}>
-                    <Footer />
-                </ThemeProvider>
-            </BrowserRouter>,
-        );
+        renderWithProviders(<Footer />);
 
         const tag = screen.getByText(/óleo sobre lienzo/i);
         fireEvent.click(tag);

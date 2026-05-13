@@ -1,31 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { configureStore } from "@reduxjs/toolkit";
+import { renderWithProviders, screen } from "../test-utils";
 import BottomNavBar from "../../components/BottomNavBar";
-import artworksReducer from "../../store/artworksSlice";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../../styles/theme";
-
-const createMockStore = () =>
-    configureStore({
-        reducer: {
-            artworks: artworksReducer,
-        },
-    });
 
 describe("BottomNavBar component", () => {
     it("renders all four navigation links", () => {
-        render(
-            <Provider store={createMockStore()}>
-                <BrowserRouter>
-                    <ThemeProvider theme={theme}>
-                        <BottomNavBar />
-                    </ThemeProvider>
-                </BrowserRouter>
-            </Provider>,
-        );
+        renderWithProviders(<BottomNavBar />);
 
         expect(screen.getByText(/Exhibiciones/i)).toBeInTheDocument();
         expect(screen.getByText(/Artistas/i)).toBeInTheDocument();
@@ -34,15 +13,7 @@ describe("BottomNavBar component", () => {
     });
 
     it("navigates to the correct path when clicked", () => {
-        render(
-            <Provider store={createMockStore()}>
-                <BrowserRouter>
-                    <ThemeProvider theme={theme}>
-                        <BottomNavBar />
-                    </ThemeProvider>
-                </BrowserRouter>
-            </Provider>,
-        );
+        renderWithProviders(<BottomNavBar />);
 
         const artistLink = screen.getByText(/Artistas/i).closest("a");
         expect(artistLink).toHaveAttribute("href", "/artists/");
