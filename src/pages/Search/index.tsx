@@ -57,7 +57,7 @@ const SearchPage: React.FC = () => {
                             onChange={(e) => setLocalQuery(e.target.value)}
                         />
 
-                        <S.SearchIconWrapper type="submit">
+                        <S.SearchIconWrapper type="submit" aria-label="Buscar">
                             <SearchIcon />
                         </S.SearchIconWrapper>
                     </S.Form>
