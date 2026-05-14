@@ -1,19 +1,20 @@
-import { describe, it, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { renderWithProviders, screen, fireEvent } from "../test-utils";
 import Footer from "../../components/Footer";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../../styles/theme";
+
+const mockNavigate = vi.fn();
+vi.mock("react-router-dom", async () => ({
+    ...(await vi.importActual("react-router-dom")),
+    useNavigate: () => mockNavigate,
+}));
 
 describe("Footer component", () => {
+    beforeEach(() => {
+        mockNavigate.mockClear();
+    });
+
     it("renders the main sections and social links", () => {
-        render(
-            <BrowserRouter>
-                <ThemeProvider theme={theme}>
-                    <Footer />
-                </ThemeProvider>
-            </BrowserRouter>,
-        );
+        renderWithProviders(<Footer />);
 
         expect(screen.getByText(/Inicio/i)).toBeInTheDocument();
 
@@ -39,13 +40,7 @@ describe("Footer component", () => {
     });
 
     it("navigates to the search page once a query is submitted in the footer", () => {
-        render(
-            <BrowserRouter>
-                <ThemeProvider theme={theme}>
-                    <Footer />
-                </ThemeProvider>
-            </BrowserRouter>,
-        );
+        renderWithProviders(<Footer />);
 
         const searchInput = screen.getByPlaceholderText(
             /explora los archivos del aic/i,
@@ -59,23 +54,17 @@ describe("Footer component", () => {
             fireEvent.submit(form);
         }
 
-        expect(window.location.pathname).toBe("/search");
-        expect(window.location.search).toBe("?q=monet");
+        expect(mockNavigate).toHaveBeenCalledWith("/search?q=monet");
     });
 
     it("navigagtes to the specific search when a tag is clicked", () => {
-        render(
-            <BrowserRouter>
-                <ThemeProvider theme={theme}>
-                    <Footer />
-                </ThemeProvider>
-            </BrowserRouter>,
-        );
+        renderWithProviders(<Footer />);
 
         const tag = screen.getByText(/óleo sobre lienzo/i);
         fireEvent.click(tag);
 
-        expect(window.location.pathname).toBe("/search");
-        expect(window.location.search).toContain("q=Oil%20on%20Canvas");
+        // expect(window.location.pathname).toBe("/search");
+        // expect(window.location.search).toContain("");
+        expect(mockNavigate).toHaveBeenCalledWith("/search?q=Oil on Canvas");
     });
 });

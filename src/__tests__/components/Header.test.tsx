@@ -1,29 +1,19 @@
-import { describe, it, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { configureStore } from "@reduxjs/toolkit";
+import { describe, it, expect, vi } from "vitest";
+import { renderWithProviders, screen, fireEvent } from "../test-utils";
 import Header from "../../components/Header";
-import artworksReducer from "../../store/artworksSlice";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../../styles/theme";
 
-const createMockStore = () =>
-    configureStore({
-        reducer: { artworks: artworksReducer },
-    });
+const mockNavigate = vi.fn();
+vi.mock("react-router-dom", async (importOriginal) => {
+    const actual = await importOriginal<any>();
+    return {
+        ...actual,
+        useNavigate: () => mockNavigate,
+    };
+});
 
 describe("Header component", () => {
     it("should render the Header and tests link click", () => {
-        render(
-            <Provider store={createMockStore()}>
-                <BrowserRouter>
-                    <ThemeProvider theme={theme}>
-                        <Header />
-                    </ThemeProvider>
-                </BrowserRouter>
-            </Provider>,
-        );
+        renderWithProviders(<Header />);
 
         // Logo title
         expect(screen.getAllByText(/the open gallery/i)[0]).toBeInTheDocument();
@@ -40,16 +30,7 @@ describe("Header component", () => {
     });
 
     it("should open search", () => {
-        const store = createMockStore();
-        render(
-            <Provider store={store}>
-                <BrowserRouter>
-                    <ThemeProvider theme={theme}>
-                        <Header />
-                    </ThemeProvider>
-                </BrowserRouter>
-            </Provider>,
-        );
+        const { store } = renderWithProviders(<Header />);
 
         const searchButton = screen.getByLabelText("Abrir búsqueda");
 

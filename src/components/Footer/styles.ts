@@ -30,6 +30,13 @@ export const TitleColumn = styled.div`
 export const FooterTitle = styled.h2`
     font-size: ${fluid("1.3rem", "1.65rem", "400px", "1500px")};
     font-weight: 600;
+
+    a {
+        @media (max-width: 768px) {
+            pointer-events: none;
+            cursor: default;
+        }
+    }
 `;
 
 export const FooterKicker = styled.h3`

@@ -55,7 +55,12 @@ const FeaturedSection: React.FC = () => {
                                 : "Haz clic en el botón para más detalles acerca de la obra"}
                         </S.MobileDescription>
 
-                        <S.MobileButton onClick={handleViewDetails}>
+                        <S.MobileButton
+                            onClick={handleViewDetails}
+                            aria-label="Botón para ver obra"
+                            aria-hidden="true"
+                            tabIndex={-1}
+                        >
                             ver obra
                         </S.MobileButton>
                     </S.MobileHeader>
@@ -73,7 +78,10 @@ const FeaturedSection: React.FC = () => {
                     </S.Description>
 
                     <S.ButtonContainer>
-                        <S.FeaturedButton onClick={handleViewDetails}>
+                        <S.FeaturedButton
+                            onClick={handleViewDetails}
+                            aria-label="Botón para ver obra"
+                        >
                             ver obra maestra
                         </S.FeaturedButton>
                     </S.ButtonContainer>
