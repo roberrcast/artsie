@@ -1,5 +1,10 @@
-import { describe, it, expect } from "vitest";
-import reducer from "../store/artistsSlice";
+import { describe, it, expect, vi } from "vitest";
+import reducer, {
+    fetchArtists,
+    fetchArtistSearch,
+} from "../store/artistsSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import * as api from "../services/api";
 
 describe("Artists slice", () => {
     const initialState = {
@@ -44,7 +49,6 @@ describe("Artists slice", () => {
 
     it("should handle fetchArtists.rejected", () => {
         const action = {
-            // This one matches artists/fetchArtists
             type: "artists/fetchArtists/rejected",
             error: { message: "Error de red" },
         };
@@ -55,12 +59,51 @@ describe("Artists slice", () => {
 
     it("should handle fetchArtistSearch.rejected", () => {
         const action = {
-            // Changed from fetchArtistsSearch to fetchArtistSearch
             type: "artists/fetchArtistSearch/rejected",
             error: { message: "Sin resultados" },
         };
         const state = reducer(initialState, action);
         expect(state.loading).toBe(false);
         expect(state.error).toBe("Sin resultados");
+    });
+});
+
+vi.mock("../services/api");
+
+describe("Artists thunk", () => {
+    it("dispatches fetchArtists and updates state", async () => {
+        const mockData = {
+            data: [{ id: 1, title: "Claude Monet" }],
+            pagination: { total: 1, total_pages: 1 },
+        };
+
+        vi.mocked(api.getArtistsList).mockResolvedValue({
+            data: mockData,
+        } as any);
+
+        const store = configureStore({ reducer: { artists: reducer } });
+
+        await store.dispatch(fetchArtists(1));
+
+        const state = store.getState().artists;
+
+        expect(state.items).toHaveLength(1);
+        expect(state.items[0].title).toBe("Claude Monet");
+        expect(state.loading).toBe(false);
+    });
+
+    it("dispatches fetchArtistSearch and updates searchResults", async () => {
+        const mockData = [{ id: 2, title: "Vincent van Gogh" }];
+        vi.mocked(api.searchArtists).mockResolvedValue({
+            data: { data: mockData },
+        } as any);
+
+        const store = configureStore({ reducer: { artists: reducer } });
+
+        await store.dispatch(fetchArtistSearch("Vincent"));
+
+        const state = store.getState().artists;
+        expect(state.searchResults).toHaveLength(1);
+        expect(state.searchResults[0].title).toBe("Vincent van Gogh");
     });
 });
