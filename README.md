@@ -4,7 +4,7 @@
   React 19 and TypeScript, it offers a seamless experience for exploring masterpieces, exhibitions, and artist biographies.
 
   ![React](https://img.shields.io/badge/React-19-blue?logo=react)
-  ![Vite](https://img.shields.io/badge/Coverage-88%25-brightgreen?logo=vite)
+  ![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
 ![Redux](https://img.shields.io/badge/Redux-Toolkit-purple?logo=redux)
 ![Vitest](https://img.shields.io/badge/Coverage-88%25-brightgreen?logo=vitest)
