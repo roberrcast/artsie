@@ -71,4 +71,16 @@ describe("Search page", () => {
 
         expect(mockSetSearchParams).toHaveBeenCalledWith({ q: "paris" });
     });
+
+    it("shows empty state when no results are found", () => {
+        renderWithProviders(<SearchPage />, {
+            preloadedState: {
+                search: { results: [], loading: false, error: null },
+            },
+        });
+
+        expect(
+            screen.getByText(/No se encontraron resultados/i),
+        ).toBeInTheDocument();
+    });
 });

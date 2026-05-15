@@ -24,4 +24,14 @@ describe("Exhibitions slice", () => {
         expect(state.loading).toBe(true);
         expect(state.items).toHaveLength(1);
     });
+
+    it("should handle fetchExhibitionsWithImages.rejected", () => {
+        const action = {
+            type: "exhibitions/fetchExhibitionsWithImages/rejected",
+            error: { message: "Error al cargar" },
+        };
+        const state = reducer(initialState, action);
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe("Error al cargar");
+    });
 });

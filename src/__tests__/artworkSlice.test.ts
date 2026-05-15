@@ -46,4 +46,15 @@ describe("Artworks slice", () => {
         expect(state.items).toHaveLength(1);
         expect(state.items[0].title).toBe("Old Artwork");
     });
+
+    it("should handle fetchArtworks.rejected", () => {
+        const action = {
+            type: "artworks/fetchArtworks/rejected",
+            error: { message: "API Error" },
+        };
+        const state = reducer(initialState, action);
+
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe("API Error");
+    });
 });

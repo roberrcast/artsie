@@ -92,7 +92,10 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                 <S.ModalLogo>The Open Gallery</S.ModalLogo>
 
                 <S.ModalActions>
-                    <S.CloseButton onClick={onClose}>
+                    <S.CloseButton
+                        onClick={onClose}
+                        aria-label="Cerrar Pantalla Completa"
+                    >
                         cerrar <X size={18} />
                     </S.CloseButton>
                 </S.ModalActions>
@@ -126,11 +129,11 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                     <S.ZoomButton>
                         <button
                             type="button"
-                            arial-label="Aumentar Zoom"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setIsZoomed(!isZoomed);
                             }}
+                            aria-label="Botón de Zoom"
                         >
                             {isZoomed ? (
                                 <ZoomOut size={24} />

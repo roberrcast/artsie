@@ -41,4 +41,26 @@ describe("Artists slice", () => {
         expect(state.selectedArtist).not.toBeNull();
         expect(state.artistWorks).toHaveLength(1);
     });
+
+    it("should handle fetchArtists.rejected", () => {
+        const action = {
+            // This one matches artists/fetchArtists
+            type: "artists/fetchArtists/rejected",
+            error: { message: "Error de red" },
+        };
+        const state = reducer(initialState, action);
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe("Error de red");
+    });
+
+    it("should handle fetchArtistSearch.rejected", () => {
+        const action = {
+            // Changed from fetchArtistsSearch to fetchArtistSearch
+            type: "artists/fetchArtistSearch/rejected",
+            error: { message: "Sin resultados" },
+        };
+        const state = reducer(initialState, action);
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe("Sin resultados");
+    });
 });
