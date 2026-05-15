@@ -1,5 +1,11 @@
-import { describe, it, expect } from "vitest";
-import reducer, { setSearchOpen, toggleSearch } from "../store/artworksSlice";
+import { describe, it, expect, vi } from "vitest";
+import reducer, {
+    setSearchOpen,
+    toggleSearch,
+    fetchArtworks,
+} from "../store/artworksSlice";
+import * as api from "../services/api";
+import { configureStore } from "@reduxjs/toolkit";
 
 describe("Artworks slice", () => {
     const initialState = {
@@ -56,5 +62,31 @@ describe("Artworks slice", () => {
 
         expect(state.loading).toBe(false);
         expect(state.error).toBe("API Error");
+    });
+});
+
+// Thunk
+
+vi.mock("../services/api");
+
+describe("Artworks thunk", () => {
+    it("dispatches fetchArtworks and updates state", async () => {
+        // Mock del response de la API
+        const mockData = {
+            data: [{ id: 1 }],
+            pagination: { total: 1, current_page: 1, total_pages: 1 },
+        };
+        vi.mocked(api.getArtworks).mockResolvedValue({ data: mockData } as any);
+
+        // Crear store con reducer
+        const store = configureStore({ reducer: { artworks: reducer } });
+
+        // Dispatch del store
+        await store.dispatch(fetchArtworks(1));
+
+        // Verificar el update del estado
+        const state = store.getState().artworks;
+        expect(state.items).toHaveLength(1);
+        expect(state.loading).toBe(false);
     });
 });
