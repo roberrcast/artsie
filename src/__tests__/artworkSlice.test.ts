@@ -3,6 +3,8 @@ import reducer, {
     setSearchOpen,
     toggleSearch,
     fetchArtworks,
+    fetchSubmenuData,
+    fetchFeaturedArtwork,
 } from "../store/artworksSlice";
 import * as api from "../services/api";
 import { configureStore } from "@reduxjs/toolkit";
@@ -63,9 +65,54 @@ describe("Artworks slice", () => {
         expect(state.loading).toBe(false);
         expect(state.error).toBe("API Error");
     });
+
+    it("dispatches fetchSubmenuData and updates state", async () => {
+        const mockArtists = [{ id: 1, title: "Monet" }];
+        const mockStyles = [{ id: 1, title: "Impresionismo" }];
+
+        vi.mocked(api.getArtists).mockResolvedValue({
+            data: { data: mockArtists },
+        } as any);
+        vi.mocked(api.getArtStyles).mockResolvedValue({
+            data: { data: mockStyles },
+        } as any);
+
+        const store = configureStore({ reducer: { artworks: reducer } });
+
+        await store.dispatch(fetchSubmenuData());
+
+        const state = store.getState().artworks;
+        expect(state.artists).toHaveLength(1);
+        expect(state.styles).toHaveLength(1);
+    });
+
+    it("dispatches fetchFeaturedArtwork and updates state", async () => {
+        const mockArtwork = {
+            id: 1,
+            title: "Featured",
+            image_id: "img1",
+            description: "Desc",
+        };
+        const mockBatch = {
+            data: [mockArtwork],
+            config: { iiif_url: "https://iiif.com" },
+        };
+
+        vi.mocked(api.getFeaturedBatch).mockResolvedValue({
+            data: mockBatch,
+        } as any);
+
+        const store = configureStore({ reducer: { artworks: reducer } });
+
+        await store.dispatch(fetchFeaturedArtwork());
+
+        const state = store.getState().artworks;
+        expect(state.featuredArtwork.title).toBe("Featured");
+        expect(state.iiifUrl).toBe("https://iiif.com");
+    });
 });
 
-// Thunk
+// -- Thunk --
 
 vi.mock("../services/api");
 
