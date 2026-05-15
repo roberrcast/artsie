@@ -23,4 +23,14 @@ describe("Search slice", () => {
         expect(nextState.loading).toBe(false);
         expect(nextState.results).toEqual(mockData);
     });
+
+    it("should handle fetchSearchResults.rejected", () => {
+        const action = {
+            type: "search/fetchSearchResults/rejected",
+            error: { message: "Falla de búsqueda" },
+        };
+        const state = reducer(initialState, action);
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe("Falla de búsqueda");
+    });
 });

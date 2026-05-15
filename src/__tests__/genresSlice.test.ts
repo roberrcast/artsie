@@ -33,4 +33,14 @@ describe("Genres Slice", () => {
         expect(nextState.loading).toBe(false);
         expect(nextState.items).toEqual(mockItems);
     });
+
+    it("should handle fetchGenreArtworks.rejected", () => {
+        const action = {
+            type: "genres/fetchGenreArtworks/rejected",
+            error: { message: "Género no encontrado" },
+        };
+        const state = reducer(initialState, action);
+        expect(state.loading).toBe(false);
+        expect(state.error).toBe("Género no encontrado");
+    });
 });
