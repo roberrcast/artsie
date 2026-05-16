@@ -3,13 +3,11 @@
   The Open Gallery is a modern, high-performance web application that brings the collection of the Art Institute of Chicago to your fingertips. Built with
   React 19 and TypeScript, it offers a seamless experience for exploring masterpieces, exhibitions, and artist biographies.
 
-  !React (https://img.shields.io/badge/React-19-blue?logo=react)
-  
-  !TypeScript (https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-  ![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite)
-  !Redux (https://img.shields.io/badge/Redux-Toolkit-purple?logo=redux)
-  !Vitest (https://img.shields.io/badge/Testing-Vitest-brightgreen?logo=vitest)
-  !Coverage (https://img.shields.io/badge/Coverage-88%25-brightgreen)
+  ![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite)
+![Redux](https://img.shields.io/badge/Redux-Toolkit-purple?logo=redux)
+![Vitest](https://img.shields.io/badge/Coverage-88%25-brightgreen?logo=vitest)
 
   🚀 Key Features
 
