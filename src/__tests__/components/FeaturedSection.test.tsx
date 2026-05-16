@@ -12,9 +12,10 @@ describe("FeaturedSection component", () => {
     const mockArtwork = {
         id: 1,
         title: "El Grito",
+        artist_display: "Edvard Munch",
         description: "<p>Obra de Maestra</p>",
         image_id: "img1",
-        thumbnail: { alt_text: "Alt text" },
+        thumbnail: { alt_text: "Alt text", width: 800, height: 600 },
     };
 
     it("renders the featured artwork and navigates on click", () => {

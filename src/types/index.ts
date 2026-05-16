@@ -32,6 +32,7 @@ export interface Exhibition {
     id: number;
     title: string;
     short_description?: string;
+    description?: string;
     image_url?: string;
     gallery_title?: string;
     api_model?: string;
