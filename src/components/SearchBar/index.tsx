@@ -40,9 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
     );
 
     const dispatch = useDispatch<AppDispatch>();
-    const { artists, styles, loading } = useSelector(
-        (state: RootState) => state.artworks,
-    );
+    const { artists } = useSelector((state: RootState) => state.artworks);
 
     const handleSearchSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();

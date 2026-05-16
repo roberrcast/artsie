@@ -17,6 +17,8 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
     artwork,
     imageUrl,
 }) => {
+    const [origin, setOrigin] = useState({ x: 50, y: 50 });
+
     // Estado del zoom
     const [isZoomed, setIsZoomed] = useState(false);
 
@@ -47,8 +49,6 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
 
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [isOpen, onClose]);
-
-    const [origin, setOrigin] = useState({ x: 50, y: 50 });
 
     /* --- Scroll con touch --- */
     const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {

@@ -3,7 +3,6 @@ import {
     searchArtists,
     getArtistById,
     getArtistsList,
-    getArtworksByIds,
     getArtworksByArtist,
 } from "../services/api";
 

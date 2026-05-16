@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
-    getArtStyles,
-    getArtworkById,
     getArtworksByIds,
     getExhibitionById,
     getExhibitions,

@@ -1,4 +1,4 @@
-import { css, ThemeProvider } from "styled-components";
+import { css } from "styled-components";
 import type { ThemeType } from "./theme";
 
 /* --- Inicio de "fluid" --- */

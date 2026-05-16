@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { renderWithProviders, screen, fireEvent, render } from "../test-utils";
+import { renderWithProviders, screen, fireEvent } from "../test-utils";
 import ExhibitionsPage from "../../pages/Exhibitions";
 
 const mockNavigate = vi.fn();

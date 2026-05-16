@@ -3,7 +3,6 @@ import axios from "axios";
 import {
     getArtworks,
     getArtworkById,
-    searchArtworks,
     getArtists,
     getExhibitionById,
     searchArtists,
