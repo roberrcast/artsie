@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { renderWithProviders, screen, fireEvent } from "../test-utils";
 import ArtistDetails from "../../pages/ArtistDetails";
-import { fetchArtistsWithWorks } from "../../store/artistsSlice";
 
 const mockNavigate = vi.fn();
 vi.mock("react-router-dom", async (importOriginal) => {

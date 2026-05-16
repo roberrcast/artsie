@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { configureStore } from "@reduxjs/toolkit";
 import { theme } from "../styles/theme";
+import type { RootState, AppStore } from "../store";
 
 // Reducers
 import artworksReducer from "../store/artworksSlice";
@@ -37,7 +38,7 @@ const renderWithProviders = (
         preloadedState = {},
         store = createTestStore(preloadedState),
         ...renderOptions
-    }: { preloadedState?: any; store?: any } & Omit<
+    }: { preloadedState?: Partial<RootState>; store?: AppStore } & Omit<
         RenderOptions,
         "queries"
     > = {},

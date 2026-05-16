@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { Artwork } from "../types";
 import { searchArtworks } from "../services/api";
 
 interface SearchState {
-    results: any[];
+    results: Artwork[];
     loading: boolean;
     error: string | null;
 }

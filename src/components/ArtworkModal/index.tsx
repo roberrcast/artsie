@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { X, ZoomIn, ZoomOut } from "lucide-react";
 import * as S from "./styles";
+import type { Artwork } from "../../types";
 import placeHolderImg from "../../assets/place_holder.png";
 
 interface ArtworkModalProps {
     isOpen: boolean;
     onClose: () => void;
-    artwork: any;
+    artwork: Artwork;
     imageUrl: string;
     placeHolder?: string;
 }
@@ -17,6 +18,8 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
     artwork,
     imageUrl,
 }) => {
+    const [origin, setOrigin] = useState({ x: 50, y: 50 });
+
     // Estado del zoom
     const [isZoomed, setIsZoomed] = useState(false);
 
@@ -26,13 +29,14 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "unset";
-            setIsZoomed(false);
+
+            if (isZoomed) setIsZoomed(false);
             setOrigin({ x: 50, y: 50 });
         }
         return () => {
             document.body.style.overflow = "unset";
         };
-    }, [isOpen]);
+    }, [isOpen, isZoomed]);
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -47,8 +51,6 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
 
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [isOpen, onClose]);
-
-    const [origin, setOrigin] = useState({ x: 50, y: 50 });
 
     /* --- Scroll con touch --- */
     const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {

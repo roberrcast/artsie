@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { Exhibition, Artwork } from "../types";
 import {
-    getArtStyles,
-    getArtworkById,
     getArtworksByIds,
     getExhibitionById,
     getExhibitions,
@@ -27,7 +26,7 @@ export const fetchExhibitionDetails = createAsyncThunk(
         if (artworkIds.length > 0) {
             const artRes = await getArtworksByIds(artworkIds);
             relatedArtworks = artRes.data.data
-                .filter((art: any) => art.is_public_domain && art.image_id)
+                .filter((art: Artwork) => art.is_public_domain && art.image_id)
                 .slice(0, 4);
         }
 
@@ -36,15 +35,17 @@ export const fetchExhibitionDetails = createAsyncThunk(
 );
 
 interface ExhibitionsState {
-    items: any[];
-    selectedExhibition: any | null;
-    relatedArtworks: any[];
+    items: Exhibition[];
+    selectedExhibition: Exhibition | null;
+    relatedArtworks: Artwork[];
     loading: boolean;
     error: string | null;
 }
 
 const initialState: ExhibitionsState = {
     items: [],
+    selectedExhibition: null,
+    relatedArtworks: [],
     loading: false,
     error: null,
 };

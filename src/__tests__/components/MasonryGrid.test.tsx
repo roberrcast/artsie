@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from "@testing-library/react"; // We can us
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme";
 import MasonryGrid from "../../components/MasonryGrid";
-import { MasonryContainer } from "../../components/MasonryGrid/styles";
 
 // Hacer mock de la imagen para evitar lógica compleja de la URL
 vi.mock("../../utils/imageUtils", () => ({

@@ -2,9 +2,10 @@ import React from "react";
 import { buildImageUrl } from "../../utils/imageUtils";
 import * as S from "./styles";
 import placeHolder from "../../assets/place_holder.png";
+import type { Artwork } from "../../types";
 
 interface MasonryGridProps {
-    items: any[];
+    items: Artwork[];
     loading?: boolean;
     onCardClick: (id: number) => void;
 }

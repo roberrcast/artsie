@@ -40,9 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
     );
 
     const dispatch = useDispatch<AppDispatch>();
-    const { artists, styles, loading } = useSelector(
-        (state: RootState) => state.artworks,
-    );
+    const { artists } = useSelector((state: RootState) => state.artworks);
 
     const handleSearchSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
@@ -63,7 +61,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
 
         window.addEventListener("keydown", handleEsc);
         return () => window.removeEventListener("keydown", handleEsc);
-    }, [onClose]);
+    }, [handleStartClose]);
 
     const setBodyOverflow = (value: string) => {
         document.body.style.overflow = value;

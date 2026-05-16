@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { Artwork } from "../types";
 import { getArtworksByTerm } from "../services/api";
 
 interface GenreState {
-    items: any[];
+    items: Artwork[];
     selectedGenre: string;
     loading: boolean;
     error: null | string;

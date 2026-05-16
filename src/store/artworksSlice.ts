@@ -1,3 +1,4 @@
+import type { Artwork } from "../types";
 import {
     createSlice,
     createAsyncThunk,
@@ -11,24 +12,6 @@ import {
     getArtworkById,
 } from "../services/api";
 import { getDayOfYear } from "../utils/dateUtils";
-
-interface Artwork {
-    id: number;
-    title: string;
-    artist_display: string;
-    image_id: string;
-    date_display: string;
-    description: string | null;
-    thumbnail?: {
-        alt_text: string;
-        width: number;
-        height: number;
-        lqip?: string;
-    };
-    medium_display?: string;
-    dimensions?: string;
-    credit_line?: string;
-}
 
 interface ArtworksState {
     items: Artwork[];
@@ -95,7 +78,8 @@ export const fetchFeaturedArtwork = createAsyncThunk(
         const response = await getFeaturedBatch();
         const iiifUrl = response.data.config.iiif_url;
         const artworks = response.data.data.filter(
-            (artwork: any) => artwork.image_id != null && artwork.description,
+            (artwork: Artwork) =>
+                artwork.image_id != null && artwork.description,
         );
 
         const dayOfYear = getDayOfYear();
@@ -118,7 +102,8 @@ export const fetchFeaturedArtwork = createAsyncThunk(
 export const fetchArtworkDetails = createAsyncThunk(
     "artworks/fetchArtworkDetails",
     async (id: string | number) => {
-        const response = await getArtworkById(id);
+        const numericId = typeof id === "string" ? parseInt(id, 10) : id;
+        const response = await getArtworkById(numericId);
         return response.data.data;
     },
 );
