@@ -65,8 +65,8 @@ const ExhibitionsPage: React.FC = () => {
                                     <S.CardTitle>{exh.title}</S.CardTitle>
 
                                     <S.Date>
-                                        {formatDate(exh.aic_start_at)} —{" "}
-                                        {formatDate(exh.aic_end_at)}
+                                        {formatDate(exh.aic_start_at || null)} —{" "}
+                                        {formatDate(exh.aic_end_at || null)}
                                     </S.Date>
                                 </S.Content>
                             </S.ExhibitionCard>

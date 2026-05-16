@@ -5,7 +5,17 @@ describe("Search slice", () => {
     const initialState = { results: [], loading: false, error: null };
 
     it("should clear results", () => {
-        const stateWithResults = { ...initialState, results: [{ id: 1 }] };
+        const stateWithResults = {
+            ...initialState,
+            results: [
+                {
+                    id: 1,
+                    title: "Mock",
+                    artist_display: "Artist",
+                    image_id: "img1",
+                },
+            ],
+        };
         const nextState = reducer(stateWithResults, clearSearchBarResults());
 
         expect(nextState.results).toHaveLength(0);

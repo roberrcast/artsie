@@ -67,7 +67,7 @@ describe("Exhibitions slice", () => {
         await store.dispatch(fetchExhibitionDetails(1));
 
         const state = store.getState().exhibitions;
-        expect(state.selectedExhibition.title).toBe("Expo 1");
+        expect(state.selectedExhibition!.title).toBe("Expo 1");
         expect(state.relatedArtworks).toHaveLength(0);
     });
 });
