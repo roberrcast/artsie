@@ -26,9 +26,10 @@ describe("Home Page", () => {
             featuredArtwork: {
                 id: 1,
                 title: "Mock Masterpiece",
+                artist_display: "Mock Artist",
                 description: "Mock Description",
                 image_id: "some-fake-id",
-                thumnail: { width: 400, height: 400, alt_text: "Alt" },
+                thumbnail: { width: 400, height: 400, alt_text: "Alt" },
             },
             iiifUrl: "https://example.com/",
             selectedArtwork: null,
@@ -37,6 +38,8 @@ describe("Home Page", () => {
 
         exhibitions: {
             items: [{ id: 101, title: "Mocked Expo", image_url: "test.jpg" }],
+            selectedExhibition: null,
+            relatedArtworks: [],
             loading: false,
             error: null,
         },

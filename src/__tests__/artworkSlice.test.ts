@@ -107,7 +107,7 @@ describe("Artworks slice", () => {
         await store.dispatch(fetchFeaturedArtwork());
 
         const state = store.getState().artworks;
-        expect(state.featuredArtwork.title).toBe("Featured");
+        expect(state.featuredArtwork!.title).toBe("Featured");
         expect(state.iiifUrl).toBe("https://iiif.com");
     });
 });

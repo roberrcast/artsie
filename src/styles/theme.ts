@@ -20,7 +20,11 @@ export const theme = {
         footerBg: "#f4f4f5",
         borderColor: "#e5e5e5",
         background: "#fefefe",
+        backgroundLink1: "rgb(235 ,238 ,239, 1)",
+        backgroundLink2: "rgba(255, 255, 255, 0.1)",
         drawerBackdrop: "rgba(26, 26, 26, 0.2)", // color primario al 20%
+        backgroundRGBA: "rgba(255, 255, 255, 0.8)",
+        borderDate: "rgba(255, 255, 255, 0.2)",
         rgba: "rgba(255, 255, 255, 0.8)",
         rgba2: "rgb(235 ,238 ,239, 1)",
         rgba3: "rgba(255, 255, 255, 0.1)",

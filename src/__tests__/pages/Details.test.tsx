@@ -29,7 +29,7 @@ describe("Details page", () => {
         dimensions: "73.7 cm × 92.1 cm",
         credit_line: "Bequest of Mrs. John Hay Whitney",
         description: "<p>Una obra maestra del post-impresionismo.</p>",
-        thumbnail: { alt_text: "A starry night sky" },
+        thumbnail: { alt_text: "A starry night sky", width: 500, height: 400 },
     };
 
     it("renders artwork details correctly", () => {

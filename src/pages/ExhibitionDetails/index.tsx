@@ -47,8 +47,13 @@ const ExhibitionDetails: React.FC = () => {
 
                         <S.DataBadge>
                             <p>
-                                {formatDate(selectedExhibition.aic_start_at)} —{" "}
-                                {formatDate(selectedExhibition.aic_end_at)}
+                                {formatDate(
+                                    selectedExhibition.aic_start_at || null,
+                                )}{" "}
+                                —{" "}
+                                {formatDate(
+                                    selectedExhibition.aic_end_at || null,
+                                )}
                             </p>
                         </S.DataBadge>
                     </S.HeroContent>

@@ -29,6 +29,15 @@ export const createTestStore = (preloadedState = {}) => {
     });
 };
 
+// Función auxiliar
+type DeepPartial<T> = {
+    [P in keyof T]?: T[P] extends (infer U)[]
+        ? DeepPartial<U>[]
+        : T[P] extends object
+          ? DeepPartial<T[P]>
+          : T[P];
+};
+
 /* Componente reutilizable para evitar escribir el bloque <Provider> <BrowserRouter> <ThemeProvider> etc... una y
  * otra vez y mantener el código los más DRY posible */
 
@@ -38,7 +47,7 @@ const renderWithProviders = (
         preloadedState = {},
         store = createTestStore(preloadedState),
         ...renderOptions
-    }: { preloadedState?: Partial<RootState>; store?: AppStore } & Omit<
+    }: { preloadedState?: DeepPartial<RootState>; store?: AppStore } & Omit<
         RenderOptions,
         "queries"
     > = {},

@@ -64,6 +64,7 @@ const ArtworksPage: React.FC = () => {
 
                 <S.PaginationWrapper>
                     <S.PaginationButton
+                        $isNext={false}
                         disabled={currentPage === 1}
                         onClick={() => dispatch(fetchArtworks(currentPage - 1))}
                     >
