@@ -21,12 +21,17 @@ const SearchPage: React.FC = () => {
 
     // Hacer fetch cada que cambie el query en el URL
     useEffect(() => {
-        if (query && localQuery !== query) {
+        if (query) {
             dispatch(fetchSearchResults(query));
-            // eslint-disable-next-line react-hooks/set-state-in-effect
-            setLocalQuery(query); // Sincronizar el input local con el URL
         }
-    }, [query, dispatch, localQuery]);
+    }, [query, dispatch]);
+
+    useEffect(() => {
+        if (query) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setLocalQuery(query);
+        }
+    }, [query]);
 
     // Manejo del submit en el search bar
     const handleSubmit = (e: React.SubmitEvent) => {

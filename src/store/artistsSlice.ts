@@ -5,6 +5,7 @@ import {
     getArtistsList,
     getArtworksByArtist,
 } from "../services/api";
+import type { Artwork } from "../types";
 
 interface Artist {
     id: number;
@@ -20,7 +21,7 @@ interface ArtistsState {
     items: Artist[];
     searchResults: Artist[];
     selectedArtist: Artist | null;
-    artistWorks: any[];
+    artistWorks: Artwork[];
     loading: boolean;
     error: string | null;
     currentPage: number;
