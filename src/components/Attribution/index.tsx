@@ -23,7 +23,9 @@ const Attribution: React.FC = () => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <span>visite el sitio del aic</span>
+                        <span aria-label="Vaya al sitio del instituto de arte de chicago">
+                            visite el sitio del aic
+                        </span>
                         <span>
                             <S.Link />
                         </span>
@@ -34,7 +36,9 @@ const Attribution: React.FC = () => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <span>documentación api</span>
+                        <span arial-label="Vaya a la documentación del API">
+                            documentación api
+                        </span>
                         <span>
                             <S.Link />
                         </span>

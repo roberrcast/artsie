@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { maxWidthContent } from "../../styles/mixins";
+import { ariaHidden, maxWidthContent } from "../../styles/mixins";
 
 export const PageContainer = styled.article`
     padding: 8rem 0;
@@ -48,14 +48,7 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    ${ariaHidden};
 `;
 
 export const Input = styled.input`

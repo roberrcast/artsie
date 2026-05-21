@@ -47,7 +47,10 @@ const ExhibitionsSection: React.FC = () => {
                 <S.TitleNavContainer>
                     <S.Title>Exhibiciones Actuales</S.Title>
 
-                    <S.Explore onClick={() => navigate("/exhibitions/")}>
+                    <S.Explore
+                        aria-label="Explora todas la exhibiciones disponibles en este sitio"
+                        onClick={() => navigate("/exhibitions/")}
+                    >
                         explorar todo
                     </S.Explore>
                 </S.TitleNavContainer>
@@ -56,8 +59,14 @@ const ExhibitionsSection: React.FC = () => {
                     {featuredExhibitions.map((exh) => (
                         <S.Card
                             key={exh.id}
+                            role="link"
+                            tabIndex={0}
+                            aria-labelledby={`prefix-${exh.id} title-${exh.title}`}
+                            aria-label={`Vaya a los detalles de ${exh.title}`}
                             onClick={() => navigate(`/exhibition/${exh.id}`)}
                         >
+                            <S.AriaSpan id={`prefix-${exh.id}`} lang="es" />
+
                             <S.ImageContainer>
                                 {exh.image_url ? (
                                     <img
@@ -89,7 +98,9 @@ const ExhibitionsSection: React.FC = () => {
                                 <S.Type lang="en">{`${exh.gallery_title || exh.api_model}`}</S.Type>
 
                                 <S.ExhibitionTitle>
-                                    <span lang="en">{exh.title}</span>
+                                    <span lang="en" id={`title-${exh.id}`}>
+                                        {exh.title}
+                                    </span>
                                 </S.ExhibitionTitle>
 
                                 <S.Description>

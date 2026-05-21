@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { X, Search } from "lucide-react";
 import {
+    ariaHidden,
     blur,
     flexAlignCenter,
     fluid,
@@ -122,14 +123,7 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    ${ariaHidden};
 `;
 
 export const Input = styled.input`

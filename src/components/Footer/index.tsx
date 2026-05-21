@@ -43,16 +43,36 @@ const Footer: React.FC = () => {
 
                     <S.NavList>
                         <li>
-                            <Link to={"/exhibitions/"}>Exhibiciones</Link>
+                            <Link
+                                aria-label="Vaya a la sección de exhibiciones"
+                                to={"/exhibitions/"}
+                            >
+                                Exhibiciones
+                            </Link>
                         </li>
                         <li>
-                            <Link to={"/artists/"}>Artistas</Link>
+                            <Link
+                                taria-label="Vaya a la sección de artistas"
+                                to={"/artists/"}
+                            >
+                                Artistas
+                            </Link>
                         </li>
                         <li>
-                            <Link to={"/artworks/"}>Galería</Link>
+                            <Link
+                                aria-label="Vaya a la sección de la galería"
+                                to={"/artworks/"}
+                            >
+                                Galería
+                            </Link>
                         </li>
                         <li>
-                            <Link to={"/genres/"}>Estilos</Link>
+                            <Link
+                                aria-label="Vaya a la sección de estilos"
+                                to={"/genres/"}
+                            >
+                                Estilos
+                            </Link>
                         </li>
                     </S.NavList>
                 </S.NavColumn>
@@ -65,7 +85,7 @@ const Footer: React.FC = () => {
                                 href="https://github.com/roberrcast"
                                 target="_blank"
                                 rel="noreferrer"
-                                aria-label="GitHub Profile"
+                                aria-label="Visite el perfil de GitHub del desarrollador"
                             >
                                 <svg
                                     stroke="currentColor"
@@ -82,7 +102,7 @@ const Footer: React.FC = () => {
                                 href="https://www.linkedin.com/in/roberto-rodriguez-frontend-engineer"
                                 target="_blank"
                                 rel="noreferrer"
-                                aria-label="LinkedIn Profile"
+                                aria-label="Visite el perfil de LinkedIn del desarrollador"
                             >
                                 <svg viewBox="0 0 512 512" fill="currentColor">
                                     <path d="M116.504 500.219V170.654H6.975v329.564zM61.751 125.674c38.183 0 61.968-25.328 61.968-56.953-.722-32.328-23.785-56.941-61.252-56.941C24.994 11.781.5 36.394.5 68.722c0 31.625 23.772 56.953 60.53 56.953zm115.373 374.545s1.437-298.643 0-329.564H286.67v47.794h-.727c14.404-22.49 40.354-55.533 99.44-55.533 72.085 0 126.116 47.103 126.116 148.333V500.22H401.971V323.912c0-44.301-15.848-74.531-55.497-74.531-30.254 0-48.284 20.38-56.202 40.08-2.897 7.012-3.602 16.861-3.602 26.711v184.047z" />
@@ -113,6 +133,7 @@ const Footer: React.FC = () => {
 
                             <S.TagsContainer>
                                 <S.Tag
+                                    aria-label="Sugerencia de búsqueda: óleo sobre lienzo"
                                     onClick={() =>
                                         navigate("/search?q=Oil on Canvas")
                                     }
@@ -122,6 +143,7 @@ const Footer: React.FC = () => {
                                 </S.Tag>
 
                                 <S.Tag
+                                    aria-label="Sugerencia de búsqueda: Siglo 18"
                                     onClick={() =>
                                         navigate("/search?q=18th Century")
                                     }
@@ -131,6 +153,7 @@ const Footer: React.FC = () => {
                                 </S.Tag>
 
                                 <S.Tag
+                                    aria-label="Sugerencia de búsqueda: París"
                                     onClick={() => navigate("/search?q=Paris")}
                                 >
                                     <MapPin />
