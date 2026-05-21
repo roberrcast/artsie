@@ -43,7 +43,11 @@ const Details: React.FC = () => {
         <>
             <S.DetailsContainer>
                 <S.DetailsWrapper>
-                    <S.ImageContainer onClick={() => setIsModalOpen(true)}>
+                    <S.ImageContainer
+                        id="arwork-modal"
+                        onClick={() => setIsModalOpen(true)}
+                        aria-controls="artwork-modal"
+                    >
                         <S.Image
                             src={imageUrl || noImage}
                             alt={

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import * as S from "./styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../store";
 import { setSearchOpen } from "../../store/artworksSlice";
 import { Menu } from "lucide-react";
 import DrawerMenu from "./DrawerMenu";
 
 const Header: React.FC = () => {
     const dispatch = useDispatch();
+    const { isSearchOpen } = useSelector((state: RootState) => state.artworks);
     const [isHidden, setIsHidden] = useState(false);
 
     useEffect(() => {
@@ -45,6 +47,7 @@ const Header: React.FC = () => {
                     <S.HamburgerButton
                         aria-label="Abrir Menu"
                         onClick={() => setIsMenuOpen(true)}
+                        aria-controls="mobile-menu"
                     >
                         <Menu size={24} />
                     </S.HamburgerButton>
@@ -84,6 +87,8 @@ const Header: React.FC = () => {
                     <S.ButtonWrapper>
                         <S.SearchButton
                             aria-label="Abrir búsqueda"
+                            aria-controls="search-overlay"
+                            aria-expanded={isSearchOpen}
                             onClick={handleOpenSearch}
                         >
                             <S.SearchButtonIcon />

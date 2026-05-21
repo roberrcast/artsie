@@ -76,7 +76,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
     }, []);
 
     return (
-        <S.Overlay onClick={handleStartClose} $isClosing={isClosing}>
+        <S.Overlay
+            id="search-overlay"
+            onClick={handleStartClose}
+            $isClosing={isClosing}
+        >
             <S.SearchContainer
                 $isClosing={isClosing}
                 onClick={(e) => e.stopPropagation()}

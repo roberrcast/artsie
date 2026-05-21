@@ -88,7 +88,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
     if (!artwork) return null;
 
     return (
-        <S.ModalOverlay $isOpen={isOpen} onClick={onClose}>
+        <S.ModalOverlay id="artwork-modal" $isOpen={isOpen} onClick={onClose}>
             {/* --- Encabezado --- */}
             <S.ModalHeader onClick={(e) => e.stopPropagation()}>
                 <S.ModalLogo lang="en">The Open Gallery</S.ModalLogo>
