@@ -20,7 +20,9 @@ const Footer: React.FC = () => {
             <S.FooterWrapper>
                 <S.TitleColumn>
                     <S.FooterTitle>
-                        <Link to={"/"}>The Open Gallery</Link>
+                        <Link to={"/"}>
+                            <span lang="en">The Open Gallery</span>
+                        </Link>
                     </S.FooterTitle>
 
                     <S.FooterDescription>
@@ -93,12 +95,15 @@ const Footer: React.FC = () => {
                 <S.SearchColumn>
                     <S.SearchCard>
                         <S.SearchSection>
-                            <S.SearchLabel>busca en el catálogo</S.SearchLabel>
+                            <S.SearchLabel htmlFor="footer-search">
+                                busca en el catálogo
+                            </S.SearchLabel>
 
                             <S.SearchInputWrapper onSubmit={handleFooterSearch}>
                                 <Search size={20} />
 
                                 <S.SearchInput
+                                    id="footer-search"
                                     type="search"
                                     placeholder="Explora los archivos del AIC, por artista, género, colecciones, etc."
                                     value={query}
@@ -144,7 +149,10 @@ const Footer: React.FC = () => {
                         Todos los derechos reservados.
                     </p>
                     <p>
-                        Built with React, Redux Toolkit, and Styled Components
+                        Desarrolado con{" "}
+                        <span lang="en">
+                            React, Redux Toolkit, and Styled Components
+                        </span>
                     </p>
                 </S.BottomBarWrapper>
             </S.BottomBar>

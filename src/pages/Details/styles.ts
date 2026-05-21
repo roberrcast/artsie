@@ -94,7 +94,7 @@ export const ArtistDisplay = styled.p`
     font-size: ${fluid("1rem", "1.2rem", "400px", "1500px")};
     font-weight: 500;
 
-    span {
+    span:nth-child(2) {
         display: block;
         color: ${(props) => props.theme.colors.textMuted};
         text-transform: uppercase;

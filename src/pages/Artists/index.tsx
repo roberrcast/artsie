@@ -81,7 +81,9 @@ const Artists: React.FC = () => {
                         >
                             <Search />
                         </S.SearchButton>
+                        <label htmlFor="artist-search">Buscar artistas</label>
                         <input
+                            id="artist-search"
                             type="text"
                             placeholder="Buscar por nombre, movimiento o época..."
                             value={query}
@@ -112,7 +114,9 @@ const Artists: React.FC = () => {
                                 onClick={() => navigate(`/artist/${artist.id}`)}
                             >
                                 <S.EntryHeader>
-                                    <S.ArtistName>{artist.title}</S.ArtistName>
+                                    <S.ArtistName lang="en">
+                                        {artist.title}
+                                    </S.ArtistName>
                                     <S.AgentTag>Artista</S.AgentTag>
                                 </S.EntryHeader>
 

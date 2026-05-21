@@ -8,7 +8,7 @@ const HeroBanner: React.FC = () => {
                 <S.Title>
                     Bienvenido a
                     <br />
-                    The Open Gallery
+                    <span lang="en">The Open Gallery</span>
                 </S.Title>
 
                 <S.Description>

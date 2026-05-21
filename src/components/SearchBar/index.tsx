@@ -76,14 +76,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
     }, []);
 
     return (
-        <S.Overlay onClick={handleStartClose} $isClosing={isClosing}>
+        <S.Overlay
+            id="search-overlay"
+            onClick={handleStartClose}
+            $isClosing={isClosing}
+        >
             <S.SearchContainer
                 $isClosing={isClosing}
                 onClick={(e) => e.stopPropagation()}
             >
                 <S.SearchContainerWrapper>
                     <S.TitleButtonContainer>
-                        <S.Title>the open gallery</S.Title>
+                        <S.Title lang="en">the open gallery</S.Title>
 
                         <S.CloseButton onClick={handleStartClose}>
                             cerrar <S.CloseButtonIcon />
@@ -94,7 +98,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                 <S.SearchWrapper>
                     <S.SearchSection onClick={(e) => e.stopPropagation()}>
                         <S.Form onSubmit={handleSearchSubmit} role="search">
+                            <S.Label htmlFor="main-search">
+                                Buscar en la galería
+                            </S.Label>
                             <S.Input
+                                id="main-search"
                                 type="search"
                                 autoFocus
                                 placeholder="Búsque artistas u obras de arte"
@@ -134,7 +142,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                                 to={`/artist/${artist.id}`}
                                                 onClick={onClose}
                                             >
-                                                {artist.title}
+                                                <span lang="en">
+                                                    {artist.title}
+                                                </span>
                                             </Link>
                                         </li>
                                     ))}
@@ -158,11 +168,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                                         col.coverId,
                                                 )}
                                                 alt={col.label}
+                                                lang="en"
                                             />
                                         </S.CollectionImageWrapper>
 
                                         <S.CollectionInfo>
-                                            <S.CollectionTitle>
+                                            <S.CollectionTitle lang="en">
                                                 {col.label}
                                             </S.CollectionTitle>
 

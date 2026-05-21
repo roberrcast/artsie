@@ -43,7 +43,7 @@ const ExhibitionDetails: React.FC = () => {
                     <S.HeroContent>
                         <S.Kicker>exhibición actual</S.Kicker>
 
-                        <S.Title>{selectedExhibition.title}</S.Title>
+                        <S.Title lang="en">{selectedExhibition.title}</S.Title>
 
                         <S.DataBadge>
                             <p>
@@ -73,6 +73,7 @@ const ExhibitionDetails: React.FC = () => {
                     </S.DescriptionTitle>
 
                     <S.DescriptionText
+                        lang="en"
                         dangerouslySetInnerHTML={{
                             __html: DOMPurify.sanitize(
                                 selectedExhibition.short_description ||
@@ -114,14 +115,15 @@ const ExhibitionDetails: React.FC = () => {
                                                 artwork.image_id,
                                             )}
                                             alt={artwork.title}
+                                            lang="en"
                                         />
 
                                         <S.ArtInfoOverlay>
-                                            <S.OverlayTitle>
+                                            <S.OverlayTitle lang="en">
                                                 {artwork.title}
                                             </S.OverlayTitle>
 
-                                            <S.OverlayDisplay>
+                                            <S.OverlayDisplay lang="en">
                                                 {artwork.artist_display}
                                             </S.OverlayDisplay>
                                         </S.ArtInfoOverlay>

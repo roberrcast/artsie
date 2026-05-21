@@ -136,7 +136,7 @@ export const SearchSection = styled.div`
     width: 100%;
 `;
 
-export const SearchLabel = styled.p`
+export const SearchLabel = styled.label`
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;

@@ -88,10 +88,10 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
     if (!artwork) return null;
 
     return (
-        <S.ModalOverlay $isOpen={isOpen} onClick={onClose}>
+        <S.ModalOverlay id="artwork-modal" $isOpen={isOpen} onClick={onClose}>
             {/* --- Encabezado --- */}
             <S.ModalHeader onClick={(e) => e.stopPropagation()}>
-                <S.ModalLogo>The Open Gallery</S.ModalLogo>
+                <S.ModalLogo lang="en">The Open Gallery</S.ModalLogo>
 
                 <S.ModalActions>
                     <S.CloseButton
@@ -125,6 +125,7 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                             style={{
                                 transformOrigin: `${origin.x}% ${origin.y}%`,
                             }}
+                            lang="en"
                         />
                     </S.ImageFrame>
 
@@ -152,8 +153,11 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                 <S.ContextLabel>en detalle</S.ContextLabel>
 
                 <S.ContextText>
-                    {artwork.short_description ||
-                        "Información detallada no disponible."}
+                    {artwork.short_description ? (
+                        <span lang="en">{artwork.short_description}</span>
+                    ) : (
+                        "Información detallada no disponible."
+                    )}
                 </S.ContextText>
 
                 <S.DecorativeLine />
@@ -165,20 +169,24 @@ const ArtworkModal: React.FC<ArtworkModalProps> = ({
                 onClick={(e) => e.stopPropagation()}
             >
                 <S.FooterInfoLeft>
-                    <S.ModalTitle>{artwork.title}</S.ModalTitle>
+                    <S.ModalTitle lang="en">{artwork.title}</S.ModalTitle>
 
                     <S.ModalSubMeta>
-                        <span>{artwork.artist_display}</span>
+                        <span lang="en">{artwork.artist_display}</span>
                         <S.Separator />
                         <S.StyleTag>
-                            {artwork.style_title || "Estilo no clasificado"}
+                            {artwork.style_title ? (
+                                <span lang="en">{artwork.style_title}</span>
+                            ) : (
+                                "Estilo no clasificado"
+                            )}
                         </S.StyleTag>
                     </S.ModalSubMeta>
                 </S.FooterInfoLeft>
 
                 <S.FooterInfoRight>
                     <S.ContextLabel>lugar de origen</S.ContextLabel>
-                    <span>{artwork.place_of_origin}</span>
+                    <span lang="en">{artwork.place_of_origin}</span>
                 </S.FooterInfoRight>
                 <S.FooterGradient />
             </S.ModalFooter>

@@ -51,9 +51,9 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
                     <CloseIcon size={24} />
                 </S.CloseButton>
 
-                <S.Drawer $isOpen={isOpen}>
+                <S.Drawer id="mobile-menu" $isOpen={isOpen}>
                     <S.DrawerHeader>
-                        <h2>The Open Gallery</h2>
+                        <h2 lang="en">The Open Gallery</h2>
                     </S.DrawerHeader>
 
                     <S.NavMenu>

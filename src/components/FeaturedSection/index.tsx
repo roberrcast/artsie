@@ -42,17 +42,24 @@ const FeaturedSection: React.FC = () => {
                             featuredArtwork.thumbnail?.alt_text ||
                             `Imagen de ${featuredArtwork.title}`
                         }
+                        lang="en"
                     />
 
                     <S.MobileHeader>
                         <S.MobileKicker>obra del día</S.MobileKicker>
 
-                        <S.MobileTitle>{featuredArtwork.title}</S.MobileTitle>
+                        <S.MobileTitle>
+                            <span lang="en">{featuredArtwork.title}</span>
+                        </S.MobileTitle>
 
                         <S.MobileDescription>
-                            {featuredArtwork.description
-                                ? stripHtml(featuredArtwork.description)
-                                : "Haz clic en el botón para más detalles acerca de la obra"}
+                            {featuredArtwork.description ? (
+                                <span lang="en">
+                                    {stripHtml(featuredArtwork.description)}
+                                </span>
+                            ) : (
+                                "Haz clic en el botón para más detalles acerca de la obra"
+                            )}
                         </S.MobileDescription>
 
                         <S.MobileButton
@@ -69,12 +76,18 @@ const FeaturedSection: React.FC = () => {
                 <S.FeaturedHeader>
                     <S.Kicker>obra del día</S.Kicker>
 
-                    <S.FeaturedTitle>{featuredArtwork.title}</S.FeaturedTitle>
+                    <S.FeaturedTitle>
+                        <span lang="en">{featuredArtwork.title}</span>
+                    </S.FeaturedTitle>
 
                     <S.Description>
-                        {featuredArtwork.description
-                            ? stripHtml(featuredArtwork.description)
-                            : "Haz clic en el botón para más detalles acerca de la obra"}
+                        {featuredArtwork.description ? (
+                            <span lang="en">
+                                {stripHtml(featuredArtwork.description)}
+                            </span>
+                        ) : (
+                            "Haz clic en el botón para más detalles acerca de la obra"
+                        )}
                     </S.Description>
 
                     <S.ButtonContainer>

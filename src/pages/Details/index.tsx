@@ -43,10 +43,23 @@ const Details: React.FC = () => {
         <>
             <S.DetailsContainer>
                 <S.DetailsWrapper>
-                    <S.ImageContainer onClick={() => setIsModalOpen(true)}>
+                    <S.ImageContainer
+                        id="arwork-modal"
+                        onClick={() => setIsModalOpen(true)}
+                        aria-controls="artwork-modal"
+                    >
                         <S.Image
                             src={imageUrl || noImage}
-                            alt={selectedArtwork.thumbnail?.alt_text}
+                            alt={
+                                selectedArtwork.thumbnail?.alt_text ||
+                                selectedArtwork.title ||
+                                "Imagen no disponible"
+                            }
+                            lang={
+                                selectedArtwork.thumbnail?.alt_text
+                                    ? "en"
+                                    : "es"
+                            }
                         />
                     </S.ImageContainer>
 
@@ -57,11 +70,11 @@ const Details: React.FC = () => {
                                 {selectedArtwork.date_display}
                             </S.DateDisplay>
 
-                            <S.Title>{selectedArtwork.title}</S.Title>
+                            <S.Title lang="en">{selectedArtwork.title}</S.Title>
 
                             <S.ArtistDisplay>
-                                {artist.name}
-                                <span>{artist.details}</span>
+                                <span lang="en">{artist.name}</span>
+                                <span lang="en">{artist.details}</span>
                             </S.ArtistDisplay>
                         </S.ArtistInfo>
 
@@ -70,19 +83,23 @@ const Details: React.FC = () => {
 
                             <S.Medium>
                                 <S.Label>Medio</S.Label>
-                                <S.Value>
+                                <S.Value lang="en">
                                     {selectedArtwork.medium_display}
                                 </S.Value>
                             </S.Medium>
 
                             <S.Dimensions>
                                 <S.Label>Dimensiones</S.Label>
-                                <S.Value>{selectedArtwork.dimensions}</S.Value>
+                                <S.Value lang="en">
+                                    {selectedArtwork.dimensions}
+                                </S.Value>
                             </S.Dimensions>
 
                             <S.CreditLine>
                                 <S.Label>Ficha Técnica</S.Label>
-                                <S.Value>{selectedArtwork.credit_line}</S.Value>
+                                <S.Value lang="en">
+                                    {selectedArtwork.credit_line}
+                                </S.Value>
                             </S.CreditLine>
                         </S.ArtworkDetails>
 
@@ -97,14 +114,14 @@ const Details: React.FC = () => {
 
                             <S.MobileMedium>
                                 <S.MobileLabel>Medio</S.MobileLabel>
-                                <S.MobileValue>
+                                <S.MobileValue lang="en">
                                     {selectedArtwork.medium_display}
                                 </S.MobileValue>
                             </S.MobileMedium>
 
                             <S.MobileDimensions>
                                 <S.MobileLabel>Dimensiones</S.MobileLabel>
-                                <S.MobileValue>
+                                <S.MobileValue lang="en">
                                     {selectedArtwork.dimensions}
                                 </S.MobileValue>
                             </S.MobileDimensions>
@@ -129,6 +146,7 @@ const Details: React.FC = () => {
                         </S.DescriptionTitle>
 
                         <S.DescriptionTextContainer
+                            lang="en"
                             dangerouslySetInnerHTML={{
                                 __html: DOMPurify.sanitize(
                                     selectedArtwork.description || "",
