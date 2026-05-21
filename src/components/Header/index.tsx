@@ -43,14 +43,16 @@ const Header: React.FC = () => {
                     </S.HomeContainer>
 
                     <S.HamburgerButton
-                        arial-label="Abrir Menu"
+                        aria-label="Abrir Menu"
                         onClick={() => setIsMenuOpen(true)}
                     >
                         <Menu size={24} />
                     </S.HamburgerButton>
 
                     <S.Title>
-                        <Link to={"/"}>The Open Gallery</Link>
+                        <Link to={"/"}>
+                            <span lang="en">The Open Gallery</span>
+                        </Link>
                     </S.Title>
 
                     <S.Nav>

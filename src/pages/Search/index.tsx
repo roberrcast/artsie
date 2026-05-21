@@ -56,8 +56,13 @@ const SearchPage: React.FC = () => {
                 </S.HeaderSection>
 
                 <S.SearchBarSection>
-                    <S.Form onSubmit={handleSubmit}>
+                    <S.Form onSubmit={handleSubmit} role="search">
+                        <S.Label htmlFor="search-gallery">
+                            {" "}
+                            buscar en la galería
+                        </S.Label>
                         <S.Input
+                            id="search-gallery"
                             placeholder="Buscar en la colección"
                             value={localQuery}
                             onChange={(e) => setLocalQuery(e.target.value)}

@@ -7,7 +7,7 @@ const LoadingScreen: React.FC = () => {
         <S.LoadingOverlay>
             <S.CanvasBackground />
 
-            <S.TopLeftBranding>The Open Gallery</S.TopLeftBranding>
+            <S.TopLeftBranding lang="en">The Open Gallery</S.TopLeftBranding>
 
             <S.TopRightIcon>
                 <svg viewBox="0 -960 960 960" fill="currentColor">
@@ -18,7 +18,10 @@ const LoadingScreen: React.FC = () => {
             <S.CenterContent>
                 <S.ImageWrapper>
                     <div>
-                        <img src={loadingImg} alt="Miniamlist Sculpture" />
+                        <img
+                            src={loadingImg}
+                            alt="Imagen de escultura minimalista"
+                        />
                     </div>
                 </S.ImageWrapper>
 

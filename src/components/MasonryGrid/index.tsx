@@ -31,13 +31,16 @@ const MasonryGrid: React.FC<MasonryGridProps> = ({
                             src={buildImageUrl(artwork.image_id) || noImage}
                             alt={artwork.title}
                             loading="lazy"
+                            lang="en"
                         />
                     </S.ImageWrapper>
 
                     <S.InfoCard>
-                        <S.ArtworkTitle>{artwork.title}</S.ArtworkTitle>
+                        <S.ArtworkTitle lang="en">
+                            {artwork.title}
+                        </S.ArtworkTitle>
 
-                        <S.ArtworkArtist>
+                        <S.ArtworkArtist lang="en">
                             {artwork.artist_display}
                         </S.ArtworkArtist>
                     </S.InfoCard>

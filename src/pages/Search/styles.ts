@@ -47,6 +47,17 @@ export const Form = styled.form`
     max-width: 42rem;
 `;
 
+export const Label = styled.label`
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+`;
+
 export const Input = styled.input`
     width: 100%;
     padding: 1rem 4rem 1rem 2rem;

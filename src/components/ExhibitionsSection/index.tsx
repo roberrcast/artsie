@@ -65,6 +65,7 @@ const ExhibitionsSection: React.FC = () => {
                                             exh.image_url,
                                         )}
                                         alt={exh.title}
+                                        lang="en"
                                         decoding="async"
                                         loading="lazy"
                                         onLoad={(e) =>
@@ -85,16 +86,20 @@ const ExhibitionsSection: React.FC = () => {
                             </S.ImageContainer>
 
                             <S.Content>
-                                <S.Type>{`${exh.gallery_title || exh.api_model}`}</S.Type>
+                                <S.Type lang="en">{`${exh.gallery_title || exh.api_model}`}</S.Type>
 
                                 <S.ExhibitionTitle>
-                                    {exh.title}
+                                    <span lang="en">{exh.title}</span>
                                 </S.ExhibitionTitle>
 
                                 <S.Description>
-                                    {exh.short_description
-                                        ? stripHtml(exh.short_description)
-                                        : "Explora esta exhibición."}
+                                    {exh.short_description ? (
+                                        <span lang="en">
+                                            {stripHtml(exh.short_description)}
+                                        </span>
+                                    ) : (
+                                        "Explora esta exhibición."
+                                    )}
                                 </S.Description>
 
                                 <S.DetailsLink>

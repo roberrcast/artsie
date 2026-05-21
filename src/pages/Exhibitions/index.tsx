@@ -54,15 +54,18 @@ const ExhibitionsPage: React.FC = () => {
                                             exh.image_url,
                                         )}
                                         alt={exh.title}
+                                        lang="en"
                                     />
                                 </S.ImageContainer>
 
                                 <S.Content>
-                                    <S.Type>
+                                    <S.Type lang="en">
                                         {exh.gallery_title || exh.api_model}
                                     </S.Type>
 
-                                    <S.CardTitle>{exh.title}</S.CardTitle>
+                                    <S.CardTitle lang="en">
+                                        {exh.title}
+                                    </S.CardTitle>
 
                                     <S.Date>
                                         {formatDate(exh.aic_start_at || null)} —{" "}

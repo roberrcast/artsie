@@ -41,7 +41,7 @@ const ArtistDetails: React.FC = () => {
                 <S.HeroContainer>
                     <S.ArtistTag>artista</S.ArtistTag>
 
-                    <S.Name>{selectedArtist.title}</S.Name>
+                    <S.Name lang="en">{selectedArtist.title}</S.Name>
 
                     <S.Dates>
                         {selectedArtist.birth_date || "???"} —{" "}
@@ -58,10 +58,11 @@ const ArtistDetails: React.FC = () => {
                 </S.BioTitleWrapper>
 
                 <S.BioText
+                    lang="en"
                     dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(
                             selectedArtist.description ||
-                                "No hay descripción disponible para este artista.",
+                                "No hay biografía disponible para este artista.",
                         ),
                     }}
                 ></S.BioText>
@@ -93,6 +94,7 @@ const ArtistDetails: React.FC = () => {
                                 <img
                                     src={buildImageUrl(artistWorks[0].image_id)}
                                     alt={artistWorks[0].title}
+                                    lang="en"
                                 />
 
                                 <S.CardOverlay>
@@ -105,6 +107,7 @@ const ArtistDetails: React.FC = () => {
                                     </S.WorkTitle>
 
                                     <S.FeaturedDescription
+                                        lang="en"
                                         dangerouslySetInnerHTML={{
                                             __html: DOMPurify.sanitize(
                                                 artistWorks[0].description ||
@@ -128,6 +131,7 @@ const ArtistDetails: React.FC = () => {
                                     <img
                                         src={buildImageUrl(work.image_id)}
                                         alt={work.title}
+                                        lang="en"
                                     />
 
                                     <S.CardOverlay>

@@ -53,7 +53,7 @@ const DrawerMenu: React.FC<DrawerMenuProps> = ({ isOpen, onClose }) => {
 
                 <S.Drawer $isOpen={isOpen}>
                     <S.DrawerHeader>
-                        <h2>The Open Gallery</h2>
+                        <h2 lang="en">The Open Gallery</h2>
                     </S.DrawerHeader>
 
                     <S.NavMenu>
