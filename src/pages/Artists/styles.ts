@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { keyframes } from "styled-components";
-import { fluid, maxWidthContent } from "../../styles/mixins";
+import { ariaHidden, fluid, maxWidthContent } from "../../styles/mixins";
 
 const spin = keyframes`
 0% { transform: rotate(0deg); }
@@ -62,14 +62,7 @@ export const SearchBarWrapper = styled.div`
     width: 100%;
 
     label {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
+        ${ariaHidden};
     }
 
     input {

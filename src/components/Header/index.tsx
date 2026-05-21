@@ -61,18 +61,32 @@ const Header: React.FC = () => {
                     <S.Nav>
                         <S.List>
                             <li>
-                                <NavLink to={"/exhibitions/"}>
+                                <NavLink
+                                    aria-label="Vaya a la sección de exhibiciones"
+                                    to={"/exhibitions/"}
+                                >
                                     Exhibiciones
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={"/artists/"}>Artistas</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={"/artworks/"}>Galería</NavLink>
+                                <NavLink
+                                    aria-label="Vaya a la sección de artistas"
+                                    to={"/artists/"}
+                                >
+                                    Artistas
+                                </NavLink>
                             </li>
                             <li>
                                 <NavLink
+                                    aria-label="Vaya a la sección de la galería"
+                                    to={"/artworks/"}
+                                >
+                                    Galería
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    aria-label="Vaya a la sección de estilos"
                                     to={"/genres/"}
                                     className={({ isActive }) =>
                                         isActive ? "active" : ""

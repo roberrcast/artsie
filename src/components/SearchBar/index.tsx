@@ -89,7 +89,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                     <S.TitleButtonContainer>
                         <S.Title lang="en">the open gallery</S.Title>
 
-                        <S.CloseButton onClick={handleStartClose}>
+                        <S.CloseButton
+                            onClick={handleStartClose}
+                            aria-label="Cerrar el panel de búsqueda"
+                        >
                             cerrar <S.CloseButtonIcon />
                         </S.CloseButton>
                     </S.TitleButtonContainer>
@@ -109,7 +112,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                             />
-                            <S.SearchButton type="submit">
+                            <S.SearchButton
+                                type="submit"
+                                aria-label="Ejecutar búsqueda"
+                            >
                                 <S.StyledSearchButton />
                             </S.SearchButton>
                         </S.Form>
@@ -125,6 +131,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                             <Link
                                                 to={`/search?q=${encodeURIComponent(search.query)}`}
                                                 onClick={handleStartClose}
+                                                aria-label={`Buscar ${search.label}`}
                                             >
                                                 {search.label}
                                             </Link>
@@ -141,6 +148,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                             <Link
                                                 to={`/artist/${artist.id}`}
                                                 onClick={onClose}
+                                                aria-label={`Ver el perfil del artista ${artist.title}`}
                                             >
                                                 <span lang="en">
                                                     {artist.title}
@@ -156,9 +164,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ onClose }) => {
                                 {curatedCollections.map((col) => (
                                     <S.CollectionItem
                                         key={col.id}
+                                        role="link"
+                                        tabIndex={0}
+                                        aria-label={`Explorar la colección de ${col.label}`}
                                         onClick={() => {
                                             navigate(`/genres/${col.id}`);
                                             handleStartClose();
+                                        }}
+                                        onKeyDown={(e) => {
+                                            if (e.key === "Enter") {
+                                                navigate(`genres/${col.id}`);
+                                                handleStartClose();
+                                            }
                                         }}
                                     >
                                         <S.CollectionImageWrapper>

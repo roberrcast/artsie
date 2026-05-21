@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import {
+    ariaHidden,
     fluid,
     lineClamp,
     maxWidthContent,
@@ -116,6 +117,10 @@ export const Card = styled.div`
         flex: 0 0 280px;
         scroll-snap-align: start;
     }
+`;
+
+export const AriaSpan = styled.span`
+    ${ariaHidden};
 `;
 
 export const ImageContainer = styled.div`
