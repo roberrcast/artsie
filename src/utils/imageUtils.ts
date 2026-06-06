@@ -33,7 +33,7 @@ export const optimizeExhibitionImage = (
         // q=60: buen balance de calidad/tamaño
         // auto=format,compress: mejor compresión (webp/avif)
         // fit=crop: llena el contenedor
-        return `${baseUrl}?auto=format,compress&fit=crop&w=600q=60`;
+        return `${baseUrl}?auto=format,compress&fit=crop&w=600&q=60`;
     }
 
     return url;
