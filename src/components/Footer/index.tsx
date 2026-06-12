@@ -172,9 +172,9 @@ const Footer: React.FC = () => {
                         Todos los derechos reservados.
                     </p>
                     <p>
-                        Desarrolado con{" "}
+                        Desarrollado con{" "}
                         <span lang="en">
-                            React, Redux Toolkit, and Styled Components
+                            React, Redux Toolkit, y Styled Components
                         </span>
                     </p>
                 </S.BottomBarWrapper>
