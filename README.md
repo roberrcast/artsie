@@ -74,4 +74,4 @@ All data and images are provided by the [Art Institute of Chicago API](https://a
 ## 👤 Developer
 
 **Roberto Rodriguez**
-[LinkedIn](https://www.linkedin.com/in/roberto-rodriguez-frontend-engineer) | [GitHub](https://github.com/roberrcast)
+[LinkedIn](https://www.linkedin.com/in/roberto-rodriguez-frontend-engineer) | [GitHub](https://github.com/roberrcast) | [Portfolio](https://robrodriguez.dev)
