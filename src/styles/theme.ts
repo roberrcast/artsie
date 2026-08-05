@@ -59,6 +59,8 @@ export const theme = {
         noteText: "#d6d3d1",
         mobileDetailsText: "#2D3435",
         mobileSubmenuBorder: "#f3f4f6",
+        white: "#fff",
+        gold: "#fac515",
     },
 
     fonts: {

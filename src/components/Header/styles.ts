@@ -58,7 +58,7 @@ export const Title = styled.h1`
 export const Nav = styled.nav`
     display: none;
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1025px) {
         display: block;
     }
 `;
