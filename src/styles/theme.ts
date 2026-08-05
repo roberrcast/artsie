@@ -56,7 +56,7 @@ export const theme = {
         artistTagBg: "#fddab2",
         artistTagFont: "#634C2D",
         modalBg: "#171718",
-        noteText: "#d6d3d1",
+        noteText: "rgba(255, 255, 255, 0.95)",
         mobileDetailsText: "#2D3435",
         mobileSubmenuBorder: "#f3f4f6",
         white: "#fff",
