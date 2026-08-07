@@ -2,10 +2,13 @@
  * al solicitar un tamaño que no existe  386 */
 
 export const getOptimalImageSize = (thumbnailWidth?: number): number => {
-    if (!thumbnailWidth || thumbnailWidth < 200) {
-        return 550;
+    const sizes = [200, 400, 600, 843];
+    if (!thumbnailWidth) return 550;
+    if (thumbnailWidth < 200) return 200;
+    for (const size of sizes) {
+        if (thumbnailWidth <= size) return size;
     }
-    return Math.min(843, thumbnailWidth);
+    return 843;
 };
 
 export const buildImageUrl = (
