@@ -15,7 +15,7 @@ export default async (request: Request) => {
     const headers = new Headers(res.headers);
     headers.delete("content-encoding");
     headers.delete("content-length");
-    headers.set("Cache-Control", "public, max-age=86400, s-maxage=604800  ");
+    headers.set("Cache-Control", "public, max-age=86400, s-maxage=604800");
 
     return new Response(res.body, {
         status: res.status,
