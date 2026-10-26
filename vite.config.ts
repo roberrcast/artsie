@@ -6,6 +6,16 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
+            "/aic": {
+                target: "https://api.artic.edu",
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/aic/, "api/v1"),
+                headers: {
+                    "AIC-User-Agent":
+                        "art-school-project (dunamis1.16@gmail.com)",
+                },
+            },
+
             "/iiif": {
                 target: "https://www.artic.edu",
                 changeOrigin: true,
